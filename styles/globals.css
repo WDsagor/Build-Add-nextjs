@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -23,4 +27,21 @@ a {
     color: white;
     background: black;
   }
+}
+.news {
+  animation : delar 20s linear 20s infinite;
+}
+
+@keyframes delar {
+  0% {
+    transform: translatex(100%)
+  }
+
+  100% {
+    transform: translatex(-50%)
+  }
+}
+.swiper-button-next:after, .swiper-button-prev:after{
+  font-size: x-large !important;
+  color: green;
 }
