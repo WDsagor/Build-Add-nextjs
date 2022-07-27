@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // import Image from "next/image";
-import useNav from "../hooks/useNav";
+import useNav from "../../hooks/useNav";
 
 const Navbar = () => {
   const [menuShow, setMenuShoe] = useState(false);

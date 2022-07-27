@@ -21,8 +21,8 @@ const TopHeader = () => {
           <a className=" hover:text-yellow-300" href="tel:+8801673040503">
             HOTLINE +880 1673040503
           </a>{" "}
-          <a href="mailto:buildadltd@gmail.com" className=" flex justify-center  hover:text-yellow-300 ml-5">
-            <FaEnvelope className=" text-white mr-2 cursor-pointer sm:text-xs  md:text-lg" />
+          <a href="mailto:buildadltd@gmail.com" className=" group flex justify-center  hover:text-yellow-300 ml-5">
+            <FaEnvelope className=" text-white mr-2 cursor-pointer sm:text-xs  md:text-lg group-hover:text-yellow-300" />
             <span>buildadltd@gmail.com</span>
           </a>{" "}
         </p>

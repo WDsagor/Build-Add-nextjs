@@ -19,8 +19,8 @@ const AboutBuildadd = () => {
           অন্যান্য অনুমোদিত প্রতিষ্ঠান দ্বারা পরীক্ষিত।
         </p>
       </div>
-      <div className=" px-12 lg:px-5 text-white py-14 max-w-screen-2xl mx-auto">
-        <h1 className="lg:text-4xl text-2xl text-center py-14 font-bold text-primary">WHY CHOOSE US</h1>
+      <div className=" px-12 lg:px-5 text-white py-5 max-w-screen-2xl mx-auto">
+        <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">WHY CHOOSE US</h1>
         <div className=" grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="card shadow-xl hover:shadow-3xl hover:scale-110 duration-300 cursor-pointer bg-purple-900">
             <figure className="px-10 pt-10 ">
