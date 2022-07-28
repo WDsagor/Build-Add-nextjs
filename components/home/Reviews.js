@@ -14,7 +14,7 @@ const Reviews = () => {
         Our Happy Clients Reviews
       </h1>
       <p className="lg:text-lg text-sm text-center pb-5">Our most of the valuable clients reviews show here</p>
-      <div className=" w-10/12 lg:w-4/6 h-auto mx-auto">
+      <div className=" max-w-screen-2xl sm:w-full md:w-10/12 xl:w-10/12 mx-auto">
         <Swiper
           slidesPerView={1}
           breakpoints={{
