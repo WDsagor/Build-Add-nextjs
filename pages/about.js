@@ -1,16 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import Head from "next/head";
 import { FaHome, FaEnvelope, FaPhoneSquareAlt } from "react-icons/fa";
 import Certifide from "../components/home/Certifide";
+import Layout from "../components/Layout";
 
 const About = () => {
   return (
-    <>
-      <Head>
-        <title>About Us - Building Admixture Limited</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Layout title='About us'>
+  
+     
       <div className="max-w-screen-2xl mx-auto mt-16 relative">
         <Image
           width="1024"
@@ -68,7 +66,8 @@ const About = () => {
           <Certifide></Certifide>
         </div>
       </div>
-    </>
+     
+    </Layout>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import Head from "next/head";
 import { useForm } from "react-hook-form";
 import { FaFacebookSquare, FaWhatsappSquare, FaHome, FaEnvelope, FaPhoneSquareAlt } from "react-icons/fa";
+import Layout from "../components/Layout";
 // import contactIMG from "/images/contactIMG.jpg";
 
 const Contact = () => {
@@ -14,11 +14,8 @@ const Contact = () => {
   const onSubmit = () => {};
 
   return (
-    <>
-      <Head>
-        <title>Contact - Building Admixture Limited</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Layout title='Contact'>
+     
       <div>
         <div
           style={{
@@ -189,7 +186,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

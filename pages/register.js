@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Head from "next/head";
-// import logInimg from "/images/Carousel-img/grouping.png";
+import Layout from "../components/Layout";
 
 const Register = () => {
   const {
@@ -26,7 +26,7 @@ const Register = () => {
   };
   const password = watch("password");
   return (
-    <>
+    <Layout title='Register'>
       <Head>
         <title>Register - Building Admixture Limited</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -167,7 +167,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

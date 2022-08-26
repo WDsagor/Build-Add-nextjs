@@ -2,8 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import GoogleBtn from "../components/share/GoogleBtn";
-import Head from "next/head";
-import Image from "next/image";
+import Layout from "../components/Layout";
 
 const Login = () => {
   const {
@@ -14,11 +13,8 @@ const Login = () => {
 
   const onSubmit = () => {};
   return (
-    <>
-      <Head>
-        <title>Log In - Building Admixture Limited</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Layout title='Log In'>
+    
       <div
         style={{
           background: `url('/images/Carousel-img/grouping.png')`,
@@ -88,7 +84,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
