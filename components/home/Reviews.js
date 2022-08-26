@@ -9,7 +9,7 @@ import { FaStar } from "react-icons/fa";
 
 const Reviews = () => {
   return (
-    <div className="max-w-screen-2xl px-10 mx-auto ">
+    <div className="max-w-screen-2xl px-10 mx-auto " data-aos="zoom-in" data-aos-duration="1000">
       <h1 className="lg:text-3xl text-xl text-center pt-14 text-primary uppercase font-bold">
         Our Happy Clients Reviews
       </h1>

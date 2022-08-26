@@ -26,7 +26,7 @@ const Contact = () => {
         >
           <div className="hero-overlay bg-opacity-70"></div>
           <div className=" lg:flex text-neutral-content ">
-            <div className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20">
+            <div className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20" data-aos="fade-right" data-aos-duration="1000">
               <h1 className="mb-5 text-5xl font-bold pt-10">Contact us</h1>
               <p className=" flex items-center">
                 <FaHome className="mr-2" />
@@ -65,7 +65,7 @@ const Contact = () => {
                 </a>
               </p>
             </div>
-            <div className="max-w-lg shadow-lg shadow-white rounded-lg mt-14 p-5 mb-5">
+            <div className="max-w-lg shadow-lg shadow-white rounded-lg mt-14 p-5 mb-5" data-aos="fade-left" data-aos-duration="1000">
               <h2 className=" text-2xl uppercase text-center text-primary">Provide your Information</h2>
               <p className=" uppercase text-sm pb-10 text-center">We are contact as soon as posibale </p>
               <form onSubmit={handleSubmit(onSubmit)} className=" ">

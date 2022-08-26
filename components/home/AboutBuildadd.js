@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const AboutBuildadd = () => {
   return (
-    <section className="">
+    <section className="" data-aos="fade-right"  data-aos-duration="1000">
       <div className=" px-5 text-primary py-10 max-w-screen-2xl mx-auto">
         <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold">বিল্ডিং এ্যাডমিক্সার লিমিটেড</h1>
         <p className="text-justify text-black lg:text-lg sm:text-sm">
@@ -22,7 +22,7 @@ const AboutBuildadd = () => {
       <div className=" px-12 lg:px-5 text-white py-5 max-w-screen-2xl mx-auto">
         <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">WHY CHOOSE US</h1>
         <div className=" grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="card shadow-xl hover:shadow-3xl hover:scale-110 duration-300 cursor-pointer bg-purple-900">
+          <div className="card shadow-xl hover:shadow-3xl hover:scale-110 duration-300 bg-purple-900">
             <figure className="px-10 pt-10 ">
               <Image
                 width={150}

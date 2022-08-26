@@ -13,10 +13,12 @@ const Layout = ({title, children}) => {
           <meta name="description" content="Construction Chemical Company" />
         
           </Head>
+          <div className=' flex flex-col min-h-screen justify-between'>
           <TopHeader></TopHeader>
           <Navbar></Navbar>
           <div>{children}</div>
           <Footer></Footer>
+          </div>
         </>
     );
 };
