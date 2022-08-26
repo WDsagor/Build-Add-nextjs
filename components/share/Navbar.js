@@ -11,27 +11,27 @@ const Navbar = () => {
     <>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/">
-          <a>Home</a>
+          <a className=" hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Home</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/products">
-          <a>Products</a>
+          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Products</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/about">
-          <a>About Us</a>
+          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">About Us</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/contact">
-          <a>Contact</a>
+          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Contact</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/login">
-          <a>Login</a>
+          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Login</a>
         </Link>
       </li>
     </>
