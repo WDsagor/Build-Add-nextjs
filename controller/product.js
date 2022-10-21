@@ -1,4 +1,4 @@
-import { dataQuery } from "../dbConnection/db";
+import { dataQuery } from "../config/db";
 
 const getAllProducts = async (req, res) => {
   try {
