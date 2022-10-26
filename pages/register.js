@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Head from "next/head";
 import Layout from "../components/Layout";
-
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../config/filebase.init'
+import { toast } from "react-toastify";
+import Loading from "../components/share/Loading";
+import Router from "next/router";
 const Register = () => {
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     watch,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
   const [passwordEye, setPasswordEye] = useState(false);
   const [confirmPasswordEye, setConfirmPasswordEye] = useState(false);
 
-  const onSubmit = () => {};
 
   const handlePassSee = () => {
     setPasswordEye(!passwordEye);
@@ -25,6 +28,42 @@ const Register = () => {
     setConfirmPasswordEye(!confirmPasswordEye);
   };
   const password = watch("password");
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    hookError,
+  ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+
+
+
+
+const onSubmit = async (data) =>{
+  console.log(data.name, data.email, data.password);
+ await createUserWithEmailAndPassword(data?.email, data?.password)
+if(user){
+  await updateProfile({ displayName: data.name });
+}
+  reset()
+}
+useEffect(() => {
+  if (hookError) {
+    switch (hookError?.code) {
+        case "auth/email-already-in-use":
+          toast("Already use email, Provide another email");
+          break;
+            default:
+              toast("something went wrong");
+            }
+          }
+        }, [hookError]);
+        
+        if(loading) return <Loading></Loading>
+        if(user){
+          Router.push('/login')
+        }
+
+
   return (
     <Layout title='Register'>
       <Head>

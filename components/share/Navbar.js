@@ -2,10 +2,18 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // import Image from "next/image";
 import useNav from "../../hooks/useNav";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from 'firebase/auth';
+import auth from "../../config/filebase.init";
 
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
   const [menuShow, setMenuShoe] = useState(false);
   const { navbar, navbarLogo } = useNav();
+
+  const logout = () => {
+    signOut(auth);
+  };
 
   const menuItems = (
     <>
@@ -30,9 +38,9 @@ const Navbar = () => {
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/login">
+        {user?.emailVerified ? <button onClick={logout} className="btn btn-md">Log Out</button>: <Link href="/login">
           <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Login</a>
-        </Link>
+        </Link>}
       </li>
     </>
   );

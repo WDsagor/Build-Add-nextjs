@@ -1,18 +1,77 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Layout from "../components/Layout";
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../config/filebase.init";
+import Loading from "../components/share/Loading";
+import { toast } from "react-toastify";
+import { useRouter,  } from "next/router";
+
 
 const Login = () => {
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    hookError,
+  ] = useSignInWithEmailAndPassword(auth);
+  const [regUser, regLoading] = useAuthState(auth);
+  const router = useRouter();
+  console.log(router);
+  
+  
+  
+  useEffect(() => {
+    if (hookError) {
+      switch (hookError?.code) {
+        case "auth/invalid-email":
+          toast.error("Invalid email, please provide a valid email",{
+            position: toast.POSITION.TOP_CENTER
+          });
+          break;
+        case "auth/user-not-found":
+          toast.error("Pelase Provide Valide User",{
+            position: toast.POSITION.TOP_CENTER,
+            theme: "dark"
+          });
+          break;
+        case "auth/wrong-password":
+          toast("Wrong Information");
+          break;
+          case "auth/email-already-in-use":
+            toast("Already use email, Provide another email");
+            break;
+            case "auth/invalid-password":
+              toast("Wrong password. Intruder!!");
+              break;
+              default:
+                toast("something went wrong");
+              }
+            }
 
-  const onSubmit = () => {};
-  return (
+    }, [hookError, regUser, router]);
+
+    if(loading ||regLoading) return <Loading></Loading>
+// console.log(hookError);
+console.log(router.pathname);
+console.log(router.asPath);
+const onSubmit = async (data) => {
+  await signInWithEmailAndPassword(data.email, data.password)
+    if(router.asPath != router.pathname){
+      router.push(router.asPath)
+    }else{
+      router.push('/')
+    }
+    
+  };
+return (
     <Layout title='Log In'>
     
       <div

@@ -3,8 +3,10 @@
 // import TopHeader from "../components/share/TopHeader";
 import "../styles/globals.css";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -14,7 +16,7 @@ function MyApp({ Component, pageProps }) {
     <>
       
       <Component {...pageProps} />
-     
+     <ToastContainer/>
     </>
   );
 }
