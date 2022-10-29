@@ -24,7 +24,6 @@ const Login = () => {
   ] = useSignInWithEmailAndPassword(auth);
   const [regUser, regLoading] = useAuthState(auth);
   const router = useRouter();
-  console.log(router);
   
   
   
@@ -38,8 +37,7 @@ const Login = () => {
           break;
         case "auth/user-not-found":
           toast.error("Pelase Provide Valide User",{
-            position: toast.POSITION.TOP_CENTER,
-            theme: "dark"
+            position: toast.POSITION.TOP_CENTER
           });
           break;
         case "auth/wrong-password":
@@ -59,9 +57,8 @@ const Login = () => {
     }, [hookError, regUser, router]);
 
     if(loading ||regLoading) return <Loading></Loading>
-// console.log(hookError);
-console.log(router.pathname);
-console.log(router.asPath);
+
+
 const onSubmit = async (data) => {
   await signInWithEmailAndPassword(data.email, data.password)
     if(router.asPath != router.pathname){

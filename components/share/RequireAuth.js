@@ -15,9 +15,7 @@ const RequireAuth = ({children}) => {
       return <Loading></Loading>
     }
     if (!user) {
-      router.push('/login', router.asPath)}
-    
-    // router.push(router.query.from ? encodeURIComponent(router.query.from) : '/');
+      router.push('/login', router.asPath)};
   return <>{user ? children : null}</>
     
 };
