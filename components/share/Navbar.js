@@ -5,11 +5,14 @@ import useNav from "../../hooks/useNav";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from 'firebase/auth';
 import auth from "../../config/filebase.init";
+import Loading from "./Loading";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
   const [menuShow, setMenuShoe] = useState(false);
   const { navbar, navbarLogo } = useNav();
+  const router = useRouter();
 
   const logout = () => {
     signOut(auth);
@@ -19,31 +22,35 @@ const Navbar = () => {
     <>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/">
-          <a className=" hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Home</a>
+          <a className={router.pathname == "/" ? "active bg-[#046307]" : "hover:bg-[#046307]"} >Home</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/products">
-          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Products</a>
+          <a className={router.pathname == "/products" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Products</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/about">
-          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">About Us</a>
+          <a className={router.pathname == "/about" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>About Us</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/contact">
-          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Contact</a>
+          <a className={router.pathname == "/contact" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Contact</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        {user?.emailVerified ? <button onClick={logout} className="btn btn-md">Log Out</button>: <Link href="/login">
-          <a className="hover:bg-[#046307] focus:bg-[#046307] focus:text-white">Login</a>
+        {user?.emailVerified ? <button onClick={logout} className="btn btn-md btn-outline hover:bg-[#046307]">Log Out</button>: <Link href="/login">
+          <a className={router.pathname == "/login" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Login</a>
         </Link>}
       </li>
     </>
   );
+
+  if(loading){
+    return <Loading></Loading>
+  }
 
   return (
     <nav

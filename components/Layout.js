@@ -6,7 +6,7 @@ import Navbar from './share/Navbar';
 import RequireAuth from './share/RequireAuth';
 import TopHeader from './share/TopHeader';
 
-const noAuthRequired = ['/', '/login', '/register', '/about', '/contact']
+const noAuthRequired = ['/', '/login', '/register', '/abou', '/contact']
 const Layout = ({title, children}) => {
   const router = useRouter()
 
@@ -26,7 +26,7 @@ const Layout = ({title, children}) => {
             
             ) : (
               <RequireAuth>
-            <div>{children}</div>
+            {children}
             </RequireAuth>
       )}
           <Footer></Footer>
@@ -34,5 +34,6 @@ const Layout = ({title, children}) => {
         </>
     );
 };
+
 
 export default Layout;

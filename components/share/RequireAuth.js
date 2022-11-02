@@ -7,17 +7,20 @@ import Loading from './Loading';
 
 
 
-const RequireAuth = ({children}) => { 
-    const [user, loading] = useAuthState(auth);
+
+const RequireAuth =  ({children}) => { 
+    const [user, loading] =  useAuthState(auth);
     const router = useRouter()
-        
-    if(loading){
-      return <Loading></Loading>
+        useEffect(()=>{
+          if (!user?.emailVerified) {
+            router.push('/login', router.asPath)};
+
+        },[router, user])
+        if(loading)<Loading></Loading>
+   
+  return <>{user?.emailVerified ? children : null}</>
+
+
     }
-    if (!user) {
-      router.push('/login', router.asPath)};
-  return <>{user ? children : null}</>
-    
-};
 
 export default RequireAuth;
