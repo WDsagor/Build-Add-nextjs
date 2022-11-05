@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../config/filebase.init";
 import { useRouter } from "next/router";
 import Loading from "./Loading";
+import auth from "./../../config/firebase.init";
 
 const RequireAuth = ({ children }) => {
   const [user, loading] = useAuthState(auth);
