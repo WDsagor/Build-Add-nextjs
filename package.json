@@ -15,6 +15,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
+    "react-img-zoom": "^0.1.0",
     "swiper": "^8.3.1"
   },
   "devDependencies": {

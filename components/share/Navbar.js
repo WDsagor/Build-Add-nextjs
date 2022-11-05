@@ -2,36 +2,38 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // import Image from "next/image";
 import useNav from "../../hooks/useNav";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [menuShow, setMenuShoe] = useState(false);
   const { navbar, navbarLogo } = useNav();
+  const router = useRouter();
 
   const menuItems = (
     <>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/">
-          <a>Home</a>
+          <a className={router.pathname == "/" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Home</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/products">
-          <a>Products</a>
+          <a className={router.pathname == "/products" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Products</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/about">
-          <a>About Us</a>
+          <a className={router.pathname == "/about" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>About Us</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/contact">
-          <a>Contact</a>
+          <a className={router.pathname == "/contact" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Contact</a>
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
         <Link href="/login">
-          <a>Login</a>
+          <a className={router.pathname == "/login" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Login</a>
         </Link>
       </li>
     </>
