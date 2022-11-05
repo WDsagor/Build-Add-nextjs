@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import Head from "next/head";
+import Layout from "../../components/Layout";
+import Zoom from "react-img-zoom";
 
 const index = () => {
   return (
