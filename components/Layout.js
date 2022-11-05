@@ -1,10 +1,15 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import Footer from './share/Footer';
 import Navbar from './share/Navbar';
+import RequireAuth from './share/RequireAuth';
 import TopHeader from './share/TopHeader';
 
+const noAuthRequired = ['/', '/login', '/register', '/abou', '/contact']
 const Layout = ({title, children}) => {
+  const router = useRouter()
+
     return (
         <>
           <Head>
@@ -16,11 +21,19 @@ const Layout = ({title, children}) => {
           <div className=' flex flex-col min-h-screen justify-between'>
           <TopHeader></TopHeader>
           <Navbar></Navbar>
-          <div>{children}</div>
+          {noAuthRequired.includes(router.pathname) ? (
+            <div>{children}</div>
+            
+            ) : (
+              <RequireAuth>
+            {children}
+            </RequireAuth>
+      )}
           <Footer></Footer>
           </div>
         </>
     );
 };
+
 
 export default Layout;
