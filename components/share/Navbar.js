@@ -3,11 +3,19 @@ import Link from "next/link";
 // import Image from "next/image";
 import useNav from "../../hooks/useNav";
 import { useRouter } from "next/router";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./../../config/firebase.init";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
   const [menuShow, setMenuShoe] = useState(false);
   const { navbar, navbarLogo } = useNav();
   const router = useRouter();
+
+  const logout = () => {
+    signOut(auth);
+  };
 
   const menuItems = (
     <>
@@ -32,9 +40,15 @@ const Navbar = () => {
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/login">
-          <a className={router.pathname == "/login" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Login</a>
-        </Link>
+        {user?.emailVerified ? (
+          <button onClick={logout} className="btn btn-md btn-outline hover:bg-[#046307]">
+            Log Out
+          </button>
+        ) : (
+          <Link href="/login">
+            <a className={router.pathname == "/login" ? "active bg-[#046307]" : "hover:bg-[#046307]"}>Login</a>
+          </Link>
+        )}
       </li>
     </>
   );

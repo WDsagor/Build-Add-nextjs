@@ -1,20 +1,85 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Layout from "../components/Layout";
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "./../config/firebase.init";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import Loading from "./../components/share/Loading";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+  const [signInWithEmailAndPassword, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+  const [regUser, regLoading] = useAuthState(auth);
+  const router = useRouter();
 
-  const onSubmit = () => {};
+  useEffect(() => {
+    if (hookError) {
+      switch (hookError?.code) {
+        case "auth/invalid-email":
+          toast.error("Invalid email, please provide a valid email", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          reset();
+          break;
+        case "auth/user-not-found":
+          toast.error("Please Provide Valid User", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          reset();
+          break;
+        case "auth/wrong-password":
+          toast.error("Wrong Information", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          reset();
+          break;
+        default:
+          toast.error("something went wrong", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          reset();
+      }
+    }
+    if (user && regUser?.emailVerified) {
+      toast.success("Log in successfully", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      if (regUser) {
+        toast.error("Please Verify Your Email", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        router.push("/login");
+      }
+    }
+  }, [hookError, user]);
+
+  // console.log(user);
+
+  if (loading || regLoading) return <Loading></Loading>;
+
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword(data.email, data.password);
+    if (router.asPath != router.pathname) {
+      router.push(router.asPath);
+    } else if (router.asPath == router.pathname) {
+      router.push("/");
+    } else {
+      router.push("/login");
+      reset();
+    }
+  };
+
   return (
-    <Layout title='Log In'>
-    
+    <Layout title="Log In">
       <div
         style={{
           background: `url('/images/Carousel-img/grouping.png')`,
@@ -23,7 +88,11 @@ const Login = () => {
         className="hero min-h-screen pb-5 mt-10"
       >
         <div className="flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white" data-aos="zoom-in" data-aos-duration="1000">
+          <div
+            className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
             <div className="card-body">
               <h1 className="text-2xl font-bold text-center pb-7 text-white">Login now !</h1>
               <form onSubmit={handleSubmit(onSubmit)}>

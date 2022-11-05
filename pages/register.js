@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
+import auth from "./../config/firebase.init";
+import { toast } from "react-toastify";
+import Loading from "./../components/share/Loading";
+import { useRouter } from "next/router";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
   const [passwordEye, setPasswordEye] = useState(false);
   const [confirmPasswordEye, setConfirmPasswordEye] = useState(false);
-
-  const onSubmit = () => {};
 
   const handlePassSee = () => {
     setPasswordEye(!passwordEye);
@@ -25,8 +29,49 @@ const Register = () => {
     setConfirmPasswordEye(!confirmPasswordEye);
   };
   const password = watch("password");
+  const [createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth, {
+    sendEmailVerification: true,
+  });
+  const [updateProfile, updating, error] = useUpdateProfile(auth);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      toast.success("Register Successfully, Please Login", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      toast.info("Verify link sent in your email", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+    if (hookError) {
+      switch (hookError?.code) {
+        case "auth/email-already-in-use":
+          toast.error("Already use email, Provide another email", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          break;
+        default:
+          toast.error("something went wrong", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+      }
+    }
+  }, [hookError, router, user]);
+
+  if (loading || updating) return <Loading></Loading>;
+
+  console.log(user);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data?.email, data?.password);
+    await updateProfile({ displayName: data.name });
+
+    router.push("/login");
+
+    reset();
+  };
   return (
-    <Layout title='Register'>
+    <Layout title="Register">
       <Head>
         <title>Register - Building Admixture Limited</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -39,7 +84,11 @@ const Register = () => {
         className="hero min-h-screen pb-5 mt-16 md:mt-16"
       >
         <div className=" flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white" data-aos="zoom-in" data-aos-duration="1000">
+          <div
+            className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
             <div className="card-body">
               <h1 className="text-2xl font-bold text-center pb-7 text-white">Register now !</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
