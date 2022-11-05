@@ -2,8 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import GoogleBtn from "../components/share/GoogleBtn";
-import Head from "next/head";
-import Image from "next/image";
+import Layout from "../components/Layout";
 
 const Login = () => {
   const {
@@ -14,11 +13,8 @@ const Login = () => {
 
   const onSubmit = () => {};
   return (
-    <>
-      <Head>
-        <title>Log In - Building Admixture Limited</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Layout title='Log In'>
+    
       <div
         style={{
           background: `url('/images/Carousel-img/grouping.png')`,
@@ -27,7 +23,7 @@ const Login = () => {
         className="hero min-h-screen pb-5 mt-10"
       >
         <div className="flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white" data-aos="zoom-in" data-aos-duration="1000">
             <div className="card-body">
               <h1 className="text-2xl font-bold text-center pb-7 text-white">Login now !</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -88,7 +84,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

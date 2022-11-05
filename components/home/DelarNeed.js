@@ -11,7 +11,7 @@ const DelarNeed = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className=" max-w-screen-2xl mx-auto pt-2"
+        className=" max-w-screen-2xl mx-auto pt-5"
       >
         <div>
           <div className=" w-3/4 mx-auto overflow-hidden">

@@ -1,16 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import Head from "next/head";
 import { FaHome, FaEnvelope, FaPhoneSquareAlt } from "react-icons/fa";
 import Certifide from "../components/home/Certifide";
+import Layout from "../components/Layout";
 
 const About = () => {
   return (
-    <>
-      <Head>
-        <title>About Us - Building Admixture Limited</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Layout title='About us'>
+  
+     
       <div className="max-w-screen-2xl mx-auto mt-16 relative">
         <Image
           width="1024"
@@ -22,7 +20,7 @@ const About = () => {
         />
 
         <div className="card lg:card-side bg-base-100 flex lg:flex-row-reverse lg:justify-between px-3 mt-5 pb-8">
-          <div className=" lg:w-1/2 lg:pr-24">
+          <div className=" lg:w-1/2 lg:pr-24" data-aos="fade-left" data-aos-duration="1000">
             <h2 className=" text-3xl font-bold py-5 text-[#31982f]">About us</h2>
             <p className="p-2 text-justify">
               <span className=" font-bold text-primary"> BUILD-AD</span> the finest quality raw materials are used to
@@ -36,7 +34,7 @@ const About = () => {
               professionals. As a result. The level of our customers satisfactions are crossing its limits day by day.
             </p>
           </div>
-          <div className="mt-5 lg:mt-0 lg:pl-24">
+          <div className="mt-5 lg:mt-0 lg:pl-24" data-aos="fade-right" data-aos-duration="1000">
             <Image width="200" height="60" src="/images/Logo.png" alt="Logo" />
             <h2 className=" text-3xl font-bold py-5 text-[#31982f]">Address</h2>
             <p className=" flex items-center">
@@ -68,7 +66,8 @@ const About = () => {
           <Certifide></Certifide>
         </div>
       </div>
-    </>
+     
+    </Layout>
   );
 };
 
