@@ -1,5 +1,6 @@
 import nc from "next-connect";
-import { getAllProducts, addProduct } from "../../../controller/product";
+import { addProduct, getAllProducts } from "../../../controller/product";
+import { uploader } from "../../../middlware/uploader";
 const handeler = nc();
 
 handeler.get(getAllProducts);

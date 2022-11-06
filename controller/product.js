@@ -28,16 +28,18 @@ const getSingleProducts = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const product_img = req.file.filename;
-    const { name, price, details, about, size } = req.body;
-    const sql = "INSERT INTO products( name, price, details, about, size, product_img) VALUES (?,?,?,?,?,?)";
+    // const fileName = req.file.filename;
+    console.log(req.body);
+    // const productImg = "/images/Products-img/" + fileName;
+    const { name, price, details, about, size, product_img } = req.body;
+    const sql = "INSERT INTO products ( name, price, details, about, size, product_img) VALUES (?,?,?,?,?,?)";
 
     const product = await dataQuery(sql, [name, price, details, about, size, product_img]);
-    //   console.log(product);
-    if (product.affectedRows) {
-      res.status(201).json({ status: "success", massge: "New Product added Successfully" });
+    console.log(product);
+    if (product.insertId) {
+      res.status(201).json({ status: "success", massage: "New Product added Successfully" });
     }
-    res.status(500).json({ status: "failed", error: "New Product could not added" });
+    res.status(500).json({ status: "failed", massage: "New Product could not added" });
     // console.log(products[0].id);
   } catch (error) {
     res.status(500).json(error);
@@ -47,11 +49,15 @@ const addProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const id = req.query.id;
+    // const fileName = req.file.filename;
+    console.log(req.body);
+    console.log(id);
+    // const productImg = "/images/Products-img/" + fileName;
     const { name, price, details, about, size, product_img } = req.body;
     const sql = "UPDATE `products` set name=?, price=?, details=?, about=?, size=?, product_img=? where id=?";
     const product = await dataQuery(sql, [name, price, details, about, size, product_img, id]);
     if (product.affectedRows) {
-      res.status(201).json({ status: "success", massge: "Product updated Successfully" });
+      res.status(201).json({ status: "success", massage: "Product updated Successfully" });
     }
     res.status(500).json({ status: "failed", error: "Product update Failed" });
     // console.log(products[0].id);
@@ -67,7 +73,7 @@ const deleteProduct = async (req, res) => {
     const product = await dataQuery(sql, [id]);
     //   console.log(product);
     if (product.affectedRows) {
-      res.status(201).json({ status: "success", massge: "Product delete Successfully" });
+      res.status(201).json({ status: "success", massage: "Product delete Successfully" });
     }
     res.status(500).json({ status: "failed", error: "Product delete Failed" });
     // console.log(products[0].id);
