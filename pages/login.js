@@ -70,7 +70,7 @@ const Login = () => {
     await signInWithEmailAndPassword(data.email, data.password);
     if (router.asPath != router.pathname) {
       router.push(router.asPath);
-    } else if (router.asPath == router.pathname) {
+    } else if (router.asPath == router.pathname && user) {
       router.push("/");
     } else {
       router.push("/login");
