@@ -39,7 +39,7 @@ if(size == 20){
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex flex-col-reverse md:flex-row-reverse  justify-between px-2">
             <div className="text-center lg:text-left max-w-4xl">
-              <h1 className="text-xl lg:text-4xl font-medium">Adaption Plus</h1>
+              <h1 className="text-xl lg:text-4xl font-medium py-5">Adaption Plus</h1>
               <h1 className="text-xl lg:text-3xl font-medium flex items-center"> Price : <TbCurrencyTaka size={35}/> 200.00 - <TbCurrencyTaka size={35}/> 3000.00</h1>
               <p className="py-6">
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In

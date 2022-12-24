@@ -6,21 +6,38 @@ import Navbar from "./share/Navbar";
 import RequireAuth from "./share/RequireAuth";
 import TopHeader from "./share/TopHeader";
 
-const noAuthRequired = ["/", "/login", "/register", "/about", "/contact",  "/products/[id]"];
+const noAuthRequired = [
+  "/",
+  "/login",
+  "/register",
+  "/about",
+  "/contact",
+  "/products/[id]",
+];
 const Layout = ({ title, children }) => {
   const router = useRouter();
 
   return (
     <>
       <Head>
-        <title>{title ? title + "- Building Admixture" : "Building Admixture Limited"}</title>
+        <title>
+          {title
+            ? title + "- Building Admixture"
+            : "Building Admixture Limited"}
+        </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Construction Chemical Company" />
       </Head>
       <div className=" flex flex-col min-h-screen justify-between">
         <TopHeader></TopHeader>
         <Navbar></Navbar>
-        {noAuthRequired.includes(router.pathname) ? <div>{children}</div> : <RequireAuth><div>{children}</div></RequireAuth>}
+        {noAuthRequired.includes(router.pathname) ? (
+          <div className="">{children}</div>
+        ) : (
+          <RequireAuth>
+            <div className="">{children}</div>
+          </RequireAuth>
+        )}
         <Footer></Footer>
       </div>
     </>

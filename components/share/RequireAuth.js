@@ -8,9 +8,9 @@ const RequireAuth = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
   useEffect(() => {
-    // if (!user?.emailVerified) {
-    //   router.push("/login", router.asPath);
-    // }
+    if (!user?.emailVerified) {
+      router.push("/login", router.asPath);
+    }
   }, [router, user]);
   if (loading) <Loading></Loading>;
 
