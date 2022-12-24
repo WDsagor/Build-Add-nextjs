@@ -16,16 +16,17 @@ const Contact = () => {
   return (
     <Layout title='Contact'>
      
-      <div>
+     
         <div
           style={{
             background: `url("/images/contactIMG.jpg")`,
             backgroundSize: "cover",
           }}
-          className="hero min-h-screen mt-20 md:mt-16"
+          className=" hero min-h-screen mt-20 md:mt-16"
         >
-          <div className="hero-overlay bg-opacity-70"></div>
-          <div className=" lg:flex text-neutral-content ">
+          <div className="hero-overlay bg-opacity-80"></div>
+          <div className=" max-w-screen-2xl mx-auto">
+          <div className=" lg:flex justify-between text-neutral-content">
             <div className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20" data-aos="fade-right" data-aos-duration="1000">
               <h1 className="mb-5 text-5xl font-bold pt-10">Contact us</h1>
               <p className=" flex items-center">
@@ -184,8 +185,9 @@ const Contact = () => {
               </form>
             </div>
           </div>
+          </div>
         </div>
-      </div>
+      
     </Layout>
   );
 };

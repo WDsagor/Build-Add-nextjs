@@ -52,15 +52,16 @@ const Login = () => {
       toast.success("Log in successfully", {
         position: toast.POSITION.TOP_CENTER,
       });
-    } else {
-      if (regUser) {
-        toast.error("Please Verify Your Email", {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        router.push("/login");
-      }
-    }
-  }, [hookError, user]);
+    } 
+    // else {
+    //   if (regUser) {
+    //     toast.error("Please Verify Your Email", {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     });
+    //     router.push("/login");
+    //   }
+    // }
+  }, [hookError, user, reset,regUser]);
 
   // console.log(user);
 
