@@ -3,7 +3,10 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Layout from "../components/Layout";
-import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "./../config/firebase.init";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
@@ -16,7 +19,8 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const [signInWithEmailAndPassword, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, hookError] =
+    useSignInWithEmailAndPassword(auth);
   const [regUser, regLoading] = useAuthState(auth);
   const router = useRouter();
 
@@ -52,16 +56,16 @@ const Login = () => {
       toast.success("Log in successfully", {
         position: toast.POSITION.TOP_CENTER,
       });
-    } 
+    }
     // else {
-    //   if (regUser) {
-    //     toast.error("Please Verify Your Email", {
-    //       position: toast.POSITION.TOP_CENTER,
-    //     });
-    //     router.push("/login");
-    //   }
+    //   // if (regUser) {
+    //   //   toast.error("Please Verify Your Email", {
+    //   //     position: toast.POSITION.TOP_CENTER,
+    //   //   });
+    //   router.push("/login");
+    //   // }
     // }
-  }, [hookError, user, reset,regUser]);
+  }, [hookError, user, reset, regUser]);
 
   // console.log(user);
 
@@ -86,32 +90,39 @@ const Login = () => {
           background: `url('/images/Carousel-img/grouping.png')`,
           backgroundSize: "cover",
         }}
-        className="hero min-h-screen pb-5 mt-10"
-      >
+        className="hero min-h-screen pb-5 mt-10">
         <div className="flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
           <div
             className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white"
             data-aos="zoom-in"
-            data-aos-duration="1000"
-          >
+            data-aos-duration="1000">
             <div className="card-body">
-              <h1 className="text-2xl font-bold text-center pb-7 text-white">Login now !</h1>
+              <h1 className="text-2xl font-bold text-center pb-7 text-white">
+                Login now !
+              </h1>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text text-white">Email</span>
                   </label>
                   <input
-                    {...register("email", { required: true, pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ })}
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                    })}
                     type="email"
                     placeholder="Your email"
                     className="input input-bordered bg-black text-white"
                   />
                   {errors.email?.type === "required" && (
-                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">Email is required</small>
+                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">
+                      Email is required
+                    </small>
                   )}
                   {errors.email?.type === "pattern" && (
-                    <small className="text-[#FFF80A] mt-1 self-end label-text-alt">Your email is invalid</small>
+                    <small className="text-[#FFF80A] mt-1 self-end label-text-alt">
+                      Your email is invalid
+                    </small>
                   )}
                 </div>
                 <div className="form-control">
@@ -119,13 +130,18 @@ const Login = () => {
                     <span className="label-text  text-white">Password</span>
                   </label>
                   <input
-                    {...register("password", { required: true, pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/ })}
+                    {...register("password", {
+                      required: true,
+                      pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
+                    })}
                     type="password"
                     placeholder="Password"
                     className="input input-bordered  bg-black text-white"
                   />
                   {errors.password?.type === "required" && (
-                    <small className="text-[#FFF80A] mt-2 self-end label-text-alt">Password is required</small>
+                    <small className="text-[#FFF80A] mt-2 self-end label-text-alt">
+                      Password is required
+                    </small>
                   )}
                   {errors.password?.type === "pattern" && (
                     <small className="text-[#FFF80A] mt-2 self-end label-text-alt">
@@ -137,18 +153,29 @@ const Login = () => {
                   <p className="label-text-alt text-white">
                     Are you New?{" "}
                     <Link href="/register" passHref>
-                      <a className=" text-primary font-bold link-hover">Register now !</a>
+                      <a className=" text-primary font-bold link-hover">
+                        Register now !
+                      </a>
                     </Link>
                   </p>
                   <Link href="/reset-password" passHref>
-                    <a className="label-text-alt text-primary link link-hover"> Forgot password ?</a>
+                    <a className="label-text-alt text-primary link link-hover">
+                      {" "}
+                      Forgot password ?
+                    </a>
                   </Link>
                 </label>
                 <div className="form-control mt-6">
-                  <input type="submit" value="Login" className="btn btn-primary text-white" />
+                  <input
+                    type="submit"
+                    value="Login"
+                    className="btn btn-primary text-white"
+                  />
                 </div>
               </form>
-              <div className="divider before:bg-white after:bg-white text-white">or login using</div>
+              <div className="divider before:bg-white after:bg-white text-white">
+                or login using
+              </div>
               <GoogleBtn />
             </div>
           </div>

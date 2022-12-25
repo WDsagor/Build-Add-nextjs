@@ -1,13 +1,14 @@
 import React from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 
-const index = () => {
+const addDealer = () => {
   return (
-    <DashboardLayout title="My Order">
+    <DashboardLayout title="Add new Delar ">
       <div className="flex-1 px-2 mx-2 justify-center text-4xl">
-        Wellcome to Order Page
+        Wellcome to Add new Dealer page
       </div>
     </DashboardLayout>
   );
 };
-export default index;
+
+export default addDealer;

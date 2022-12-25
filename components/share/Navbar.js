@@ -11,7 +11,7 @@ import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
   const [menuShow, setMenuShoe] = useState(false);
-  const [show, setShow] = useState(false);
+
   const { navbar, navbarLogo } = useNav();
   const router = useRouter();
   const index = 0;

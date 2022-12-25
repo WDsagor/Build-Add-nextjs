@@ -6,9 +6,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Roboto, sans-serif;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -29,13 +29,15 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
   }
 }
+
 .news {
-  animation : delar 20s linear 20s infinite;
+  animation: delar 20s linear 20s infinite;
 }
 
 @keyframes delar {
@@ -47,7 +49,9 @@ a {
     transform: translatex(-50%)
   }
 }
-.swiper-button-next:after, .swiper-button-prev:after{
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
   font-size: x-large !important;
   color: green;
 }
