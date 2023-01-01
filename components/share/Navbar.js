@@ -103,16 +103,7 @@ const Navbar = () => {
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1 p-0">
         {user?.emailVerified ? (
-          <label
-            onClick={() => logout()}
-            className="avatar px-2 py-0 btn btn-outline hover:btn-primary">
-            <div className="w-8 rounded-full bg-black">
-              <div className=" text-center text-2xl text-white uppercase">
-                {user?.displayName?.charAt(index)}
-              </div>
-            </div>
-            <span>Log Out</span>
-          </label>
+          ""
         ) : (
           <Link href="/login">
             <a
