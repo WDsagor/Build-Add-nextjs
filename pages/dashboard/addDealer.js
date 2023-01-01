@@ -174,4 +174,4 @@ const AddDealer = () => {
   );
 };
 
-export default addDealer;
+export default AddDealer;
