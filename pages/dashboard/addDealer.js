@@ -6,7 +6,6 @@ const AddDealer = () => {
   const {
     register,
     handleSubmit,
-
     control,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
