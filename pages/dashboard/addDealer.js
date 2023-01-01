@@ -1,13 +1,17 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import DashboardLayout from "../../components/DashboardLayout";
 
-const addDealer = () => {
+const AddDealer = () => {
   const {
-    handleSubmit,
     register,
+    handleSubmit,
+    watch,
+    reset,
+    control,
     formState: { errors },
   } = useForm({ mode: "onTouched" });
+  const term = useWatch({ control, name: "term" });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -96,6 +100,72 @@ const addDealer = () => {
                   disabled
                 />
               </div>
+            </div>
+            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person
+                  </span>
+                </label>
+                <input
+                  {...register("person", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Enter Contact Person Name"
+                  className="input input-bordered"
+                />
+                {errors?.person?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Company or Dealer person Name is required
+                  </small>
+                )}
+              </div>
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person Mobile no
+                  </span>
+                </label>
+                <input
+                  {...register("mobileNo", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Contact Person Mobile no"
+                  className="input input-bordered"
+                />
+                {errors?.mobileNo?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Contact Person Mobile no is required
+                  </small>
+                )}
+              </div>
+            </div>
+            <div className="">
+              <label className="label ">
+                <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                  Details
+                </span>
+              </label>
+              <textarea
+                className="textarea w-full resize h-28"
+                placeholder="Details provide your area, zone"></textarea>
+            </div>
+            <div className="flex justify-between items-center w-full mt-3">
+              <div className="flex  w-full max-w-xs">
+                <input
+                  className="mr-3"
+                  type="checkbox"
+                  {...register("term")}
+                  id="terms"
+                />
+                <label htmlFor="terms">I agree to terms and conditions</label>
+              </div>
+              <button disabled={!term} className="btn" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </div>
