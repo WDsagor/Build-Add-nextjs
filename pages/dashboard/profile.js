@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 
-const profile = () => {
+const Profile = () => {
   return (
     <DashboardLayout title={"Profile Page"}>
       <div>
@@ -11,4 +11,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;
