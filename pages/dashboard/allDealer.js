@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 
-const allDealer = () => {
+const AllDealer = () => {
   return (
     <DashboardLayout title={"All Dealer"}>
       <div className="flex-1 px-2 mx-2 justify-center mt-4">
@@ -55,4 +55,4 @@ const allDealer = () => {
   );
 };
 
-export default allDealer;
+export default AllDealer;

@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 
-const index = () => {
+const Dashboard = () => {
   return (
     <DashboardLayout title="My Order">
       <div className="flex-1 px-2 mx-2 justify-center mt-4">
@@ -54,4 +54,4 @@ const index = () => {
     </DashboardLayout>
   );
 };
-export default index;
+export default Dashboard;
