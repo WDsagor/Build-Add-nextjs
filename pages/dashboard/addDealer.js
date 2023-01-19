@@ -141,16 +141,17 @@ const AddDealer = () => {
                 )}
               </div>
             </div>
-            <div className="">
-              <label className="label ">
+            <div className=" flex flex-col items-center content-center">
+              <label className="label lg:self-start">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
                   Details
                 </span>
               </label>
               <textarea
-                className="textarea w-full resize h-28"
+                className="textarea max-w-md lg:max-w-full w-full resize h-28"
                 placeholder="Details provide your area, zone"></textarea>
             </div>
+
             <div className="flex justify-between items-center w-full mt-3">
               <div className="flex  w-full max-w-xs">
                 <input

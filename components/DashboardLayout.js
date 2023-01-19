@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
 import {
   FaArrowLeft,
@@ -19,6 +19,20 @@ const DashboardLayout = ({ title, children }) => {
   const [user, loading] = useAuthState(auth);
   const [sideMenu, setsideMenu] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("MY_APP_STATE");
+    if (data !== null) setsideMenu(JSON.parse(data));
+  }, []);
+  useEffect(() => {
+    if (sideMenu == true) {
+      window.localStorage.setItem("MY_APP_STATE", JSON.stringify(sideMenu));
+    }
+    if (sideMenu == false) {
+      window.localStorage.removeItem("MY_APP_STATE");
+    }
+  }, [sideMenu]);
+
   const logout = () => {
     signOut(auth);
   };
@@ -39,13 +53,13 @@ const DashboardLayout = ({ title, children }) => {
         </div>
         <div
           className={`h-[80vh] bg-slate-800 ${
-            sideMenu ? "w-24" : "w-60"
+            sideMenu ? "w-24 shrink-0" : "w-60"
           } flex flex-col justify-between rounded-b-lg transition-all duration-500 z-10`}>
           <ul
             className={`menu p-4 ${
               sideMenu ? "w-24" : "w-60"
             } text-white relative transition-all duration-500 delay-100`}>
-            <span
+            <div
               onClick={() => setsideMenu(!sideMenu)}
               className={` absolute top-[50%]  h-8 w-8 bg-white rounded-full border border-primary cursor-pointer z-20 ${
                 sideMenu
@@ -53,7 +67,7 @@ const DashboardLayout = ({ title, children }) => {
                   : "hover:right-[-2%] right-[-6%]"
               } transition-all shadow-md shadow-black duration-700`}>
               <FaArrowLeft className="text-primary text-3xl p-1" />
-            </span>
+            </div>
             <li className="my-1">
               <Link href="/dashboard/profile">
                 <a

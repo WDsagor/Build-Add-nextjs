@@ -45,7 +45,16 @@ const AllDealer = () => {
                 <td>Brice Swyre</td>
                 <td>Tax Accountant</td>
                 <td>Red</td>
-                <td>Red</td>
+                <td>
+                  <label className="input-group">
+                    <span>Email</span>
+                    <input
+                      type="text"
+                      placeholder="info@site.com"
+                      className="input input-bordered"
+                    />
+                  </label>
+                </td>
               </tr>
             </tbody>
           </table>

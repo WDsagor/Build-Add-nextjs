@@ -1,13 +1,46 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import Image from "next/image";
 import Head from "next/head";
 import Layout from "../../components/Layout";
-import Zoom from "react-img-zoom";
+
+import ReactImageMagnify from "react-image-magnify";
+
 import { TbCurrencyTaka } from "react-icons/tb";
+const productImages = [
+  {
+    name: "Adaption",
+    url: "/images/Products-img/A-20-1.jpg",
+  },
+  {
+    name: "Adaption 2",
+    url: "/images/Products-img/A-20-2.jpg",
+  },
+  {
+    name: "Buildmix",
+    url: "/images/Products-img/B-20-2.jpg",
+  },
+  {
+    name: "Adaption",
+    url: "/images/Products-img/R-10-1.jpg",
+  },
+];
 const ById = () => {
+  const [productImg, setProductImg] = useState(productImages[2]);
   const [size, setSize] = useState(1);
   const [quantity, setQuantity] = useState(1);
+  const hoverHandler = (image, i) => {
+    setProductImg(image);
+  };
+
+  const refs = useRef([]);
+  refs.current = [];
+  const addRefs = (el) => {
+    if (el && !refs.current.includes(el)) {
+      refs.current.push(el);
+    }
+  };
+
   let price = 200;
-  console.log(quantity);
   const decrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -27,6 +60,7 @@ const ById = () => {
   if (size == 20) {
     price = 3000;
   }
+
   return (
     <Layout title="Products">
       <div className="mt-24">
@@ -42,7 +76,7 @@ const ById = () => {
         </h2>
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex flex-col-reverse md:flex-row-reverse  justify-between px-2">
-            <div className="text-center lg:text-left max-w-4xl">
+            <div className="text-left max-w-4xl">
               <h1 className="text-xl lg:text-4xl font-medium py-5">
                 Adaption Plus
               </h1>
@@ -95,14 +129,45 @@ const ById = () => {
                 Add to Cart
               </button>
             </div>
-            <div className="mx-auto flex justify-center">
-              <Zoom
-                img="/images/Products-img/A-20-1.jpg"
-                zoomScale={3}
-                width={500}
-                height={500}
-                transitionTime={0.5}
-              />
+            <div className="mx-auto flex flex-col">
+              <div className=" h-[477] max-w-[440px]">
+                <ReactImageMagnify
+                  {...{
+                    smallImage: {
+                      src: productImg.url,
+                      alt: productImg.name,
+                      isFluidWidth: true,
+                    },
+                    largeImage: {
+                      src: productImg.url,
+                      width: 600,
+                      height: 651,
+                    },
+                    inset: "0",
+                    enlargedImagePosition: "beside",
+                    enlargedImageContainerDimensions: {
+                      width: "100%",
+                      height: "100%",
+                    },
+                  }}
+                />
+              </div>
+              <section className="flex flex-row justify-center gap-10 my-6 md:mr-8">
+                {productImages.map((image, i) => {
+                  return (
+                    <div key={i} className=" border border-primary">
+                      <Image
+                        ref={addRefs}
+                        width={70}
+                        height={70}
+                        src={image?.url}
+                        alt={image?.name}
+                        onMouseOver={() => hoverHandler(image, i)}
+                      />
+                    </div>
+                  );
+                })}
+              </section>
             </div>
           </div>
         </div>

@@ -5,7 +5,6 @@ import Footer from "./share/Footer";
 import Navbar from "./share/Navbar";
 import RequireAuth from "./share/RequireAuth";
 import TopHeader from "./share/TopHeader";
-
 const noAuthRequired = [
   "/",
   "/login",

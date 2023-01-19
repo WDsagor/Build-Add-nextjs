@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
-import Zoom from "react-img-zoom";
 
 const Products = () => {
   return (
@@ -21,13 +20,13 @@ const Products = () => {
         <div className="max-w-screen-2xl mx-auto">
           <div className="flex lg:flex-row  justify-between">
             <div>
-              <Zoom
+              {/* <Zoom
                 img="/images/Products-img/A-20-1.jpg"
                 zoomScale={3}
                 width={500}
                 height={500}
                 transitionTime={0.5}
-              />
+              /> */}
             </div>
 
             <div className=" max-w-4xl">
