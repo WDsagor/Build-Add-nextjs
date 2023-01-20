@@ -151,6 +151,48 @@ const AddDealer = () => {
                 )}
               </div>
             </div>
+            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person
+                  </span>
+                </label>
+                <input
+                  {...register("proprietor", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Enter Contact Person Name"
+                  className="input input-bordered"
+                />
+                {errors?.proprietor?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Company or Dealer proprietor Name is required
+                  </small>
+                )}
+              </div>
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person Mobile no
+                  </span>
+                </label>
+                <input
+                  {...register("mobileNo", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Contact Person Mobile no"
+                  className="input input-bordered"
+                />
+                {errors?.mobileNo?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Contact Person Mobile no is required
+                  </small>
+                )}
+              </div>
+            </div>
             <div className="mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <label className="label font-bold">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
