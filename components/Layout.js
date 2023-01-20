@@ -1,23 +1,20 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../config/firebase.init";
+import React from "react";
 import Footer from "./share/Footer";
 import Navbar from "./share/Navbar";
 import RequireAuth from "./share/RequireAuth";
 import TopHeader from "./share/TopHeader";
-const noAuthRequired = ["/", "/login", "/register", "/about", "/contact"];
+const noAuthRequired = [
+  "/",
+  "/login",
+  "/register",
+  "/about",
+  "/contact",
+  "/products",
+];
 const Layout = ({ title, children }) => {
   const router = useRouter();
-  const [user, loading] = useAuthState(auth);
-
-  useEffect(() => {
-    if (!user?.emailVerified) {
-      router.push("/login", router.asPath);
-    }
-    router.push(router.asPath);
-  }, [router, user, loading]);
 
   return (
     <>

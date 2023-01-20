@@ -12,9 +12,8 @@ const RequireAuth = ({ children }) => {
     if (!user?.emailVerified) {
       router.push("/login", router.asPath);
     }
-    router.push(router.asPath);
+    return;
   }, [router, user, loading]);
-
   return <>{children}</>;
 };
 
