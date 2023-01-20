@@ -11,12 +11,9 @@ const RequireAuth = ({ children }) => {
   useEffect(() => {
     if (!user?.emailVerified) {
       router.push("/login", router.asPath);
-      return;
     }
+    router.push(router.asPath);
   }, [router, user, loading]);
-  if (loading) {
-    return <Loading></Loading>;
-  }
 
   return <>{children}</>;
 };
