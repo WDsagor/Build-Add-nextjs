@@ -117,16 +117,16 @@ const AddDealer = () => {
                   </span>
                 </label>
                 <input
-                  {...register("person", {
+                  {...register("proprietor", {
                     required: true,
                   })}
                   type="text"
                   placeholder="Enter Contact Person Name"
                   className="input input-bordered"
                 />
-                {errors?.person?.type === "required" && (
+                {errors?.proprietor?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer person Name is required
+                    Company or Dealer proprietor Name is required
                   </small>
                 )}
               </div>
