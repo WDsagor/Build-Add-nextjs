@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Layout from "../../components/Layout";
-
-// import ReactImageMagnify from "react-image-magnify";
-
+import "swiper/css";
+import "swiper/css/thumbs";
+import "swiper/css/zoom";
+import { Zoom, FreeMode, Thumbs } from "swiper";
 import { TbCurrencyTaka } from "react-icons/tb";
 const productImages = [
   {
@@ -25,20 +27,10 @@ const productImages = [
   },
 ];
 const ById = () => {
-  const [productImg, setProductImg] = useState(productImages[2]);
+  // const [productImg, setProductImg] = useState(productImages[2]);
+  const [thumbsSwiper, setThumbsSwiper] = useState();
   const [size, setSize] = useState(1);
   const [quantity, setQuantity] = useState(1);
-  const hoverHandler = (image, i) => {
-    setProductImg(image);
-  };
-
-  const refs = useRef([]);
-  refs.current = [];
-  const addRefs = (el) => {
-    if (el && !refs.current.includes(el)) {
-      refs.current.push(el);
-    }
-  };
 
   let price = 200;
   const decrement = () => {
@@ -129,30 +121,47 @@ const ById = () => {
                 Add to Cart
               </button>
             </div>
-            <div className="mx-auto flex flex-col">
-              <div className=" h-[477] max-w-[440px]">
-                {/* <ReactImageMagnify
-                  {...{
-                    smallImage: {
-                      src: productImg.url,
-                      alt: productImg.name,
-                      isFluidWidth: true,
-                    },
-                    largeImage: {
-                      src: productImg.url,
-                      width: 600,
-                      height: 651,
-                    },
-                    inset: "0",
-                    enlargedImagePosition: "beside",
-                    enlargedImageContainerDimensions: {
-                      width: "100%",
-                      height: "100%",
-                    },
-                  }}
-                /> */}
-              </div>
-              <section className="flex flex-row justify-center gap-10 my-6 md:mr-8">
+            <div className="max-w-xl">
+              <Swiper
+                spaceBetween={10}
+                zoom={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[Zoom, Thumbs]}>
+                {productImages.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <Image
+                        width={400}
+                        height={450}
+                        src={image?.url}
+                        alt={image?.name}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Thumbs]}>
+                {productImages.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <Image
+                        width={90}
+                        height={100}
+                        src={image?.url}
+                        alt={image?.name}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+
+              {/* <section className="flex flex-row justify-center gap-10 my-6 md:mr-8">
                 {productImages.map((image, i) => {
                   return (
                     <div key={i} className=" border border-primary">
@@ -167,7 +176,7 @@ const ById = () => {
                     </div>
                   );
                 })}
-              </section>
+              </section> */}
             </div>
           </div>
         </div>

@@ -52,7 +52,7 @@ const DashboardLayout = ({ title, children }) => {
           {children}
         </div>
         <div
-          className={`h-[80vh] bg-slate-800 ${
+          className={`h-[80vh] bg-primary/80 ${
             sideMenu ? "w-24 shrink-0" : "w-60"
           } flex flex-col justify-between rounded-b-lg transition-all duration-500 z-10`}>
           <ul
