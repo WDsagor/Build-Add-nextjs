@@ -102,9 +102,7 @@ const Navbar = () => {
         </div>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1 p-0">
-        {user?.emailVerified ? (
-          ""
-        ) : (
+        {!user?.emailVerified && (
           <Link href="/login">
             <a
               className={

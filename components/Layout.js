@@ -11,7 +11,7 @@ const noAuthRequired = [
   "/register",
   "/about",
   "/contact",
-  "/products/[id]",
+  "/products",
 ];
 const Layout = ({ title, children }) => {
   const router = useRouter();
@@ -33,9 +33,7 @@ const Layout = ({ title, children }) => {
         {noAuthRequired.includes(router.pathname) ? (
           <div className="">{children}</div>
         ) : (
-          <RequireAuth>
-            <div className="">{children}</div>
-          </RequireAuth>
+          <RequireAuth>{children}</RequireAuth>
         )}
         <Footer></Footer>
       </div>
