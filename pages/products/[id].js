@@ -123,6 +123,7 @@ const ById = () => {
             </div>
             <div className="max-w-xl">
               <Swiper
+                className="flex justify-center"
                 spaceBetween={10}
                 zoom={true}
                 thumbs={{ swiper: thumbsSwiper }}
@@ -142,7 +143,7 @@ const ById = () => {
               </Swiper>
               <Swiper
                 onSwiper={setThumbsSwiper}
-                spaceBetween={10}
+                spaceBetween={5}
                 slidesPerView={4}
                 freeMode={true}
                 watchSlidesProgress={true}
