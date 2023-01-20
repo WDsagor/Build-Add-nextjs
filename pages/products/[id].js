@@ -3,7 +3,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 
-import ReactImageMagnify from "react-image-magnify";
+// import ReactImageMagnify from "react-image-magnify";
 
 import { TbCurrencyTaka } from "react-icons/tb";
 const productImages = [
@@ -131,7 +131,7 @@ const ById = () => {
             </div>
             <div className="mx-auto flex flex-col">
               <div className=" h-[477] max-w-[440px]">
-                <ReactImageMagnify
+                {/* <ReactImageMagnify
                   {...{
                     smallImage: {
                       src: productImg.url,
@@ -150,7 +150,7 @@ const ById = () => {
                       height: "100%",
                     },
                   }}
-                />
+                /> */}
               </div>
               <section className="flex flex-row justify-center gap-10 my-6 md:mr-8">
                 {productImages.map((image, i) => {
