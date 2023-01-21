@@ -5,14 +5,7 @@ import Footer from "./share/Footer";
 import Navbar from "./share/Navbar";
 import RequireAuth from "./share/RequireAuth";
 import TopHeader from "./share/TopHeader";
-const noAuthRequired = [
-  "/",
-  "/login",
-  "/register",
-  "/about",
-  "/contact",
-  "/products",
-];
+const noAuthRequired = ["/", "/login", "/register", "/about", "/contact"];
 const Layout = ({ title, children }) => {
   const router = useRouter();
 
