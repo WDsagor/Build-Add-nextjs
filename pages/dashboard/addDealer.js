@@ -26,9 +26,11 @@ const AddDealer = () => {
   };
   return (
     <DashboardLayout title="Apply for Delarship ">
-      <div className="flex-1 px-2 justify-center mt-4 max-w-screen-2xl">
+      <div className="flex-1 px-2 justify-center my-6 max-w-screen-2xl">
         <div className=" bg-primary/5 rounded-xl p-3 max-w-screen-lg mx-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
+            <h1 className=" text-xl">Personal Information </h1>
+
             <div className=" lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
@@ -75,6 +77,84 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Phone Number
+                  </span>
+                </label>
+                <input
+                  {...register("number", {
+                    required: true,
+                  })}
+                  type="number"
+                  placeholder="Enter your mobile number"
+                  className="input input-bordered"
+                />
+                {errors?.number?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide valid mobile number
+                  </small>
+                )}
+              </div>
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Email Address
+                  </span>
+                </label>
+                <input
+                  {...register("email", {
+                    required: true,
+                  })}
+                  type="email"
+                  value="@gmail.com"
+                  className="input input-bordered"
+                  disabled
+                />
+              </div>
+            </div>
+            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label lg:self-start">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Present Address
+                  </span>
+                </label>
+                <textarea
+                  {...register("presentAdd", {
+                    required: true,
+                  })}
+                  className="textarea max-w-md lg:max-w-full w-full resize h-28"
+                  placeholder="Details provide present address"></textarea>
+                {errors?.presentAdd?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide present address
+                  </small>
+                )}
+              </div>
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label lg:self-start">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Permanent Address
+                  </span>
+                </label>
+                <textarea
+                  {...register("permanentAdd", {
+                    required: true,
+                  })}
+                  className="textarea max-w-md lg:max-w-full w-full resize h-28"
+                  placeholder="Details provide Permanent address"></textarea>
+                {errors?.permanentAdd?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide Permanent address
+                  </small>
+                )}
+              </div>
+            </div>
+            <hr className="my-3"></hr>
+            <h1 className=" text-xl">Business Details </h1>
+            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
                     Company or Dealer Name
                   </span>
                 </label>
@@ -95,17 +175,15 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Email Address
+                    Company Email Address
                   </span>
                 </label>
                 <input
-                  {...register("email", {
+                  {...register("companyEmail", {
                     required: true,
                   })}
                   type="email"
-                  value="@gmail.com"
                   className="input input-bordered"
-                  disabled
                 />
               </div>
             </div>
@@ -152,6 +230,71 @@ const AddDealer = () => {
               </div>
             </div>
             <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person
+                  </span>
+                </label>
+                <input
+                  {...register("proprietor", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Enter Contact Person Name"
+                  className="input input-bordered"
+                />
+                {errors?.proprietor?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Company or Dealer proprietor Name is required
+                  </small>
+                )}
+              </div>
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Add Trader Linccence
+                  </span>
+                </label>
+
+                <input
+                  {...register("tradeCopy", {
+                    required: true,
+                  })}
+                  type="file"
+                  className="file-input w-full max-w-x"
+                />
+
+                {errors?.tradeCopy?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Trader Linccence is required
+                  </small>
+                )}
+              </div>
+            </div>
+            <hr className="my-3"></hr>
+            <h1 className=" text-md">Business address </h1>
+            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
+              <div className="form-control w-full max-w-md p-1">
+                <label className="label ">
+                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
+                    Contact Person
+                  </span>
+                </label>
+                <input
+                  {...register("proprietor", {
+                    required: true,
+                  })}
+                  type="text"
+                  placeholder="Enter Contact Person Name"
+                  className="input input-bordered"
+                />
+                {errors?.proprietor?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Company or Dealer proprietor Name is required
+                  </small>
+                )}
+              </div>
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
@@ -226,7 +369,7 @@ const AddDealer = () => {
                 <button
                   type="button"
                   onClick={() => resAppend("")}
-                  className="btn btn-sm mt-2 ">
+                  className="btn btn-sm btn-primary mt-2 ">
                   Add More
                 </button>
               </div>
@@ -235,7 +378,7 @@ const AddDealer = () => {
             <div className=" flex flex-col items-center content-center">
               <label className="label lg:self-start">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                  Details
+                  Interested Area Of Dealership
                 </span>
               </label>
               <textarea
@@ -260,8 +403,11 @@ const AddDealer = () => {
                 />
                 <label htmlFor="terms">I agree to terms and conditions</label>
               </div>
-              <button disabled={!term} className="btn" type="submit">
-                Submit
+              <button
+                disabled={!term}
+                className="btn btn-primary"
+                type="submit">
+                Apply Now
               </button>
             </div>
           </form>

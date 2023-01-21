@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,8 +27,7 @@ const productImages = [
   },
 ];
 const ById = () => {
-  // const [productImg, setProductImg] = useState(productImages[2]);
-  const [thumbsSwiper, setThumbsSwiper] = useState();
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [size, setSize] = useState(1);
   const [quantity, setQuantity] = useState(1);
 
@@ -152,6 +151,7 @@ const ById = () => {
                   return (
                     <SwiperSlide key={i}>
                       <Image
+                        className=" cursor-pointer"
                         width={90}
                         height={100}
                         src={image?.url}
@@ -161,23 +161,6 @@ const ById = () => {
                   );
                 })}
               </Swiper>
-
-              {/* <section className="flex flex-row justify-center gap-10 my-6 md:mr-8">
-                {productImages.map((image, i) => {
-                  return (
-                    <div key={i} className=" border border-primary">
-                      <Image
-                        ref={addRefs}
-                        width={70}
-                        height={70}
-                        src={image?.url}
-                        alt={image?.name}
-                        onMouseOver={() => hoverHandler(image, i)}
-                      />
-                    </div>
-                  );
-                })}
-              </section> */}
             </div>
           </div>
         </div>

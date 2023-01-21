@@ -14,9 +14,11 @@ import { signOut } from "firebase/auth";
 import auth from "../config/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "./share/Loading";
+import useNav from "../hooks/useNav";
 
 const DashboardLayout = ({ title, children }) => {
   const [user, loading] = useAuthState(auth);
+  const { navbar } = useNav();
   const [sideMenu, setsideMenu] = useState(false);
   const router = useRouter();
 
@@ -52,8 +54,10 @@ const DashboardLayout = ({ title, children }) => {
           {children}
         </div>
         <div
-          className={`h-[80vh] bg-primary/80 ${
+          className={`h-[70vh] bg-primary/80 ${
             sideMenu ? "w-24 shrink-0" : "w-60"
+          } ${
+            navbar ? " sticky top-14" : ""
           } flex flex-col justify-between rounded-b-lg transition-all duration-500 z-10`}>
           <ul
             className={`menu p-4 ${

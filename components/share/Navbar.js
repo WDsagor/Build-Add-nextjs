@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-// import Image from "next/image";
+
 import useNav from "../../hooks/useNav";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../config/firebase.init";
-import { signOut } from "firebase/auth";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
@@ -15,10 +14,6 @@ const Navbar = () => {
   const { navbar, navbarLogo } = useNav();
   const router = useRouter();
   const index = 0;
-
-  const logout = () => {
-    signOut(auth);
-  };
 
   const menuItems = (
     <>
