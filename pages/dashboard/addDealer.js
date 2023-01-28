@@ -2,7 +2,6 @@ import React from "react";
 import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import DashboardLayout from "../../components/DashboardLayout";
 import { FiTrash } from "react-icons/fi";
-import { rule } from "postcss";
 
 const AddDealer = () => {
   const {
@@ -10,7 +9,10 @@ const AddDealer = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({ mode: "onTouched" });
+  } = useForm({
+    mode: "onTouched",
+    defaultValues: { email: "gggg@gmail.com" },
+  });
   const term = useWatch({ control, name: "term" });
   const {
     fields: moreFields,
@@ -20,7 +22,6 @@ const AddDealer = () => {
     control,
     name: "addMore",
   });
-  console.log(errors);
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -82,14 +83,14 @@ const AddDealer = () => {
                   </span>
                 </label>
                 <input
-                  {...register("number", {
+                  {...register("phoneNumber", {
                     required: true,
                   })}
                   type="number"
                   placeholder="Enter your mobile number"
                   className="input input-bordered"
                 />
-                {errors?.number?.type === "required" && (
+                {errors?.phoneNumber?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Please provide valid mobile number
                   </small>
@@ -102,11 +103,8 @@ const AddDealer = () => {
                   </span>
                 </label>
                 <input
-                  {...register("email", {
-                    required: true,
-                  })}
+                  {...register("email")}
                   type="email"
-                  value="@gmail.com"
                   className="input input-bordered"
                   disabled
                 />
@@ -192,18 +190,18 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact person
+                    Proprietor name
                   </span>
                 </label>
                 <input
-                  {...register("proprietor", {
+                  {...register("proprietorName", {
                     required: true,
                   })}
                   type="text"
                   placeholder="Enter contact person name"
                   className="input input-bordered"
                 />
-                {errors?.proprietor?.type === "required" && (
+                {errors?.proprietorName?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Company or Dealer proprietor name is required
                   </small>
@@ -216,14 +214,14 @@ const AddDealer = () => {
                   </span>
                 </label>
                 <input
-                  {...register("mobileNo", {
+                  {...register("contactPersonNo", {
                     required: true,
                   })}
-                  type="text"
+                  type="number"
                   placeholder="Contact Person Mobile no"
                   className="input input-bordered"
                 />
-                {errors?.mobileNo?.type === "required" && (
+                {errors?.contactPersonNo?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Contact person mobile no is required
                   </small>
@@ -319,12 +317,12 @@ const AddDealer = () => {
                 </span>
               </label>
               <textarea
-                {...register("details", {
+                {...register("interestedArea", {
                   required: true,
                 })}
                 className="textarea max-w-md lg:max-w-full w-full resize h-28"
                 placeholder="Details provide your area, zone"></textarea>
-              {errors?.details?.type === "required" && (
+              {errors?.interestedArea?.type === "required" && (
                 <small className="  text-red-500 mt-1 self-end label-text-alt ">
                   Please provide details your area, zone, where you want to
                   business
