@@ -259,7 +259,7 @@ const AddDealer = () => {
                     required: true,
                   })}
                   type="file"
-                  className="file-input w-full max-w-x"
+                  className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                 />
 
                 {errors?.tradeCopy?.type === "required" && (
