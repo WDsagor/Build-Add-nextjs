@@ -9,7 +9,7 @@ const Profile = () => {
     register,
 
     handleSubmit,
-    formState: { isDirty },
+    formState: { isDirty, errors },
   } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -36,13 +36,17 @@ const Profile = () => {
         </button>
         <div className="flex flex-col lg:flex-row gap-5 align-top justify-between">
           <div className="max-w-sm flex lg:mr-20 flex-col mx-auto gap-5">
-            <Image
-              width={300}
-              height={350}
-              className="rounded-xl"
-              src="/images/Products-img/A-20-1.jpg"
-              alt="Adaption"
-            />
+            <div className="avatar p-10">
+              <div className=" w-72 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <Image
+                  width={300}
+                  height={300}
+                  src="/images/Products-img/A-20-1.jpg"
+                  alt="Adaption"
+                />
+              </div>
+            </div>
+
             {isEdit ? (
               <button className="btn btn-primary  capitalize text-white ">
                 Update now
@@ -63,30 +67,51 @@ const Profile = () => {
               <div className="form-control w-full p-1">
                 <label>Frist name</label>
                 <input
-                  {...register("fristName")}
+                  {...register("fristName", {
+                    required: true,
+                  })}
                   type="text"
                   className="input input-bordered w-full input-ghost disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled={!isEdit}
                 />
+                {errors?.fristName?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Frist name is required
+                  </small>
+                )}
               </div>
               <div className="form-control w-full  p-1">
                 <label>Last name</label>
                 <input
-                  {...register("lastName")}
+                  {...register("lastName", {
+                    required: true,
+                  })}
                   type="text"
                   className="input input-bordered w-full input-ghost disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled={!isEdit}
                 />
+                {errors?.lastName?.type === "required" && (
+                  <small className=" text-red-500 mt-1 self-end label-text-alt ">
+                    Last name is required
+                  </small>
+                )}
               </div>
 
               <div className="form-control w-full  p-1">
                 <label>Phone number</label>
                 <input
-                  {...register("phoneNumber")}
+                  {...register("phoneNumber", {
+                    required: true,
+                  })}
                   type="number"
                   className="input input-bordered w-full input-ghost disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled={!isEdit}
                 />
+                {errors?.phoneNumber?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide valid mobile number
+                  </small>
+                )}
               </div>
               <div className="form-control w-full  p-1">
                 <label>
@@ -106,20 +131,34 @@ const Profile = () => {
               <div className="form-control w-full p-1">
                 <label>Present address</label>
                 <textarea
-                  {...register("presentAdd")}
+                  {...register("presentAdd", {
+                    required: true,
+                  })}
                   disabled={!isEdit}
                   className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
+                {errors?.presentAdd?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide present address
+                  </small>
+                )}
               </div>
               <div className="form-control w-full p-1">
                 <label>Permanent address</label>
                 <textarea
-                  {...register("permanentAdd")}
+                  {...register("permanentAdd", {
+                    required: true,
+                  })}
                   disabled={!isEdit}
                   className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
+                {errors?.permanentAdd?.type === "required" && (
+                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
+                    Please provide permanent address
+                  </small>
+                )}
               </div>
               <button
                 type="submit"
-                className="btn btn-primary mt-5 text-white w-3/5 mx-auto flex "
+                className="btn btn-primary mt-5 text-white w-2/5 mx-auto flex "
                 disabled={!isDirty}>
                 Update
               </button>
