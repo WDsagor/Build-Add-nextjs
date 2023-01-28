@@ -13,9 +13,9 @@ const AddDealer = () => {
   } = useForm({ mode: "onTouched" });
   const term = useWatch({ control, name: "term" });
   const {
-    fields: resFields,
-    append: resAppend,
-    remove: resRemove,
+    fields: moreFields,
+    append: moreAppend,
+    remove: moreRemove,
   } = useFieldArray({
     control,
     name: "addMore",
@@ -35,7 +35,7 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Frist Name
+                    Frist name
                   </span>
                 </label>
                 <input
@@ -48,14 +48,14 @@ const AddDealer = () => {
                 />
                 {errors?.fristName?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Frist Name is required
+                    Frist name is required
                   </small>
                 )}
               </div>
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Last Name
+                    Last name
                   </span>
                 </label>
                 <input
@@ -73,11 +73,12 @@ const AddDealer = () => {
                 )}
               </div>
             </div>
+
             <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Phone Number
+                    Phone number
                   </span>
                 </label>
                 <input
@@ -97,7 +98,7 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Email Address
+                    Email dddress
                   </span>
                 </label>
                 <input
@@ -115,7 +116,7 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label lg:self-start">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Present Address
+                    Present address
                   </span>
                 </label>
                 <textarea
@@ -123,7 +124,7 @@ const AddDealer = () => {
                     required: true,
                   })}
                   className="textarea max-w-md lg:max-w-full w-full resize h-28"
-                  placeholder="Details provide present address"></textarea>
+                  placeholder="Provide village or City, Police Stataion, District"></textarea>
                 {errors?.presentAdd?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Please provide present address
@@ -133,7 +134,7 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label lg:self-start">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Permanent Address
+                    Permanent address
                   </span>
                 </label>
                 <textarea
@@ -141,21 +142,21 @@ const AddDealer = () => {
                     required: true,
                   })}
                   className="textarea max-w-md lg:max-w-full w-full resize h-28"
-                  placeholder="Details provide Permanent address"></textarea>
+                  placeholder="Provide village or City, Police Stataion, District"></textarea>
                 {errors?.permanentAdd?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Please provide Permanent address
+                    Please provide permanent address
                   </small>
                 )}
               </div>
             </div>
             <hr className="my-3"></hr>
-            <h1 className=" text-xl">Business Details </h1>
+            <h1 className=" text-xl">Business details </h1>
             <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Company or Dealer Name
+                    Company or Dealer name
                   </span>
                 </label>
                 <input
@@ -163,19 +164,19 @@ const AddDealer = () => {
                     required: true,
                   })}
                   type="text"
-                  placeholder="Enter Company or Dealer Name"
+                  placeholder="Enter Company or Dealer name"
                   className="input input-bordered"
                 />
                 {errors?.companyName?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer Name is required
+                    Company or Dealer name is required
                   </small>
                 )}
               </div>
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Company Email Address
+                    Company email address
                   </span>
                 </label>
                 <input
@@ -191,7 +192,7 @@ const AddDealer = () => {
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person
+                    Contact person
                   </span>
                 </label>
                 <input
@@ -199,19 +200,19 @@ const AddDealer = () => {
                     required: true,
                   })}
                   type="text"
-                  placeholder="Enter Contact Person Name"
+                  placeholder="Enter contact person name"
                   className="input input-bordered"
                 />
                 {errors?.proprietor?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer proprietor Name is required
+                    Company or Dealer proprietor name is required
                   </small>
                 )}
               </div>
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person Mobile no
+                    Contact person mobile no
                   </span>
                 </label>
                 <input
@@ -224,36 +225,34 @@ const AddDealer = () => {
                 />
                 {errors?.mobileNo?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Contact Person Mobile no is required
+                    Contact person mobile no is required
                   </small>
                 )}
               </div>
             </div>
             <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <div className="form-control w-full max-w-md p-1">
-                <label className="label ">
+                <label className="label lg:self-start">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person
+                    Business place address
                   </span>
                 </label>
-                <input
-                  {...register("proprietor", {
+                <textarea
+                  {...register("businessPresentAdd", {
                     required: true,
                   })}
-                  type="text"
-                  placeholder="Enter Contact Person Name"
-                  className="input input-bordered"
-                />
-                {errors?.proprietor?.type === "required" && (
+                  className="textarea max-w-md lg:max-w-full w-full resize h-28"
+                  placeholder="Provide village or City, Police Stataion, District"></textarea>
+                {errors?.businessPresentAdd?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer proprietor Name is required
+                    Please provide business place present address
                   </small>
                 )}
               </div>
               <div className="form-control w-full max-w-md p-1">
                 <label className="label ">
                   <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Add Trader Linccence
+                    Add trade linccence
                   </span>
                 </label>
 
@@ -267,95 +266,33 @@ const AddDealer = () => {
 
                 {errors?.tradeCopy?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Trader Linccence is required
+                    Trade linccence is required
                   </small>
                 )}
               </div>
             </div>
             <hr className="my-3"></hr>
-            <h1 className=" text-md">Business address </h1>
-            <div className="  lg:flex lg:justify-between mx-auto lg:mx-0 max-w-md lg:max-w-full">
-              <div className="form-control w-full max-w-md p-1">
-                <label className="label ">
-                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person
-                  </span>
-                </label>
-                <input
-                  {...register("proprietor", {
-                    required: true,
-                  })}
-                  type="text"
-                  placeholder="Enter Contact Person Name"
-                  className="input input-bordered"
-                />
-                {errors?.proprietor?.type === "required" && (
-                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer proprietor Name is required
-                  </small>
-                )}
-              </div>
-              <div className="form-control w-full max-w-md p-1">
-                <label className="label ">
-                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person
-                  </span>
-                </label>
-                <input
-                  {...register("proprietor", {
-                    required: true,
-                  })}
-                  type="text"
-                  placeholder="Enter Contact Person Name"
-                  className="input input-bordered"
-                />
-                {errors?.proprietor?.type === "required" && (
-                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Company or Dealer proprietor Name is required
-                  </small>
-                )}
-              </div>
-              <div className="form-control w-full max-w-md p-1">
-                <label className="label ">
-                  <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                    Contact Person Mobile no
-                  </span>
-                </label>
-                <input
-                  {...register("mobileNo", {
-                    required: true,
-                  })}
-                  type="text"
-                  placeholder="Contact Person Mobile no"
-                  className="input input-bordered"
-                />
-                {errors?.mobileNo?.type === "required" && (
-                  <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                    Contact Person Mobile no is required
-                  </small>
-                )}
-              </div>
-            </div>
+
             <div className="mx-auto lg:mx-0 max-w-md lg:max-w-full">
               <label className="label font-bold">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                  Add More Fields
+                  Add more fields
                 </span>
               </label>
-              {resFields.map((item, index) => {
+              {moreFields.map((item, index) => {
                 return (
                   <div key={index} className="flex items-end gap-3 w-full">
                     <div className=" form-control w-full max-w-md p-1">
                       <input
                         {...register(`addMore[${index}]`)}
                         type="text"
-                        placeholder="Contact Person Mobile no"
+                        placeholder="If any more information"
                         className="input input-bordered"
                       />
                     </div>
                     <button
                       type="button"
-                      onClick={() => resRemove(index)}
+                      onClick={() => moreRemove(index)}
                       className="grid mb-2 place-items-center rounded-full bg-red-500/20 border border-red-500 h-11 w-11 group transition-all hover:bg-red-500">
                       <FiTrash
                         className="text-red-500 group-hover:text-white transition-all"
@@ -368,9 +305,9 @@ const AddDealer = () => {
               <div>
                 <button
                   type="button"
-                  onClick={() => resAppend("")}
+                  onClick={() => moreAppend("")}
                   className="btn btn-sm btn-primary mt-2 ">
-                  Add More
+                  Add more
                 </button>
               </div>
             </div>
@@ -378,7 +315,7 @@ const AddDealer = () => {
             <div className=" flex flex-col items-center content-center">
               <label className="label lg:self-start">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                  Interested Area Of Dealership
+                  Interested area of Dealership
                 </span>
               </label>
               <textarea
@@ -389,7 +326,8 @@ const AddDealer = () => {
                 placeholder="Details provide your area, zone"></textarea>
               {errors?.details?.type === "required" && (
                 <small className="  text-red-500 mt-1 self-end label-text-alt ">
-                  Please provide details your area, zone
+                  Please provide details your area, zone, where you want to
+                  business
                 </small>
               )}
             </div>
