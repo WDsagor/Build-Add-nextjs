@@ -5,6 +5,8 @@ import DashboardLayout from "../../components/DashboardLayout";
 
 const Profile = () => {
   const [isEdit, setIsEdit] = useState(false);
+  const [imgUrl, setImgurl] = useState();
+
   const {
     register,
 
@@ -21,12 +23,20 @@ const Profile = () => {
       permanentAdd: "Null",
     },
   });
+  const imageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const url = URL.createObjectURL(e.target.files[0]);
+      setImgurl(url);
+    }
+  };
+  // const url = URL.createObjectURL(imgUrl);
+  console.log(imgUrl);
   const onSubmit = (data) => {
     console.log(data);
   };
   return (
-    <DashboardLayout title={"Profile Page"} className="m-2">
-      <div className="max-w-screen-2xl md:mx-auto border rounded-xl relative p-5 mb-12 m-2">
+    <DashboardLayout title={"Profile Page"}>
+      <div className="max-w-screen-2x md:mx-auto border rounded-xl relative p-5 mb-12 m-2">
         <h1 className="text-primary font-bold text-2xl py-2">My Profile</h1>
         <hr />
         <button
@@ -36,31 +46,51 @@ const Profile = () => {
         </button>
         <div className="flex flex-col lg:flex-row gap-5 align-top justify-between">
           <div className="max-w-sm flex lg:mr-20 flex-col mx-auto gap-5">
-            <div className="avatar p-10">
-              <div className=" w-72 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <Image
-                  width={300}
-                  height={300}
-                  src="/images/Products-img/A-20-1.jpg"
-                  alt="Adaption"
-                />
+            <label htmlFor="profileImg">
+              <div className="avatar p-10">
+                <div className=" w-64 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  {imgUrl ? (
+                    // <img src={imgUrl} />
+                    <Image
+                      width={300}
+                      height={300}
+                      src={imgUrl}
+                      alt="Adaption"
+                    />
+                  ) : (
+                    <Image
+                      width={300}
+                      height={300}
+                      src="/images/Products-img/A-20-1.jpg"
+                      alt="Adaption"
+                    />
+                  )}
+                </div>
               </div>
-            </div>
+            </label>
+            <input
+              className=" hidden cursor-pointer"
+              id="profileImg"
+              type="file"
+              name="profileImg"
+              onChange={imageChange}
+              disabled={!isEdit}
+            />
 
             {isEdit ? (
-              <button className="btn btn-primary  capitalize text-white ">
+              <button className="btn btn-primary w-3/5 mx-auto flex capitalize text-white ">
                 Update now
               </button>
             ) : (
               <button
                 onClick={() => setIsEdit(!isEdit)}
-                className="btn btn-primary capitalize text-white ">
+                className="btn btn-primary w-3/5 mx-auto flex capitalize text-white ">
                 Edit profile
               </button>
             )}
           </div>
 
-          <div className="md:w-screen md:max-w-xl">
+          <div className="md:w-screen md:max-w-xl py-3">
             <form onSubmit={handleSubmit(onSubmit)}>
               <h1 className=" text-xl">Personal Information </h1>
 
@@ -87,7 +117,7 @@ const Profile = () => {
                     required: true,
                   })}
                   type="text"
-                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
+                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled={!isEdit}
                 />
                 {errors?.lastName?.type === "required" && (
@@ -104,7 +134,7 @@ const Profile = () => {
                     required: true,
                   })}
                   type="number"
-                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
+                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled={!isEdit}
                 />
                 {errors?.phoneNumber?.type === "required" && (
@@ -123,7 +153,7 @@ const Profile = () => {
                 <input
                   {...register("email")}
                   type="email"
-                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
+                  className="input input-bordered w-full input-ghost disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text"
                   disabled
                 />
               </div>
@@ -135,7 +165,7 @@ const Profile = () => {
                     required: true,
                   })}
                   disabled={!isEdit}
-                  className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
+                  className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
                 {errors?.presentAdd?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Please provide present address
@@ -149,7 +179,7 @@ const Profile = () => {
                     required: true,
                   })}
                   disabled={!isEdit}
-                  className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-2xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
+                  className="textarea textarea-bordered  disabled:textarea-ghost max-w-full w-full disabled:bg-transparent text-xl disabled:text-primary disabled:p-0 disabled:border-hidden disabled:cursor-text resize h-28"></textarea>
                 {errors?.permanentAdd?.type === "required" && (
                   <small className="  text-red-500 mt-1 self-end label-text-alt ">
                     Please provide permanent address

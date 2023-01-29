@@ -269,6 +269,7 @@ const AddDealer = () => {
                 )}
               </div>
             </div>
+
             <hr className="my-3"></hr>
 
             <div className="mx-auto lg:mx-0 max-w-md lg:max-w-full">
