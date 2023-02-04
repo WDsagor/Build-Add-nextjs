@@ -18,6 +18,7 @@ import useNav from "../hooks/useNav";
 
 const DashboardLayout = ({ title, children }) => {
   const [user, loading] = useAuthState(auth);
+  const [admin, setAdmin] = useState(true);
   const { navbar } = useNav();
   const [sideMenu, setsideMenu] = useState(false);
   const router = useRouter();
@@ -108,8 +109,7 @@ const DashboardLayout = ({ title, children }) => {
                     className={` ${
                       sideMenu ? "hidden " : "flex  delay-700"
                     } shrink-0`}>
-                    {" "}
-                    My Order
+                    {admin ? "All Oders" : " My Order"}
                   </span>
                 </a>
               </Link>

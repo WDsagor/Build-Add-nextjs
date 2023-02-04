@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../config/firebase.init";
 import { FaShoppingCart } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
@@ -112,6 +113,9 @@ const Navbar = () => {
       </li>
     </>
   );
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <nav
