@@ -3,7 +3,7 @@ import DashboardLayout from "../DashboardLayout";
 import DetailsModal from "./DetailsModal";
 
 const AllOder = () => {
-  const [order, setOrder] = useState("Quality Control Specialist");
+  const [order, setOrder] = useState("Order No");
   return (
     <DashboardLayout title="All Oders">
       <h1>all Oders</h1>
