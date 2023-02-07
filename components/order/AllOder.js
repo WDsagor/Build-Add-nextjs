@@ -9,7 +9,7 @@ const AllOder = () => {
       <h1>all Oders</h1>
       <div className="flex-1 px-2 mx-2 justify-center mt-4">
         <div className="overflow-x-auto">
-          <table className="table table-zebra w-full">
+          <table className="table  w-full">
             <thead>
               <tr>
                 <th>SL no</th>
