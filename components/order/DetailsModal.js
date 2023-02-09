@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../config/firebase.init";
 import Loading from "../share/Loading";
+import PdfDoc from "./orderPdf/PdfDoc";
 
 const DetailsModal = ({ order }) => {
   const [user, loading] = useAuthState(auth);
@@ -128,7 +130,13 @@ const DetailsModal = ({ order }) => {
             <label
               htmlFor="order-details"
               className="btn btn-sm text-black btn-secondary">
-              Download
+              <PDFDownloadLink
+                document={<PdfDoc />}
+                fileName={`${user?.displayName}-Order.pdf`}>
+                {({ blob, url, loading, error }) =>
+                  loading ? "Loading document..." : "Download now!"
+                }
+              </PDFDownloadLink>
             </label>
             {admin && (
               <>
