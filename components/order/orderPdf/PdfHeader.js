@@ -1,11 +1,38 @@
 import React from "react";
 import { Link, Text, View, StyleSheet, Svg, Image } from "@react-pdf/renderer";
 
-const Header = () => {
+const Header = ({ orderNo, orderDate }) => {
+  const styles = StyleSheet.create({
+    page: { backgroundColor: "tomato" },
+    header: {
+      display: "flex",
+      top: 0,
+      left: 0,
+      width: "100%",
+    },
+    section: {
+      margin: 20,
+      color: "green",
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      fontSize: "12px",
+      borderBottom: "1px solid red",
+      paddingBottom: "10px",
+    },
+    logo: {
+      width: "200",
+    },
+  });
   return (
-    <View>
-      <View>
-        <Image src="https://www.shutterstock.com/image-photo/surreal-image-african-elephant-wearing-260nw-1365289022.jpg" />
+    <View style={styles.header}>
+      <View style={styles.section}>
+        <Image style={styles.logo} src="/images/logo.png" alt="" />
+        <View>
+          <Text> Order No : {orderNo}</Text>
+          <Text> Order Date : {orderDate}</Text>
+        </View>
       </View>
     </View>
   );
