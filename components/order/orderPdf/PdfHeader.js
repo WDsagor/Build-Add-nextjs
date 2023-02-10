@@ -4,12 +4,7 @@ import { Link, Text, View, StyleSheet, Svg, Image } from "@react-pdf/renderer";
 const Header = ({ orderNo, orderDate }) => {
   const styles = StyleSheet.create({
     page: { backgroundColor: "tomato" },
-    header: {
-      display: "flex",
-      top: 0,
-      left: 0,
-      width: "100%",
-    },
+    header: {},
     section: {
       margin: 20,
       color: "green",
