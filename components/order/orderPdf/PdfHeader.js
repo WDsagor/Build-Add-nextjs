@@ -23,7 +23,11 @@ const Header = ({ orderNo, orderDate }) => {
   return (
     <View style={styles.header}>
       <View style={styles.section}>
-        <Image style={styles.logo} src="/images/logo.png" alt="" />
+        <Image
+          style={styles.logo}
+          src="https://i.ibb.co/f0S4fRW/logo.png"
+          alt=""
+        />
         <View>
           <Text> Order No : {orderNo}</Text>
           <Text> Order Date : {orderDate}</Text>
