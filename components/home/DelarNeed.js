@@ -2,9 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 const DelarNeed = () => {
-  // const headerImg = require("/images/shadow.png");
   return (
-    <div className="bg-warning mt-[90px] md:mt-[70px]">
+    <div className="bg-warning mt-[90px] md:mt-[70px] w-full overflow-hidden">
       <div
         style={{
           background: `url("/images/shadow.png")`,

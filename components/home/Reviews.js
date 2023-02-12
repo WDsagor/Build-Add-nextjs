@@ -9,11 +9,16 @@ import { FaStar } from "react-icons/fa";
 
 const Reviews = () => {
   return (
-    <div className="max-w-screen-2xl px-10 mx-auto " data-aos="zoom-in" data-aos-duration="1000">
+    <div
+      className="max-w-screen-2xl px-10 mx-auto "
+      data-aos="zoom-in"
+      data-aos-duration="1000">
       <h1 className="lg:text-3xl text-xl text-center pt-14 text-primary uppercase font-bold">
         Our Happy Clients Reviews
       </h1>
-      <p className="lg:text-lg text-sm text-center pb-5">Our most of the valuable clients reviews show here</p>
+      <p className="lg:text-lg text-sm text-center pb-5">
+        Our most of the valuable clients reviews show here
+      </p>
       <div className=" max-w-screen-2xl sm:w-full md:w-10/12 xl:w-10/12 mx-auto">
         <Swiper
           slidesPerView={1}
@@ -31,8 +36,7 @@ const Reviews = () => {
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination, Navigation, FreeMode]}
-        >
+          modules={[Pagination, Navigation, FreeMode]}>
           <SwiperSlide>
             <div className="flex py-5 mt-10">
               <div className="group w-full lg:w-5/6 shadow-xl bg-gray-900 text-white relative rounded-xl hover:bg-yellow-400 hover:text-black cursor-pointer ease-in duration-300">
@@ -47,8 +51,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -76,8 +81,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -105,8 +111,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -134,8 +141,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -163,8 +171,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -192,8 +201,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -221,8 +231,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -250,8 +261,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">
@@ -279,8 +291,9 @@ const Reviews = () => {
                 <div className="p-10">
                   <label className=" font-bold">Name</label>
                   <p className="text-xs">
-                    Protects concrete from corrosive substances. Protects concrete from corrosive substances. Protects
-                    concrete from corrosive substances.
+                    Protects concrete from corrosive substances. Protects
+                    concrete from corrosive substances. Protects concrete from
+                    corrosive substances.
                   </p>
 
                   <p className="flex align-middle pt-5 text-yellow-400 group-hover:text-primary">

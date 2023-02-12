@@ -124,32 +124,28 @@ const Navbar = () => {
           ? "bg-white shadow-lg text-primary"
           : "text-white bg-primary md:mt-8 mt-[50px]"
       }`}>
-      <div className="navbar  max-w-screen-2xl mx-auto">
-        <div className="navbar-start xs:py-2">
+      <div className="navbar  max-w-screen-2xl w-full mx-auto">
+        <div className="navbar-start  xs:py-2">
           <Link href="/">
-            <a className=" flex items-center ">
+            <a className=" flex items-center">
               {navbarLogo}{" "}
-              <span className="ml-2 font-semibold text-xs sm:text-md md:text-xl lg:text-2xl uppercase">
+              <span className="ml-2 font-semibold text-xs sm:text-md md:text-xl xl:text-2xl uppercase">
                 Building Admixture Limited
               </span>
             </a>
           </Link>
         </div>
-        {/* <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal p-0">
-      <li><a>Item 1</a></li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div> */}
-        <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal p-0 ">{menuItems}</ul>
+
+        <div className="navbar-end hidden lg:text-sm lg:flex w-auto ml-auto">
+          <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
-        <div className="navbar-end flex lg:hidden">
+        <div className="navbar-end lg:hidden">
           <div className=" dropdown dropdown-end">
             <label
               onClick={() => setMenuShoe(!menuShow)}
-              tabIndex="0"
-              className="btn btn-ghost lg:hidden">
+              tabIndex="1"
+              className="btn btn-ghost lg:h
+              idden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -163,10 +159,10 @@ const Navbar = () => {
               </svg>
             </label>
             <ul
-              tabIndex="0"
+              tabIndex="1"
               className={
                 menuShow
-                  ? `menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box ${
+                  ? `menu menu-compact dropdown-content gap-2 p-2 shadow rounded-box ${
                       navbar
                         ? "bg-white shadow-lg text-primary"
                         : "text-white bg-primary"
