@@ -5,15 +5,15 @@ import Image from "next/image";
 const AboutBuildadd = () => {
   return (
     <div
-      className=" max-w-screen-2xl text-white px-10 mx-auto"
+      className=" max-w-screen-2xl mx-auto w-full py-10"
       data-aos="fade-right"
       data-aos-duration="1000">
-      <h1 className="lg:text-4xl max-w-full text-2xl text-center py-10 font-bold text-primary">
+      <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">
         WHY CHOOSE US
       </h1>
-      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div className="card shadow-xl  bg-purple-900">
-          <figure className="px-10 pt-10 ">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-12 text-white px-5">
+        <div className="shadow-xl rounded-xl  bg-purple-900">
+          <figure className="px-10 pt-10 flex justify-center">
             <Image
               width={150}
               height={200}
@@ -34,8 +34,8 @@ const AboutBuildadd = () => {
             </p>
           </div>
         </div>
-        <div className="card shadow-xl  bg-primary">
-          <figure className="px-10 pt-10 ">
+        <div className="shadow-xl rounded-xl  bg-primary">
+          <figure className="px-10 pt-10 flex justify-center">
             <Image
               width={150}
               height={200}
@@ -57,8 +57,8 @@ const AboutBuildadd = () => {
             </p>
           </div>
         </div>
-        <div className="card shadow-xl  bg-cyan-500">
-          <figure className="px-10 pt-10 ">
+        <div className="shadow-xl rounded-xl  bg-cyan-500">
+          <figure className="px-10 pt-10 flex justify-center ">
             <Image
               width={150}
               height={200}

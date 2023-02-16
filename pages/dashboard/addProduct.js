@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import DashboardLayout from "../../components/DashboardLayout";
 import { FiTrash } from "react-icons/fi";
@@ -8,8 +8,37 @@ import Nameform from "../../components/addProductform/Nameform";
 import AddSize from "../../components/addProductform/AddSize";
 import DetailsImage from "../../components/addProductform/DetailsImage";
 import AddImage from "../../components/addProductform/AddImage";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
+  const [imgUrl, setImgurl] = useState([]);
+  const [imgFile, setImgFile] = useState([]);
+  useEffect(() => {
+    if (imgFile.length > 4) {
+      toast.error("you can uplod max 4 images", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }, [imgFile]);
+  const imageChange = (event) => {
+    const selectedFiles = event.target.files;
+    const selectedFilesArray = Array.from(selectedFiles);
+    const imagesArray = selectedFilesArray.map((file) => {
+      return URL.createObjectURL(file);
+    });
+    const productImg = selectedFilesArray.map((file) => {
+      return file;
+    });
+    setImgurl((previousImages) => previousImages.concat(imagesArray));
+    setImgFile((preFile) => preFile.concat(productImg));
+
+    event.target.file = "";
+  };
+  const deleteHandler = (image, fileName) => {
+    setImgurl(imgUrl.filter((e) => e !== image));
+    URL.revokeObjectURL(image);
+    setImgFile(imgFile.filter((mainfile) => mainfile.name !== fileName));
+  };
   const {
     register,
     handleSubmit,
@@ -40,9 +69,19 @@ const AddProduct = () => {
     control,
     name: "productDetails",
   });
-
+  const fileUpload = () => {
+    fetch("http://localhost:3000/api/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(objectWithData),
+    });
+  };
   const onSubmit = (data) => {
-    console.log(data);
+    const product = { ...data, productImg: imgUrl };
+    console.log(product);
+    fileUpload();
   };
 
   return (
@@ -78,7 +117,13 @@ const AddProduct = () => {
                   Add Products Images
                 </span>
               </label>
-              <AddImage register={register} />
+              <AddImage
+                register={register}
+                imageChange={imageChange}
+                deleteHandler={deleteHandler}
+                imgUrl={imgUrl}
+                imgFile={imgFile}
+              />
             </div>
 
             <div className="mx-auto max-w-md lg:max-w-full my-5">

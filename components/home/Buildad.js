@@ -4,16 +4,16 @@ import React from "react";
 const Buildad = () => {
   return (
     <div
-      className="max-w-screen-2xl mx-auto w-full px-2"
+      className="max-w-screen-2xl w-full mx-auto"
       data-aos="fade-right"
       data-aos-duration="1000">
-      <div className=" px-5 text-primary py-10">
+      <div className=" px-5 text-primary py-10 text-justify">
         <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold">
           বিল্ডিং এ্যাডমিক্সার লিমিটেড
         </h1>
-        <p className=" text-justify text-black lg:text-lg sm:text-sm px-3">
+        <span className=" text-black lg:text-lg sm:text-sm">
           <Link href="/" className=" font-bold text-primary">
-            <a>বিল্ডিং এ্যাডমিক্সার লিমিটেড</a>
+            <a className="text-primary">বিল্ডিং এ্যাডমিক্সার লিমিটেড </a>
           </Link>
           বাংলাদেশের অন্যতম একটি কনষ্ট্রাকশন কেমিক্যাল উৎপাদন ও বাজারজাতকরণ মুখী
           প্রতিষ্ঠান। একদল দেশী ও বিদেশী কেমিষ্ট ষ্পেশালিষ্টদের তত্ত্বাবধানে এই
@@ -24,7 +24,7 @@ const Buildad = () => {
           এর কেমিক্যাল অন্যতম হওয়ায় দেশের অধিকাংশ কনষ্ট্রাকশন প্রতিষ্ঠান এটি
           ব্যবহার করছে। আমাদের পন্যসমূহ বুয়েট ও বিসিএসআইআর এবং অন্যান্য অনুমোদিত
           প্রতিষ্ঠান দ্বারা পরীক্ষিত।
-        </p>
+        </span>
       </div>
     </div>
   );

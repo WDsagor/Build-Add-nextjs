@@ -5,8 +5,8 @@ const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <footer className=" bg-slate-800">
-      <div className=" max-w-screen-2xl max-auto footer footer-center pt-10 pb-5 text-white">
+    <footer className=" bg-slate-800 footer footer-center">
+      <div className=" max-w-screen-2xl max-auto pt-10 pb-5 text-white">
         <div className="grid grid-flow-col gap-4">
           <Link href="" className="link link-hover">
             <a>About us</a>
