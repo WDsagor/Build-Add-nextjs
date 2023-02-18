@@ -47,6 +47,7 @@ const AddImage = ({ imageChange, deleteHandler, imgUrl, imgFile }) => {
                 type="file"
                 className=" hidden cursor-pointer"
                 onChange={imageChange}
+                multiple
               />
             </label>
           </div>

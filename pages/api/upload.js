@@ -9,6 +9,6 @@ export const config = {
   },
 };
 
-handeler.post(uploader.single("img"), productImgUpload);
+handeler.post(uploader.array("img", 4), productImgUpload);
 
 export default handeler;

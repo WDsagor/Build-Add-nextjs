@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import DashboardLayout from "../../components/DashboardLayout";
-import { FiTrash } from "react-icons/fi";
-import Image from "next/image";
-import { FaRegImage } from "react-icons/fa";
 import Nameform from "../../components/addProductform/Nameform";
 import AddSize from "../../components/addProductform/AddSize";
-import DetailsImage from "../../components/addProductform/DetailsImage";
 import AddImage from "../../components/addProductform/AddImage";
 import { toast } from "react-toastify";
+import ProductDetails from "../../components/addProductform/ProductDetails";
+import Price from "../../components/addProductform/Price";
 
 const AddProduct = () => {
   const [imgUrl, setImgurl] = useState([]);
   const [imgFile, setImgFile] = useState([]);
+  const [url, setUrl] = useState();
   useEffect(() => {
     if (imgFile.length > 4) {
       toast.error("you can uplod max 4 images", {
@@ -20,6 +19,7 @@ const AddProduct = () => {
       });
     }
   }, [imgFile]);
+
   const imageChange = (event) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray = Array.from(selectedFiles);
@@ -34,11 +34,13 @@ const AddProduct = () => {
 
     event.target.file = "";
   };
+
   const deleteHandler = (image, fileName) => {
     setImgurl(imgUrl.filter((e) => e !== image));
     URL.revokeObjectURL(image);
     setImgFile(imgFile.filter((mainfile) => mainfile.name !== fileName));
   };
+
   const {
     register,
     handleSubmit,
@@ -46,10 +48,6 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm({
     mode: "onTouched",
-    // defaultValues: {
-    //   productDetails: [""],
-    //   addSize: [""],
-    // },
   });
 
   const term = useWatch({ control, name: "term" });
@@ -61,27 +59,41 @@ const AddProduct = () => {
     control,
     name: "addSize",
   });
-  const {
-    fields: productDetails,
-    append: detailsAppend,
-    remove: detailsRemove,
-  } = useFieldArray({
-    control,
-    name: "productDetails",
-  });
-  const fileUpload = () => {
-    fetch("http://localhost:3000/api/upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(objectWithData),
+
+  const fileUpload = async () => {
+    const formdata = new FormData();
+    imgFile.forEach((image, i) => {
+      formdata.append("img", image);
     });
+
+    await fetch("http://localhost:3000/api/upload", {
+      method: "POST",
+      body: formdata,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUrl(data);
+      });
   };
-  const onSubmit = (data) => {
-    const product = { ...data, productImg: imgUrl };
-    console.log(product);
+  const onSubmit = async (data) => {
     fileUpload();
+    // const product = { ...data, productImg: url?.url.join("=") };
+    const product = { ...data, productImg: url?.url };
+    if (url.status) {
+      await fetch("http://localhost:3000/api/products", {
+        method: "POST",
+        body: product,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            toast.success("Product Successfully added", {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          }
+        });
+    }
+    console.log(product);
   };
 
   return (
@@ -132,21 +144,8 @@ const AddProduct = () => {
                   Products Details
                 </span>
               </label>
-              <DetailsImage
-                register={register}
-                detailsRemove={detailsRemove}
-                productDetails={productDetails}
-                errors={errors}
-              />
-
-              <div className="my-2">
-                <button
-                  type="button"
-                  onClick={() => detailsAppend("")}
-                  className="btn btn-sm btn-primary mt-2 ">
-                  Add more Details
-                </button>
-              </div>
+              <ProductDetails register={register} errors={errors} />
+              <Price register={register} errors={errors} />
             </div>
             <hr className="my-3"></hr>
 

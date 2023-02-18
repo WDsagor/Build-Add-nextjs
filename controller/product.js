@@ -6,7 +6,9 @@ const getAllProducts = async (req, res) => {
     if (products.length) {
       res.status(200).json(products);
     }
-    res.status(404).json({ status: "failed", error: "Products not Found this ID" });
+    res
+      .status(404)
+      .json({ status: "failed", error: "Products not Found this ID" });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -15,11 +17,16 @@ const getAllProducts = async (req, res) => {
 const getSingleProducts = async (req, res) => {
   try {
     const id = req.query.id;
-    const products = await dataQuery(`SELECT *  FROM Products WHERE id=${id}`, []);
+    const products = await dataQuery(
+      `SELECT *  FROM Products WHERE id=${id}`,
+      []
+    );
     if (products.length) {
       res.status(200).json(products);
     }
-    res.status(404).json({ status: "failed", error: "Products not Found this ID" });
+    res
+      .status(404)
+      .json({ status: "failed", error: "Products not Found this ID" });
     // console.log(products[0].id);
   } catch (error) {
     res.status(500).send(new Error("Server nor ready"));
@@ -32,14 +39,26 @@ const addProduct = async (req, res) => {
     console.log(req.body);
     // const productImg = "/images/Products-img/" + fileName;
     const { name, price, details, about, size, product_img } = req.body;
-    const sql = "INSERT INTO products ( name, price, details, about, size, product_img) VALUES (?,?,?,?,?,?)";
+    const sql =
+      "INSERT INTO products ( name, price, details, about, size, product_img) VALUES (?,?,?,?,?,?)";
 
-    const product = await dataQuery(sql, [name, price, details, about, size, product_img]);
+    const product = await dataQuery(sql, [
+      name,
+      price,
+      details,
+      about,
+      size,
+      product_img,
+    ]);
     console.log(product);
     if (product.insertId) {
-      res.status(201).json({ status: "success", massage: "New Product added Successfully" });
+      res
+        .status(201)
+        .json({ status: "success", massage: "New Product added Successfully" });
     }
-    res.status(500).json({ status: "failed", massage: "New Product could not added" });
+    res
+      .status(500)
+      .json({ status: "failed", massage: "New Product could not added" });
     // console.log(products[0].id);
   } catch (error) {
     res.status(500).json(error);
@@ -54,10 +73,21 @@ const updateProduct = async (req, res) => {
     console.log(id);
     // const productImg = "/images/Products-img/" + fileName;
     const { name, price, details, about, size, product_img } = req.body;
-    const sql = "UPDATE `products` set name=?, price=?, details=?, about=?, size=?, product_img=? where id=?";
-    const product = await dataQuery(sql, [name, price, details, about, size, product_img, id]);
+    const sql =
+      "UPDATE `products` set name=?, price=?, details=?, about=?, size=?, product_img=? where id=?";
+    const product = await dataQuery(sql, [
+      name,
+      price,
+      details,
+      about,
+      size,
+      product_img,
+      id,
+    ]);
     if (product.affectedRows) {
-      res.status(201).json({ status: "success", massage: "Product updated Successfully" });
+      res
+        .status(201)
+        .json({ status: "success", massage: "Product updated Successfully" });
     }
     res.status(500).json({ status: "failed", error: "Product update Failed" });
     // console.log(products[0].id);
@@ -73,7 +103,9 @@ const deleteProduct = async (req, res) => {
     const product = await dataQuery(sql, [id]);
     //   console.log(product);
     if (product.affectedRows) {
-      res.status(201).json({ status: "success", massage: "Product delete Successfully" });
+      res
+        .status(201)
+        .json({ status: "success", massage: "Product delete Successfully" });
     }
     res.status(500).json({ status: "failed", error: "Product delete Failed" });
     // console.log(products[0].id);
@@ -82,4 +114,10 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-export { getAllProducts, getSingleProducts, addProduct, updateProduct, deleteProduct };
+export {
+  getAllProducts,
+  getSingleProducts,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+};
