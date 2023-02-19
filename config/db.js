@@ -18,7 +18,7 @@ const dataQuery = (query, arraParms) => {
     try {
       pool.query(query, arraParms, (error, data) => {
         if (error) {
-          console.log("error in executing the query");
+          console.log(error);
           reject(error);
         }
         resolve(data);

@@ -35,22 +35,46 @@ const getSingleProducts = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    // const fileName = req.file.filename;
-    console.log(req.body);
-    // const productImg = "/images/Products-img/" + fileName;
-    const { name, price, details, about, size, product_img } = req.body;
+    // console.log(req?.body);
+    const {
+      productName,
+      productDetails,
+      size1,
+      size4,
+      size10,
+      size20,
+      productImg,
+      price1,
+      price4,
+      price10,
+      pirce20,
+    } = req.body;
+    console.log(pirce20);
     const sql =
-      "INSERT INTO products ( name, price, details, about, size, product_img) VALUES (?,?,?,?,?,?)";
+      "INSERT INTO products ( name, details, size1, size4, size10, size20, product_img, price1, price4, price10, price20) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
-    const product = await dataQuery(sql, [
-      name,
-      price,
-      details,
-      about,
-      size,
-      product_img,
-    ]);
-    console.log(product);
+    const product = await dataQuery(
+      sql,
+      [
+        productName,
+        productDetails,
+        size1,
+        size4,
+        size10,
+        size20,
+        productImg,
+        price1,
+        price4,
+        price10,
+        pirce20,
+      ],
+      (error, results) => {
+        if (error) throw error;
+        console.log("The solution is: ", results);
+        res.send(results);
+      }
+    );
+    // console.log(product);
     if (product.insertId) {
       res
         .status(201)

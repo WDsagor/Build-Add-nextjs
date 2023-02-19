@@ -6,7 +6,7 @@ const Price = ({ register, errors }) => {
       <div className="form-control w-full p-1">
         <label className="label ">
           <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-            1 Litter
+            1 Litter price
           </span>
         </label>
         <input
@@ -26,7 +26,7 @@ const Price = ({ register, errors }) => {
       <div className="form-control w-full p-1">
         <label className="label ">
           <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-            4 Litter
+            4 Litter price
           </span>
         </label>
         <input
@@ -46,7 +46,7 @@ const Price = ({ register, errors }) => {
       <div className="form-control w-full p-1">
         <label className="label ">
           <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-            10 Litter
+            10 Litter price
           </span>
         </label>
         <input
@@ -66,18 +66,18 @@ const Price = ({ register, errors }) => {
       <div className="form-control w-full p-1">
         <label className="label ">
           <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-            20 Litter
+            20 Litter price
           </span>
         </label>
         <input
-          {...register("productName", {
+          {...register("pirce20", {
             required: true,
           })}
           type="text"
           placeholder="Enter 20 Litter price"
           className="input input-bordered"
         />
-        {errors?.productName?.type === "required" && (
+        {errors?.pirce20?.type === "required" && (
           <small className="  text-red-500 mt-1 self-end label-text-alt ">
             Product price is required
           </small>

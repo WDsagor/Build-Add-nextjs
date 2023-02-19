@@ -11,7 +11,6 @@ import Price from "../../components/addProductform/Price";
 const AddProduct = () => {
   const [imgUrl, setImgurl] = useState([]);
   const [imgFile, setImgFile] = useState([]);
-  const [url, setUrl] = useState();
   useEffect(() => {
     if (imgFile.length > 4) {
       toast.error("you can uplod max 4 images", {
@@ -44,6 +43,7 @@ const AddProduct = () => {
   const {
     register,
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm({
@@ -51,16 +51,8 @@ const AddProduct = () => {
   });
 
   const term = useWatch({ control, name: "term" });
-  const {
-    fields: sizeFields,
-    append: sizeAppend,
-    remove: sizeRemove,
-  } = useFieldArray({
-    control,
-    name: "addSize",
-  });
 
-  const fileUpload = async () => {
+  const onSubmit = async (data) => {
     const formdata = new FormData();
     imgFile.forEach((image, i) => {
       formdata.append("img", image);
@@ -71,29 +63,30 @@ const AddProduct = () => {
       body: formdata,
     })
       .then((res) => res.json())
-      .then((data) => {
-        setUrl(data);
-      });
-  };
-  const onSubmit = async (data) => {
-    fileUpload();
-    // const product = { ...data, productImg: url?.url.join("=") };
-    const product = { ...data, productImg: url?.url };
-    if (url.status) {
-      await fetch("http://localhost:3000/api/products", {
-        method: "POST",
-        body: product,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data) {
-            toast.success("Product Successfully added", {
-              position: toast.POSITION.TOP_CENTER,
+      .then(async (url) => {
+        if (url?.status) {
+          const product = { ...data, productImg: url?.url.join("=") };
+          await fetch("http://localhost:3000/api/products", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(product),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data) {
+                toast.success("Product Successfully added", {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+                reset();
+                setImgurl([]);
+                setImgFile([]);
+              }
             });
-          }
-        });
-    }
-    console.log(product);
+        }
+      });
   };
 
   return (
@@ -102,26 +95,13 @@ const AddProduct = () => {
         <div className=" bg-primary/5 rounded-xl p-3  xl:p-10 max-w-screen-xl mx-auto">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Nameform register={register} errors={errors} />
-
             <div className="mx-auto max-w-md lg:max-w-full my-5">
               <label className="label font-bold">
                 <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
                   Add Products Size
                 </span>
               </label>
-              <AddSize
-                register={register}
-                sizeFields={sizeFields}
-                sizeRemove={sizeRemove}
-              />
-              <div>
-                <button
-                  type="button"
-                  onClick={() => sizeAppend("")}
-                  className="btn btn-sm btn-primary mt-2 ">
-                  Add Size
-                </button>
-              </div>
+              <AddSize register={register} errors={errors} />
             </div>
             <div className="mx-auto max-w-md lg:max-w-full">
               <label className="label font-bold">
