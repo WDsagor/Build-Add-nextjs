@@ -92,11 +92,8 @@ const Login = () => {
         }}
         className="hero min-h-screen pb-5 mt-10">
         <div className="flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
-          <div
-            className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white"
-            data-aos="zoom-in"
-            data-aos-duration="1000">
-            <div className="card-body">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white">
+            <div className="card-body transition-all">
               <h1 className="text-2xl font-bold text-center pb-7 text-white">
                 Login now !
               </h1>

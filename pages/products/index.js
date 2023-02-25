@@ -1,7 +1,10 @@
+import { async } from "@firebase/util";
 import Head from "next/head";
+import Image from "next/image";
 import Layout from "../../components/Layout";
+import ProductCard from "../../components/products/ProductCard";
 
-const Products = () => {
+const Products = ({ products }) => {
   return (
     <Layout title="Products">
       <div className="mt-24">
@@ -17,16 +20,11 @@ const Products = () => {
         </h2>
 
         <div className="max-w-screen-2xl mx-auto">
-          <div className="flex lg:flex-row  justify-between">
-            <div className=" max-w-4xl">
-              <h1 className="text-5xl font-bold">Box Office News!</h1>
-              <p className="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-              </p>
-              <button className="btn btn-primary">Get Started</button>
-            </div>
+          <div className=" grid grid-cols-4 gap-10">
+            {products?.length &&
+              products?.map((product, index) => {
+                return <ProductCard key={index} product={product} />;
+              })}
           </div>
         </div>
       </div>
@@ -35,3 +33,14 @@ const Products = () => {
 };
 
 export default Products;
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const products = await res.json();
+  console.log(products);
+  return {
+    props: {
+      products: products,
+    },
+  };
+};

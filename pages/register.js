@@ -5,7 +5,10 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import GoogleBtn from "../components/share/GoogleBtn";
 import Head from "next/head";
 import Layout from "../components/Layout";
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "./../config/firebase.init";
 import { toast } from "react-toastify";
 import Loading from "./../components/share/Loading";
@@ -29,9 +32,10 @@ const Register = () => {
     setConfirmPasswordEye(!confirmPasswordEye);
   };
   const password = watch("password");
-  const [createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth, {
-    sendEmailVerification: true,
-  });
+  const [createUserWithEmailAndPassword, user, loading, hookError] =
+    useCreateUserWithEmailAndPassword(auth, {
+      sendEmailVerification: true,
+    });
   const [updateProfile, updating, error] = useUpdateProfile(auth);
   const router = useRouter();
 
@@ -81,16 +85,13 @@ const Register = () => {
           background: `url("/images/Carousel-img/grouping.png")`,
           backgroundSize: "cover",
         }}
-        className="hero min-h-screen pb-5 mt-16 md:mt-16"
-      >
+        className="hero min-h-screen pb-5 mt-16 md:mt-16 ">
         <div className=" flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
-          <div
-            className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-          >
-            <div className="card-body">
-              <h1 className="text-2xl font-bold text-center pb-7 text-white">Register now !</h1>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white">
+            <div className="card-body transition-all">
+              <h1 className="text-2xl font-bold text-center pb-7 text-white">
+                Register now !
+              </h1>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control">
                   <label className="label ">
@@ -107,7 +108,9 @@ const Register = () => {
                     className="input input-bordered bg-black text-white"
                   />
                   {errors.name?.type === "required" && (
-                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt ">Name is required</small>
+                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt ">
+                      Name is required
+                    </small>
                   )}
                 </div>
                 <div className="form-control">
@@ -126,10 +129,14 @@ const Register = () => {
                     className="input input-bordered bg-black text-white"
                   />
                   {errors.email?.type === "required" && (
-                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">Email is required</small>
+                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">
+                      Email is required
+                    </small>
                   )}
                   {errors.email?.type === "pattern" && (
-                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">Your email is invalid</small>
+                    <small className=" text-[#FFF80A] mt-1 self-end label-text-alt">
+                      Your email is invalid
+                    </small>
                   )}
                 </div>
                 <div className="form-control relative">
@@ -157,7 +164,9 @@ const Register = () => {
                       )}
                     </div>
                     {errors.password?.type === "required" && (
-                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">Password is required</small>
+                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">
+                        Password is required
+                      </small>
                     )}
                     {errors.password?.type === "pattern" && (
                       <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">
@@ -191,10 +200,14 @@ const Register = () => {
                       )}
                     </div>
                     {errors.confirm?.type === "required" && (
-                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">Password is required</small>
+                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">
+                        Password is required
+                      </small>
                     )}
                     {errors.confirm?.type === "validate" && (
-                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">The passwords do not match</small>
+                      <small className=" text-[#FFF80A] mt-2 self-end label-text-alt">
+                        The passwords do not match
+                      </small>
                     )}
                   </div>
                 </div>
@@ -202,15 +215,23 @@ const Register = () => {
                   <p className="label-text-alt  text-white">
                     allready registered ?{" "}
                     <Link href="/login">
-                      <a className=" text-primary font-bold link-hover">Login</a>
+                      <a className=" text-primary font-bold link-hover">
+                        Login
+                      </a>
                     </Link>
                   </p>
                 </label>
                 <div className="form-control mt-6">
-                  <input type="submit" value="submit" className="btn btn-primary text-white" />
+                  <input
+                    type="submit"
+                    value="submit"
+                    className="btn btn-primary text-white"
+                  />
                 </div>
               </form>
-              <div className="divider before:bg-white after:bg-white text-white">or register using</div>
+              <div className="divider before:bg-white after:bg-white text-white">
+                or register using
+              </div>
               <GoogleBtn />
             </div>
           </div>

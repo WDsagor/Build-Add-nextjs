@@ -50,8 +50,18 @@ a {
   }
 }
 
+.swiper:hover .swiper-button-prev:after {
+  display: block;
+  transition: all;
+}
+
+.swiper:hover .swiper-button-next:after {
+  display: block;
+}
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: x-large !important;
   color: green;
+  display: none;
 }

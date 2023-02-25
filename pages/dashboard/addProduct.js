@@ -57,7 +57,6 @@ const AddProduct = () => {
     imgFile.forEach((image, i) => {
       formdata.append("img", image);
     });
-
     await fetch("http://localhost:3000/api/upload", {
       method: "POST",
       body: formdata,
