@@ -30,10 +30,7 @@ const Contact = () => {
         <div className="hero-overlay bg-opacity-80"></div>
         <div className=" max-w-screen-2xl mx-auto">
           <div className=" lg:flex justify-between text-neutral-content">
-            <div
-              className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20"
-              data-aos="fade-right"
-              data-aos-duration="1000">
+            <div className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20">
               <h1 className="mb-5 text-5xl font-bold pt-10">Contact us</h1>
               <p className=" flex items-center">
                 <FaHome className="mr-2" />
@@ -72,10 +69,7 @@ const Contact = () => {
                 </a>
               </p>
             </div>
-            <div
-              className="max-w-lg shadow-lg shadow-white rounded-lg mt-14 p-5 mb-5"
-              data-aos="fade-left"
-              data-aos-duration="1000">
+            <div className="max-w-lg shadow-lg shadow-white rounded-lg mt-14 p-5 mb-5">
               <h2 className=" text-2xl uppercase text-center text-primary">
                 Provide your Information
               </h2>

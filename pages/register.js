@@ -65,7 +65,6 @@ const Register = () => {
 
   if (loading || updating) return <Loading></Loading>;
 
-  console.log(user);
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data?.email, data?.password);
     await updateProfile({ displayName: data.name });

@@ -6,9 +6,7 @@ import Layout from "../components/Layout";
 
 const About = () => {
   return (
-    <Layout title='About us'>
-  
-     
+    <Layout title="About us">
       <div className="max-w-screen-2xl mx-auto mt-16 relative">
         <Image
           width="1024"
@@ -20,21 +18,30 @@ const About = () => {
         />
 
         <div className="card lg:card-side bg-base-100 flex lg:flex-row-reverse lg:justify-between px-3 mt-5 pb-8">
-          <div className=" lg:w-1/2 lg:pr-24" data-aos="fade-left" data-aos-duration="1000">
-            <h2 className=" text-3xl font-bold py-5 text-[#31982f]">About us</h2>
+          <div className=" lg:w-1/2 lg:pr-24">
+            <h2 className=" text-3xl font-bold py-5 text-[#31982f]">
+              About us
+            </h2>
             <p className="p-2 text-justify">
-              <span className=" font-bold text-primary"> BUILD-AD</span> the finest quality raw materials are used to
-              produce high quality raw materials imported from Germany, South Korea, South Africa, Malaysia, China,
-              India. As a result, we have been able to draw the market attention to our{" "}
-              <span className=" font-bold text-primary"> BUILD-AD</span> branded admixture within a very short period of
-              time. Also, we are actively involved in various construction projects through the country.{" "}
-              <span className=" font-bold text-primary"> BUILD-AD</span> Construction Chemical Company Engineering also
-              importing building materials to meet the desired level of quality products. It will be an obvious to
-              mention that, we have been able to come so far by a team of highly dedicated and very energetic young
-              professionals. As a result. The level of our customers satisfactions are crossing its limits day by day.
+              <span className=" font-bold text-primary"> BUILD-AD</span> the
+              finest quality raw materials are used to produce high quality raw
+              materials imported from Germany, South Korea, South Africa,
+              Malaysia, China, India. As a result, we have been able to draw the
+              market attention to our{" "}
+              <span className=" font-bold text-primary"> BUILD-AD</span> branded
+              admixture within a very short period of time. Also, we are
+              actively involved in various construction projects through the
+              country.{" "}
+              <span className=" font-bold text-primary"> BUILD-AD</span>{" "}
+              Construction Chemical Company Engineering also importing building
+              materials to meet the desired level of quality products. It will
+              be an obvious to mention that, we have been able to come so far by
+              a team of highly dedicated and very energetic young professionals.
+              As a result. The level of our customers satisfactions are crossing
+              its limits day by day.
             </p>
           </div>
-          <div className="mt-5 lg:mt-0 lg:pl-24" data-aos="fade-right" data-aos-duration="1000">
+          <div className="mt-5 lg:mt-0 lg:pl-24">
             <Image width="200" height="60" src="/images/Logo.png" alt="Logo" />
             <h2 className=" text-3xl font-bold py-5 text-[#31982f]">Address</h2>
             <p className=" flex items-center">
@@ -42,7 +49,9 @@ const About = () => {
               <span>73, College Road, Matuail, Jatrabari, Dhaka-1362.</span>
             </p>
             <p>
-              <a href="mailto:buildadltd@gmail.com" className=" flex items-center">
+              <a
+                href="mailto:buildadltd@gmail.com"
+                className=" flex items-center">
                 <FaEnvelope className="mr-2" />
                 <span>buildadltd@gmail.com</span>
               </a>
@@ -61,12 +70,10 @@ const About = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className=" text-white"
-        >
+          className=" text-white">
           <Certifide></Certifide>
         </div>
       </div>
-     
     </Layout>
   );
 };

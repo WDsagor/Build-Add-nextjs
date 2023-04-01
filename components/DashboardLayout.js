@@ -55,25 +55,25 @@ const DashboardLayout = ({ title, children }) => {
           {children}
         </div>
         <div
-          className={`h-[70vh] bg-primary/80 ${
-            sideMenu ? "w-24 shrink-0" : "w-60"
+          className={`lg:h-[70vh] bg-primary/80 h-fit sm:fixed md:fixed  bottom-0 ${
+            sideMenu ? "w-24 shrink-0" : "lg:w-60 w-screen"
           } ${
-            navbar ? " sticky top-14" : ""
-          } flex flex-col justify-between rounded-b-lg transition-all duration-500 z-10`}>
+            navbar ? " lg:sticky xl:sticky lg:top-14" : ""
+          } flex lg:flex-col lg:left-0 lg:top-16 lg:justify-between rounded-b-lg transition-all lg:duration-500 z-50`}>
           <ul
-            className={`menu p-4 ${
-              sideMenu ? "w-24" : "w-60"
+            className={`menu p-4 lg:menu-vertical menu-horizontal ${
+              sideMenu ? "w-24" : " w-screen lg:w-60"
             } text-white relative transition-all duration-500 delay-100`}>
             <div
               onClick={() => setsideMenu(!sideMenu)}
-              className={` absolute top-[50%]  h-8 w-8 bg-white rounded-full border border-primary cursor-pointer z-20 ${
+              className={` absolute hidden lg:flex top-[50%]  h-8 w-8 bg-white rounded-full border border-primary cursor-pointer z-20 ${
                 sideMenu
                   ? "hover:right-[-20%] right-[-15%] rotate-180"
                   : "hover:right-[-2%] right-[-6%]"
               } transition-all shadow-md shadow-black duration-700`}>
               <FaArrowLeft className="text-primary text-3xl p-1" />
             </div>
-            <li className="my-1">
+            <li className="my-1 flex flex-col">
               <Link href="/dashboard/profile">
                 <a
                   className={
@@ -140,8 +140,8 @@ const DashboardLayout = ({ title, children }) => {
                 <a
                   className={
                     router.pathname == "/dashboard/addDealer"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
+                      ? "active bg-[#1a6304] flex flex-col"
+                      : "hover:bg-[#1a6304] flex flex-col"
                   }>
                   <span>
                     <FaTelegramPlane size={25} />
@@ -160,8 +160,8 @@ const DashboardLayout = ({ title, children }) => {
                 <a
                   className={
                     router.pathname == "/dashboard/allDealer"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
+                      ? "active bg-[#1a6304] flex flex-col"
+                      : "hover:bg-[#1a6304] flex flex-col"
                   }>
                   <span>
                     <HiUserGroup size={25} />
