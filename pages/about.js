@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 const About = () => {
   return (
     <Layout title="About us">
-      <div className="max-w-screen-2xl mx-auto mt-16 relative">
+      <div className="max-w-screen-2xl mx-auto relative">
         <Image
           width="1024"
           height="150"

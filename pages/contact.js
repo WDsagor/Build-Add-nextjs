@@ -26,7 +26,7 @@ const Contact = () => {
           background: `url("/images/contactIMG.jpg")`,
           backgroundSize: "cover",
         }}
-        className=" hero min-h-screen mt-20 md:mt-16">
+        className=" hero min-h-screen">
         <div className="hero-overlay bg-opacity-80"></div>
         <div className=" max-w-screen-2xl mx-auto">
           <div className=" lg:flex justify-between text-neutral-content">

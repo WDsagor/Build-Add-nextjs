@@ -3,7 +3,7 @@ import { FaFacebookF, FaYoutube, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 const TopHeader = () => {
   return (
-    <div className="fixed bg-[#05554C] top-0 z-50 w-full">
+    <div className="bg-[#05554C] top-0 z-50 w-full">
       <div className=" max-w-screen-2xl mx-auto md:flex justify-around items-center">
         <div className=" flex justify-center text-xl py-1">
           <a

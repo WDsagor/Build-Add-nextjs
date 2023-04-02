@@ -90,7 +90,7 @@ const Login = () => {
           background: `url('/images/Carousel-img/grouping.png')`,
           backgroundSize: "cover",
         }}
-        className="hero min-h-screen pb-5 mt-10">
+        className="hero min-h-screen pb-5">
         <div className="flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white">
             <div className="card-body transition-all">
@@ -146,7 +146,7 @@ const Login = () => {
                     </small>
                   )}
                 </div>
-                <label className="flex flex-1 justify-between py-5">
+                <label className="flex flex-1 justify-between pt-5">
                   <p className="label-text-alt text-white">
                     Are you New?{" "}
                     <Link href="/register" passHref>
@@ -155,13 +155,13 @@ const Login = () => {
                       </a>
                     </Link>
                   </p>
-                  <Link href="/reset-password" passHref>
-                    <a className="label-text-alt text-primary link link-hover">
-                      {" "}
-                      Forgot password ?
-                    </a>
-                  </Link>
                 </label>
+                <Link href="/reset-password" passHref>
+                  <a className="label-text-alt text-slate-400 link link-hover">
+                    {" "}
+                    Forgot password ?
+                  </a>
+                </Link>
                 <div className="form-control mt-6">
                   <input
                     type="submit"

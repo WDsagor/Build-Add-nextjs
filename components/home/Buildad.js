@@ -4,7 +4,7 @@ import React from "react";
 const Buildad = () => {
   return (
     <div
-      className="max-w-screen-2xl w-full mx-auto"
+      className="max-w-screen-2xl w-full mx-auto px-2"
       data-aos="fade-right"
       data-aos-duration="1000">
       <div className=" px-5 text-primary py-10 text-justify">

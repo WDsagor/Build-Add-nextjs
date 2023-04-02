@@ -119,10 +119,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`border-gray-200 px-2 sm:px-8 fixed w-full top-0 z-50 transition-all  ${
-        navbar
-          ? "bg-white shadow-lg text-primary"
-          : "text-white bg-primary md:mt-8 mt-[50px]"
+      className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-50 transition-all  ${
+        navbar ? "bg-white shadow-lg text-primary" : "text-white bg-primary"
       }`}>
       <div className="navbar  max-w-screen-2xl w-full mx-auto">
         <div className="navbar-start  xs:py-2">

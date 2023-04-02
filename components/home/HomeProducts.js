@@ -10,7 +10,7 @@ import { Pagination, Navigation, FreeMode } from "swiper";
 const HomeProducts = () => {
   return (
     <div
-      className="max-w-screen-2xl px-5 py-10 mx-auto"
+      className="max-w-screen-2xl py-10 mx-auto"
       data-aos="zoom-out"
       data-aos-duration="1000">
       <h1 className="lg:text-4xl text-2xl text-center pt-14 pb-5 font-bold text-primary">

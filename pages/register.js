@@ -84,7 +84,7 @@ const Register = () => {
           background: `url("/images/Carousel-img/grouping.png")`,
           backgroundSize: "cover",
         }}
-        className="hero min-h-screen pb-5 mt-16 md:mt-16 ">
+        className="hero min-h-screen pb-5 ">
         <div className=" flex justify-center items-center md:w-[500px] flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-opacity-30 bg-black mt-20 shadow-white">
             <div className="card-body transition-all">

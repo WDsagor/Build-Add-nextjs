@@ -3,13 +3,14 @@ import React from "react";
 
 const DelarNeed = () => {
   return (
-    <div className="bg-warning mt-[90px] md:mt-[70px] w-full overflow-hidden">
+    <div className="bg-warning  w-full overflow-hidden ">
       <div
         style={{
           background: `url("/images/shadow.png")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          width: "100vw",
         }}
         className=" max-w-screen-2xl mx-auto pt-5">
         <div>

@@ -15,6 +15,7 @@ import auth from "../config/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "./share/Loading";
 import useNav from "../hooks/useNav";
+import SmallDashboardMenu from "./share/SmallDashboardMenu";
 
 const DashboardLayout = ({ title, children }) => {
   const [user, loading] = useAuthState(auth);
@@ -38,6 +39,7 @@ const DashboardLayout = ({ title, children }) => {
 
   const logout = () => {
     signOut(auth);
+    router.push("/login");
   };
 
   if (loading) {
@@ -45,7 +47,7 @@ const DashboardLayout = ({ title, children }) => {
   }
   return (
     <Layout title="Dashboard">
-      <div className="mt-28 md:mt-24 flex flex-row-reverse w-auto">
+      <div className="mt-28 md:mt-24 flex relative flex-row-reverse w-auto">
         <div className="flex flex-col w-full max-w-screen-2xl mx-auto overflow-y-auto">
           <div className=" text-primary navbar rounded-xl mt-2">
             <div className="flex-1 text-center justify-center text-3xl">
@@ -55,14 +57,14 @@ const DashboardLayout = ({ title, children }) => {
           {children}
         </div>
         <div
-          className={`lg:h-[70vh] bg-primary/80 h-fit sm:fixed md:fixed  bottom-0 ${
-            sideMenu ? "w-24 shrink-0" : "lg:w-60 w-screen"
+          className={`h-[70vh] bg-primary/80 ${
+            sideMenu ? "w-24 shrink-0" : "lg:w-60"
           } ${
-            navbar ? " lg:sticky xl:sticky lg:top-14" : ""
-          } flex lg:flex-col lg:left-0 lg:top-16 lg:justify-between rounded-b-lg transition-all lg:duration-500 z-50`}>
+            navbar ? "sticky top-14" : ""
+          }  flex-col hidden lg:flex left-0 top-16 justify-between rounded-b-lg transition-all duration-500 z-50`}>
           <ul
-            className={`menu p-4 lg:menu-vertical menu-horizontal ${
-              sideMenu ? "w-24" : " w-screen lg:w-60"
+            className={`menu p-4  ${
+              sideMenu ? "w-24" : " lg:w-60"
             } text-white relative transition-all duration-500 delay-100`}>
             <div
               onClick={() => setsideMenu(!sideMenu)}
@@ -73,7 +75,7 @@ const DashboardLayout = ({ title, children }) => {
               } transition-all shadow-md shadow-black duration-700`}>
               <FaArrowLeft className="text-primary text-3xl p-1" />
             </div>
-            <li className="my-1 flex flex-col">
+            <li className="my-1 ">
               <Link href="/dashboard/profile">
                 <a
                   className={
@@ -140,8 +142,8 @@ const DashboardLayout = ({ title, children }) => {
                 <a
                   className={
                     router.pathname == "/dashboard/addDealer"
-                      ? "active bg-[#1a6304] flex flex-col"
-                      : "hover:bg-[#1a6304] flex flex-col"
+                      ? "active bg-[#1a6304]"
+                      : "hover:bg-[#1a6304]"
                   }>
                   <span>
                     <FaTelegramPlane size={25} />
@@ -160,8 +162,8 @@ const DashboardLayout = ({ title, children }) => {
                 <a
                   className={
                     router.pathname == "/dashboard/allDealer"
-                      ? "active bg-[#1a6304] flex flex-col"
-                      : "hover:bg-[#1a6304] flex flex-col"
+                      ? "active bg-[#1a6304] "
+                      : "hover:bg-[#1a6304]"
                   }>
                   <span>
                     <HiUserGroup size={25} />
@@ -199,6 +201,7 @@ const DashboardLayout = ({ title, children }) => {
             )}
           </ul>
         </div>
+        <SmallDashboardMenu />
       </div>
     </Layout>
   );

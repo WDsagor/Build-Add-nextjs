@@ -11,7 +11,7 @@ const AboutBuildadd = () => {
       <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">
         WHY CHOOSE US
       </h1>
-      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-12 text-white px-5">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-14 lg:gap-12 text-white px-5">
         <div className="shadow-xl rounded-xl  bg-purple-900">
           <figure className="px-10 pt-10 flex justify-center">
             <Image
