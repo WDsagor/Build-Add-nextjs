@@ -47,7 +47,7 @@ const DashboardLayout = ({ title, children }) => {
   }
   return (
     <Layout title="Dashboard">
-      <div className="mt-28 md:mt-24 flex relative flex-row-reverse w-auto">
+      <div className="flex relative flex-row-reverse w-auto">
         <div className="flex flex-col w-full max-w-screen-2xl mx-auto overflow-y-auto">
           <div className=" text-primary navbar rounded-xl mt-2">
             <div className="flex-1 text-center justify-center text-3xl">
@@ -60,7 +60,7 @@ const DashboardLayout = ({ title, children }) => {
           className={`h-[70vh] bg-primary/80 ${
             sideMenu ? "w-24 shrink-0" : "lg:w-60"
           } ${
-            navbar ? "sticky top-14" : ""
+            navbar ? "fixed top-0" : ""
           }  flex-col hidden lg:flex left-0 top-16 justify-between rounded-b-lg transition-all duration-500 z-50`}>
           <ul
             className={`menu p-4  ${

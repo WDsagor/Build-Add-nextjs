@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import useNav from "../../hooks/useNav";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./../../config/firebase.init";
 import { FaShoppingCart } from "react-icons/fa";
 import Loading from "./Loading";
+import useNav from "../../hooks/useNav";
 
 const Navbar = () => {
+  const { navbar, navbarLogo } = useNav();
   const [user, loading] = useAuthState(auth);
   const [menuShow, setMenuShoe] = useState(false);
 
-  const { navbar, navbarLogo } = useNav();
   const router = useRouter();
   const index = 0;
 
@@ -119,7 +119,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-50 transition-all  ${
+      className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-[999] transition-all ${
         navbar ? "bg-white shadow-lg text-primary" : "text-white bg-primary"
       }`}>
       <div className="navbar  max-w-screen-2xl w-full mx-auto">

@@ -28,13 +28,15 @@ const Layout = ({ title, children }) => {
         <meta name="description" content="Construction Chemical Company" />
       </Head>
       <div className=" flex flex-col min-h-screen justify-between">
-        <TopHeader></TopHeader>
-        <Navbar></Navbar>
-        {noAuthRequired.includes(router.pathname) ? (
-          <div className="">{children}</div>
-        ) : (
-          <RequireAuth>{children}</RequireAuth>
-        )}
+        <div>
+          <TopHeader></TopHeader>
+          <Navbar></Navbar>
+          {noAuthRequired.includes(router.pathname) ? (
+            <div className="">{children}</div>
+          ) : (
+            <RequireAuth>{children}</RequireAuth>
+          )}
+        </div>
         <Footer></Footer>
       </div>
     </>

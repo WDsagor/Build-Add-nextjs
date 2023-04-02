@@ -24,7 +24,7 @@ const SmallDashboardMenu = () => {
   return (
     <div>
       <div
-        className={` bg-primary/80 fixed w-full justify-evenly left-0 bottom-0 flex lg:hidden rounded-b-lg transition-all duration-500 z-50`}>
+        className={` bg-primary/50 fixed w-full justify-evenly left-0 bottom-0 flex lg:hidden rounded-b-lg transition-all duration-500 z-50`}>
         <ul
           className={`menu menu-horizontal gap-1 text-white text-sm md:text-xl p-1 md:p-2 md:gap-3`}>
           <li className="my-1 ">

@@ -4,10 +4,7 @@ import Image from "next/image";
 
 const AboutBuildadd = () => {
   return (
-    <div
-      className=" max-w-screen-2xl mx-auto w-full py-10"
-      data-aos="fade-right"
-      data-aos-duration="1000">
+    <div className=" max-w-screen-2xl mx-auto w-full py-10 ">
       <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">
         WHY CHOOSE US
       </h1>
