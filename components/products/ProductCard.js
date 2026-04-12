@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -17,7 +16,8 @@ const ProductCard = ({ product }) => {
           freeMode={true}
           navigation={true}
           loop={true}
-          modules={[Navigation]}>
+          modules={[Navigation]}
+        >
           {urls?.map((url, index) => {
             return (
               <SwiperSlide key={index}>
