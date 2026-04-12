@@ -1,6 +1,4 @@
-import { async } from "@firebase/util";
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../../components/Layout";
 import ProductCard from "../../components/products/ProductCard";
 
