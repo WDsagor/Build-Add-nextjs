@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../config/firebase.init";
@@ -38,7 +38,8 @@ const DetailsModal = ({ order }) => {
         <div className="modal-box w-10/12 max-w-5xl  relative">
           <label
             htmlFor="order-details"
-            className="btn btn-sm btn-error btn-circle absolute right-2 top-2">
+            className="btn btn-sm btn-error btn-circle absolute right-2 top-2"
+          >
             ✕
           </label>
           <div className="flex flex-col md:flex-row justify-between gap-5">
@@ -129,10 +130,12 @@ const DetailsModal = ({ order }) => {
           <div className="modal-action">
             <label
               htmlFor="order-details"
-              className="btn btn-sm text-black btn-secondary">
+              className="btn btn-sm text-black btn-secondary"
+            >
               <PDFDownloadLink
                 document={<PdfDoc />}
-                fileName={`${user?.displayName}-Order.pdf`}>
+                fileName={`${user?.displayName}-Order.pdf`}
+              >
                 {({ blob, url, loading, error }) =>
                   loading ? "Loading document..." : "Download now!"
                 }
@@ -143,13 +146,15 @@ const DetailsModal = ({ order }) => {
                 {isEdit ? (
                   <label
                     onClick={() => setIsEdit(!isEdit)}
-                    className="btn btn-sm btn-primary text-black hover:text-white font-normal">
+                    className="btn btn-sm btn-primary text-black hover:text-white font-normal"
+                  >
                     Update
                   </label>
                 ) : (
                   <label
                     onClick={() => setIsEdit(!isEdit)}
-                    className="btn btn-sm btn-error text-white font-normal">
+                    className="btn btn-sm btn-error text-white font-normal"
+                  >
                     Edit
                   </label>
                 )}

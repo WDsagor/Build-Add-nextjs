@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, Text, View, StyleSheet, Svg, Image } from "@react-pdf/renderer";
+import { Link, Text, View, StyleSheet } from "@react-pdf/renderer";
 
 const PdfFooter = () => {
   const styles = StyleSheet.create({
@@ -50,7 +49,8 @@ const PdfFooter = () => {
             Phone: +8801673040503{" "}
             <Link
               style={styles.link}
-              src="mailto:buildingadmixturelimited@gmail.com">
+              src="mailto:buildingadmixturelimited@gmail.com"
+            >
               E-mail: buildingadmixturelimited@gmail.com
             </Link>
           </Text>

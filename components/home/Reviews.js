@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -12,7 +11,8 @@ const Reviews = () => {
     <div
       className="max-w-screen-2xl px-10 mx-auto "
       data-aos="zoom-in"
-      data-aos-duration="1000">
+      data-aos-duration="1000"
+    >
       <h1 className="lg:text-3xl text-xl text-center pt-14 text-primary uppercase font-bold">
         Our Happy Clients Reviews
       </h1>
@@ -36,7 +36,8 @@ const Reviews = () => {
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination, Navigation, FreeMode]}>
+          modules={[Pagination, Navigation, FreeMode]}
+        >
           <SwiperSlide>
             <div className="flex py-5 mt-10">
               <div className="group w-full lg:w-5/6 shadow-xl bg-gray-900 text-white relative rounded-xl hover:bg-yellow-400 hover:text-black cursor-pointer ease-in duration-300">

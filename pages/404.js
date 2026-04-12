@@ -11,10 +11,11 @@ const Custom404 = () => {
             <p className="py-6">
               This page doesn&lsquo;t exist. Please return to the previous page
             </p>
-            <Link href="/">
-              <a className=" cursor-pointer text-primary hover:underline">
-                Go to Home page
-              </a>
+            <Link
+              href="/"
+              className=" cursor-pointer text-primary hover:underline"
+            >
+              Go to Home page
             </Link>
           </div>
         </div>

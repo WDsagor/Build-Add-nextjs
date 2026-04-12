@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { FaHome, FaEnvelope, FaPhoneSquareAlt } from "react-icons/fa";
 import Certifide from "../components/home/Certifide";
@@ -51,7 +50,8 @@ const About = () => {
             <p>
               <a
                 href="mailto:buildadltd@gmail.com"
-                className=" flex items-center">
+                className=" flex items-center"
+              >
                 <FaEnvelope className="mr-2" />
                 <span>buildadltd@gmail.com</span>
               </a>
@@ -70,7 +70,8 @@ const About = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className=" text-white">
+          className=" text-white"
+        >
           <Certifide></Certifide>
         </div>
       </div>

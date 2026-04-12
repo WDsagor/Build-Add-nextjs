@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -37,14 +36,16 @@ const Carousel = () => {
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation, EffectFade]}>
+        modules={[Autoplay, Pagination, Navigation, EffectFade]}
+      >
         <SwiperSlide>
           <img src="/images/Carousel-img/helmet.png" alt="" />
           <div className=" absolute left-8 right-8 bottom-8 text-white md:left-12 md:bottom-12 lg:left-16 lg:right-16  grid grid-cols-2 gap-14 lg:bottom-1/4 items-end">
             <div
               data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl lg:text-4xl font-bold"> Adaption Plus</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -76,7 +77,8 @@ const Carousel = () => {
             <div
               data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl lg:text-4xl font-bold"> Builmix</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -108,7 +110,8 @@ const Carousel = () => {
             <div
               data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl font-bold lg:text-4xl "> Rawmix</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -140,7 +143,8 @@ const Carousel = () => {
             <div
               data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl font-bold lg:text-4xl "> Adaption Plus</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -172,7 +176,8 @@ const Carousel = () => {
             <div
               data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl font-bold lg:text-4xl "> Rawmix Plus</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -204,7 +209,8 @@ const Carousel = () => {
             <div
               data-aos="fade-left"
               data-aos-duration="1500"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl font-bold lg:text-4xl "> Builmix</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos
@@ -236,7 +242,8 @@ const Carousel = () => {
             <div
               data-aos="fade-in"
               data-aos-duration="1000"
-              data-aos-delay="800">
+              data-aos-delay="800"
+            >
               <p className="text-2xl font-bold lg:text-4xl"> Adaption Plus</p>
               <p className="py-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos

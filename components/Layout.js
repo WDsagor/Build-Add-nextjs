@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../config/firebase.init";
 import Footer from "./share/Footer";
@@ -27,7 +27,7 @@ const Layout = ({ title, children }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Construction Chemical Company" />
       </Head>
-      <div className=" flex flex-col min-h-screen justify-between">
+      <div className=" flex flex-col min-h-screen justify-between bg-white">
         <div>
           <TopHeader></TopHeader>
           <Navbar></Navbar>

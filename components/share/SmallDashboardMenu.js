@@ -24,84 +24,86 @@ const SmallDashboardMenu = () => {
   return (
     <div>
       <div
-        className={` bg-primary/50 fixed w-full justify-evenly left-0 bottom-0 flex lg:hidden rounded-b-lg transition-all duration-500 z-50`}>
+        className={` bg-primary/50 fixed w-full justify-evenly left-0 bottom-0 flex lg:hidden rounded-b-lg transition-all duration-500 z-50`}
+      >
         <ul
-          className={`menu menu-horizontal gap-1 text-white text-sm md:text-xl p-1 md:p-2 md:gap-3`}>
+          className={`menu menu-horizontal gap-1 text-white text-sm md:text-xl p-1 md:p-2 md:gap-3`}
+        >
           <li className="my-1 ">
-            <Link href="/dashboard/profile">
-              <a
-                className={` flex flex-col gap-0 p-1 md:p-2 ${
-                  router.pathname == "/dashboard/profile"
-                    ? "active bg-[#1a6304]"
-                    : "hover:bg-[#1a6304]"
-                }`}>
-                <span>
-                  <FaUserCircle />
-                </span>
-                <span>Profile</span>
-              </a>
+            <Link
+              href="/dashboard/profile"
+              className={` flex flex-col gap-0 p-1 md:p-2 ${
+                router.pathname == "/dashboard/profile"
+                  ? "active bg-[#1a6304]"
+                  : "hover:bg-[#1a6304]"
+              }`}
+            >
+              <span>
+                <FaUserCircle />
+              </span>
+              <span>Profile</span>
             </Link>
           </li>
           <li className="my-1">
-            <Link href="/dashboard">
-              <a
-                className={`flex flex-col gap-0 p-1 md:p-2 ${
-                  router.pathname == "/dashboard"
-                    ? "active bg-[#1a6304]"
-                    : "hover:bg-[#1a6304]"
-                }`}>
-                <span>
-                  <FaShoppingCart />
-                </span>
-                <span>{admin ? "All Oders" : " My Order"}</span>
-              </a>
+            <Link
+              href="/dashboard"
+              className={`flex flex-col gap-0 p-1 md:p-2 ${
+                router.pathname == "/dashboard"
+                  ? "active bg-[#1a6304]"
+                  : "hover:bg-[#1a6304]"
+              }`}
+            >
+              <span>
+                <FaShoppingCart />
+              </span>
+              <span>{admin ? "All Oders" : " My Order"}</span>
             </Link>
           </li>
           <li className="my-1">
-            <Link href="/dashboard/addProduct">
-              <a
-                className={` flex flex-col gap-0 p-1 md:p-2 ${
-                  router.pathname == "/dashboard/addProduct"
-                    ? "active bg-[#1a6304]"
-                    : "hover:bg-[#1a6304]"
-                }`}>
-                <span>
-                  <HiViewGridAdd />
-                </span>
-                <span> Add Products</span>
-              </a>
+            <Link
+              href="/dashboard/addProduct"
+              className={` flex flex-col gap-0 p-1 md:p-2 ${
+                router.pathname == "/dashboard/addProduct"
+                  ? "active bg-[#1a6304]"
+                  : "hover:bg-[#1a6304]"
+              }`}
+            >
+              <span>
+                <HiViewGridAdd />
+              </span>
+              <span> Add Products</span>
             </Link>
           </li>
           {!admin && (
             <li className="my-1">
-              <Link href="/dashboard/addDealer">
-                <a
-                  className={`flex flex-col gap-0 p-1 md:p-2 ${
-                    router.pathname == "/dashboard/addDealer"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
-                  }`}>
-                  <span>
-                    <FaTelegramPlane />
-                  </span>
-                  <span>Apply Dealer</span>
-                </a>
+              <Link
+                href="/dashboard/addDealer"
+                className={`flex flex-col gap-0 p-1 md:p-2 ${
+                  router.pathname == "/dashboard/addDealer"
+                    ? "active bg-[#1a6304]"
+                    : "hover:bg-[#1a6304]"
+                }`}
+              >
+                <span>
+                  <FaTelegramPlane />
+                </span>
+                <span>Apply Dealer</span>
               </Link>
             </li>
           )}
           <li className="my-1">
-            <Link href="/dashboard/allDealer">
-              <a
-                className={`flex flex-col gap-0 p-1 md:p-2 ${
-                  router.pathname == "/dashboard/allDealer"
-                    ? "active bg-[#1a6304] "
-                    : "hover:bg-[#1a6304]"
-                }`}>
-                <span>
-                  <HiUserGroup />
-                </span>
-                <span>All Dealr</span>
-              </a>
+            <Link
+              href="/dashboard/allDealer"
+              className={`flex flex-col gap-0 p-1 md:p-2 ${
+                router.pathname == "/dashboard/allDealer"
+                  ? "active bg-[#1a6304] "
+                  : "hover:bg-[#1a6304]"
+              }`}
+            >
+              <span>
+                <HiUserGroup />
+              </span>
+              <span>All Dealr</span>
             </Link>
           </li>
           {user?.emailVerified && (

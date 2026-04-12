@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 
 const DelarNeed = () => {
   return (
@@ -12,16 +11,14 @@ const DelarNeed = () => {
           backgroundSize: "cover",
           width: "100vw",
         }}
-        className=" max-w-screen-2xl mx-auto pt-5">
+        className=" max-w-screen-2xl mx-auto pt-5"
+      >
         <div>
           <div className=" w-3/4 mx-auto overflow-hidden">
             <div className=" news text-sm md:text-lg lg:text-xl text-white font-medium pt-2">
               ...... সারাদেশে ডিলার নিয়োগ চলছে .......
               <small className="link link-secondary ">
-                {" "}
-                <Link href="/dashboard/addDealer">
-                  <a>আবেদন ফরম</a>
-                </Link>
+                <Link href="/dashboard/addDealer">আবেদন ফরম</Link>
               </small>
             </div>
           </div>

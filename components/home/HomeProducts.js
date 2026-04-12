@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -30,7 +29,8 @@ const HomeProducts = () => {
           spaceBetween={30}
           freeMode={true}
           navigation={true}
-          modules={[Pagination, Navigation, FreeMode]}>
+          modules={[Pagination, Navigation, FreeMode]}
+        >
           <SwiperSlide>
             <div className="card card-compact bg-base-100 shadow-xl">
               <figure className="p-5">

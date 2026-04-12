@@ -19,64 +19,64 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/">
-          <a
-            className={
-              router.pathname == "/"
-                ? "active bg-[#046307]"
-                : "hover:bg-[#046307]"
-            }>
-            Home
-          </a>
+        <Link
+          href="/"
+          className={
+            router.pathname == "/"
+              ? "active bg-[#046307]"
+              : "hover:bg-[#046307]"
+          }
+        >
+          Home
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/products">
-          <a
-            className={
-              router.pathname == "/products"
-                ? "active bg-[#046307]"
-                : "hover:bg-[#046307]"
-            }>
-            Products
-          </a>
+        <Link
+          href="/products"
+          className={
+            router.pathname == "/products"
+              ? "active bg-[#046307]"
+              : "hover:bg-[#046307]"
+          }
+        >
+          Products
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/about">
-          <a
-            className={
-              router.pathname == "/about"
-                ? "active bg-[#046307]"
-                : "hover:bg-[#046307]"
-            }>
-            About Us
-          </a>
+        <Link
+          href="/about"
+          className={
+            router.pathname == "/about"
+              ? "active bg-[#046307]"
+              : "hover:bg-[#046307]"
+          }
+        >
+          About Us
         </Link>
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-        <Link href="/contact">
-          <a
-            className={
-              router.pathname == "/contact"
-                ? "active bg-[#046307]"
-                : "hover:bg-[#046307]"
-            }>
-            Contact
-          </a>
+        <Link
+          href="/contact"
+          className={
+            router.pathname == "/contact"
+              ? "active bg-[#046307]"
+              : "hover:bg-[#046307]"
+          }
+        >
+          Contact
         </Link>
       </li>
       {user?.emailVerified && (
         <li onClick={() => setMenuShoe(!menuShow)} className="mx-1">
-          <Link href="/dashboard">
-            <a
-              className={
-                router.pathname == "/dashboard"
-                  ? "active bg-[#046307]"
-                  : "hover:bg-[#046307]"
-              }>
-              Dashboard
-            </a>
+          <Link
+            href="/dashboard"
+            className={
+              router.pathname == "/dashboard"
+                ? "active bg-[#046307]"
+                : "hover:bg-[#046307]"
+            }
+          >
+            Dashboard
           </Link>
         </li>
       )}
@@ -99,15 +99,15 @@ const Navbar = () => {
       </li>
       <li onClick={() => setMenuShoe(!menuShow)} className="mx-1 p-0">
         {!user?.emailVerified && (
-          <Link href="/login">
-            <a
-              className={
-                router.pathname == "/login"
-                  ? "active bg-[#046307]"
-                  : "hover:bg-[#046307]"
-              }>
-              Login
-            </a>
+          <Link
+            href="/login"
+            className={
+              router.pathname == "/login"
+                ? "active bg-[#046307]"
+                : "hover:bg-[#046307]"
+            }
+          >
+            Login
           </Link>
         )}
       </li>
@@ -121,16 +121,15 @@ const Navbar = () => {
     <nav
       className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-[999] transition-all ${
         navbar ? "bg-white shadow-lg text-primary" : "text-white bg-primary"
-      }`}>
+      }`}
+    >
       <div className="navbar  max-w-screen-2xl w-full mx-auto">
         <div className="navbar-start  xs:py-2">
-          <Link href="/">
-            <a className=" flex items-center">
-              {navbarLogo}{" "}
-              <span className="ml-2 font-semibold text-xs sm:text-md md:text-xl xl:text-2xl uppercase">
-                Building Admixture Limited
-              </span>
-            </a>
+          <Link href="/" className=" flex items-center">
+            {navbarLogo}{" "}
+            <span className="ml-2 font-semibold text-xs sm:text-md md:text-xl xl:text-2xl uppercase">
+              Building Admixture Limited
+            </span>
           </Link>
         </div>
 
@@ -143,17 +142,20 @@ const Navbar = () => {
               onClick={() => setMenuShoe(!menuShow)}
               tabIndex="1"
               className="btn btn-ghost lg:h
-              idden">
+              idden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current">
+                className="inline-block w-5 h-5 stroke-current"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"></path>
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
               </svg>
             </label>
             <ul
@@ -166,7 +168,8 @@ const Navbar = () => {
                         : "text-white bg-primary"
                     } rounded-box w-52`
                   : "hidden"
-              }>
+              }
+            >
               {menuItems}
             </ul>
           </div>

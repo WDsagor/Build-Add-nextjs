@@ -26,7 +26,8 @@ const Contact = () => {
           background: `url("/images/contactIMG.jpg")`,
           backgroundSize: "cover",
         }}
-        className=" hero min-h-screen">
+        className=" hero min-h-screen"
+      >
         <div className="hero-overlay bg-opacity-80"></div>
         <div className=" max-w-screen-2xl mx-auto">
           <div className=" lg:flex justify-between text-neutral-content">
@@ -39,7 +40,8 @@ const Contact = () => {
               <p>
                 <a
                   href="mailto:buildadltd@gmail.com"
-                  className=" flex items-center">
+                  className=" flex items-center"
+                >
                   <FaEnvelope className="mr-2" />
                   <span>buildadltd@gmail.com</span>
                 </a>
@@ -55,7 +57,8 @@ const Contact = () => {
                   href="https://www.facebook.com/buildingadmixture"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mr-5 btn btn-primary text-white btn-sm">
+                  className="mr-5 btn btn-primary text-white btn-sm"
+                >
                   <FaFacebookSquare className="text-lg mr-2" />
                   <span>Facebook</span>
                 </a>
@@ -63,7 +66,8 @@ const Contact = () => {
                   href="https://wa.me/+8801673040503"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary text-white btn-sm">
+                  className="btn btn-primary text-white btn-sm"
+                >
                   <FaWhatsappSquare className="text-lg mr-2" />
                   <span>Whatsapp</span>
                 </a>

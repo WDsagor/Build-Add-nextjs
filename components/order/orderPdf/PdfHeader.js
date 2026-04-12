@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, Text, View, StyleSheet, Svg, Image } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 
 const Header = ({ orderNo, orderDate }) => {
   const styles = StyleSheet.create({

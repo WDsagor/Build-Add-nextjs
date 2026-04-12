@@ -1,1 +1,16 @@
-{}
+{
+    "editor.fontVariations": false,
+    "editor.formatOnSave": true,
+    "editor.fontWeight": "normal",
+  "editor.fontFamily": "Fira Code",
+"editor.fontLigatures": true,
+"editor.cursorBlinking": "expand",
+"editor.cursorSmoothCaretAnimation": "explicit",
+"editor.cursorStyle": "line",
+"editor.wordWrap": "wordWrapColumn",
+"workbench.colorCustomizations": {
+    "editorCursor.foreground": "#0fdf5f",
+    "terminalCursor.foreground": "#0fdf5f"
+},
+  "editor.cursorSurroundingLinesStyle": "default"
+}

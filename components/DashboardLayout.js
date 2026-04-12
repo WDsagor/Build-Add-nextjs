@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "./Layout";
 import {
   FaArrowLeft,
@@ -21,12 +21,12 @@ const DashboardLayout = ({ title, children }) => {
   const [user, loading] = useAuthState(auth);
   const [admin, setAdmin] = useState(true);
   const { navbar } = useNav();
-  const [sideMenu, setsideMenu] = useState(false);
+  const [sideMenu, setSideMenu] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const data = window.localStorage.getItem("MY_APP_STATE");
-    if (data !== null) setsideMenu(JSON.parse(data));
+    if (data !== null) setSideMenu(JSON.parse(data));
   }, []);
   useEffect(() => {
     if (sideMenu == true) {
@@ -61,127 +61,137 @@ const DashboardLayout = ({ title, children }) => {
             sideMenu ? "w-24 shrink-0" : "lg:w-60"
           } ${
             navbar ? "fixed top-0" : ""
-          }  flex-col hidden lg:flex left-0 top-16 justify-between rounded-b-lg transition-all duration-500 z-50`}>
+          }  flex-col hidden lg:flex left-0 top-16 justify-between rounded-b-lg transition-all duration-500 z-50`}
+        >
           <ul
             className={`menu p-4  ${
               sideMenu ? "w-24" : " lg:w-60"
-            } text-white relative transition-all duration-500 delay-100`}>
+            } text-white relative transition-all duration-500 delay-100`}
+          >
             <div
-              onClick={() => setsideMenu(!sideMenu)}
+              onClick={() => setSideMenu(!sideMenu)}
               className={` absolute hidden lg:flex top-[50%]  h-8 w-8 bg-white rounded-full border border-primary cursor-pointer z-20 ${
                 sideMenu
                   ? "hover:right-[-20%] right-[-15%] rotate-180"
                   : "hover:right-[-2%] right-[-6%]"
-              } transition-all shadow-md shadow-black duration-700`}>
+              } transition-all shadow-md shadow-black duration-700`}
+            >
               <FaArrowLeft className="text-primary text-3xl p-1" />
             </div>
             <li className="my-1 ">
-              <Link href="/dashboard/profile">
-                <a
-                  className={
-                    router.pathname == "/dashboard/profile"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
-                  }>
-                  <span>
-                    <FaUserCircle size={25} />
-                  </span>
-                  <span
-                    className={` ${
-                      sideMenu ? "hidden " : "flex delay-700"
-                    } shrink-0`}>
-                    {" "}
-                    Profile
-                  </span>
-                </a>
+              <Link
+                href="/dashboard/profile"
+                className={
+                  router.pathname == "/dashboard/profile"
+                    ? "active bg-[#1a6304]"
+                    : "hover:bg-[#1a6304]"
+                }
+              >
+                <span>
+                  <FaUserCircle size={25} />
+                </span>
+                <span
+                  className={` ${
+                    sideMenu ? "hidden " : "flex delay-700"
+                  } shrink-0`}
+                >
+                  {" "}
+                  Profile
+                </span>
+              </Link>
+            </li>
+            <li className="my-1 ">
+              <Link
+                href="/dashboard"
+                className={
+                  router.pathname == "/dashboard"
+                    ? "active bg-[#1a6304]"
+                    : "hover:bg-[#1a6304]"
+                }
+              >
+                <span>
+                  <FaShoppingCart size={25} />
+                </span>
+                <span
+                  className={` ${
+                    sideMenu ? "hidden " : "flex  delay-700"
+                  } shrink-0`}
+                >
+                  {admin ? "All Oders" : " My Order"}
+                </span>
+              </Link>
+            </li>
+
+            <li className="my-1">
+              <Link
+                href="/dashboard/addProduct"
+                className={
+                  router.pathname == "/dashboard/addProduct"
+                    ? "active bg-[#1a6304]"
+                    : "hover:bg-[#1a6304]"
+                }
+              >
+                <span>
+                  <HiViewGridAdd size={25} />
+                </span>
+                <span
+                  className={` ${
+                    sideMenu ? "hidden " : "flex delay-700"
+                  } shrink-0 `}
+                >
+                  {" "}
+                  Add Products
+                </span>
               </Link>
             </li>
             <li className="my-1">
-              <Link href="/dashboard">
-                <a
-                  className={
-                    router.pathname == "/dashboard"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
-                  }>
-                  <span>
-                    <FaShoppingCart size={25} />
-                  </span>
-                  <span
-                    className={` ${
-                      sideMenu ? "hidden " : "flex  delay-700"
-                    } shrink-0`}>
-                    {admin ? "All Oders" : " My Order"}
-                  </span>
-                </a>
+              <Link
+                href="/dashboard/addDealer"
+                className={
+                  router.pathname == "/dashboard/addDealer"
+                    ? "active bg-[#1a6304]"
+                    : "hover:bg-[#1a6304]"
+                }
+              >
+                <span>
+                  <FaTelegramPlane size={25} />
+                </span>
+                <span
+                  className={` ${
+                    sideMenu ? "hidden " : "flex delay-700"
+                  } shrink-0 `}
+                >
+                  Apply Dealer
+                </span>
               </Link>
             </li>
             <li className="my-1">
-              <Link href="/dashboard/addProduct">
-                <a
-                  className={
-                    router.pathname == "/dashboard/addProduct"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
-                  }>
-                  <span>
-                    <HiViewGridAdd size={25} />
-                  </span>
-                  <span
-                    className={` ${
-                      sideMenu ? "hidden " : "flex delay-700"
-                    } shrink-0 `}>
-                    {" "}
-                    Add Products
-                  </span>
-                </a>
-              </Link>
-            </li>
-            <li className="my-1">
-              <Link href="/dashboard/addDealer">
-                <a
-                  className={
-                    router.pathname == "/dashboard/addDealer"
-                      ? "active bg-[#1a6304]"
-                      : "hover:bg-[#1a6304]"
-                  }>
-                  <span>
-                    <FaTelegramPlane size={25} />
-                  </span>
-                  <span
-                    className={` ${
-                      sideMenu ? "hidden " : "flex delay-700"
-                    } shrink-0 `}>
-                    Apply Dealer
-                  </span>
-                </a>
-              </Link>
-            </li>
-            <li className="my-1">
-              <Link href="/dashboard/allDealer">
-                <a
-                  className={
-                    router.pathname == "/dashboard/allDealer"
-                      ? "active bg-[#1a6304] "
-                      : "hover:bg-[#1a6304]"
-                  }>
-                  <span>
-                    <HiUserGroup size={25} />
-                  </span>
-                  <span
-                    className={` ${
-                      sideMenu ? "hidden " : "flex delay-700"
-                    } shrink-0 `}>
-                    All Dealr
-                  </span>
-                </a>
+              <Link
+                href="/dashboard/allDealer"
+                className={
+                  router.pathname == "/dashboard/allDealer"
+                    ? "active bg-[#1a6304] "
+                    : "hover:bg-[#1a6304]"
+                }
+              >
+                <span>
+                  <HiUserGroup size={25} />
+                </span>
+                <span
+                  className={` ${
+                    sideMenu ? "hidden " : "flex delay-700"
+                  } shrink-0 `}
+                >
+                  All Dealr
+                </span>
               </Link>
             </li>
           </ul>
           <ul
             className={`menu p-4 ${
               sideMenu ? "w-24" : "w-60"
-            } text-white transition-all duration-500 delay-100`}>
+            } text-white transition-all duration-500 delay-100`}
+          >
             {user?.emailVerified ? (
               <li onClick={() => logout()} className="my-1 ">
                 <button className="hover:bg-[#1a6304]">
@@ -191,7 +201,8 @@ const DashboardLayout = ({ title, children }) => {
                   <span
                     className={` ${
                       sideMenu ? "hidden " : "flex delay-700"
-                    } shrink-0`}>
+                    } shrink-0`}
+                  >
                     LogOut
                   </span>
                 </button>

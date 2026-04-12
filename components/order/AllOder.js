@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DashboardLayout from "../DashboardLayout";
 import DetailsModal from "./DetailsModal";
 
@@ -30,7 +30,8 @@ const AllOder = () => {
                 <td>
                   <label
                     htmlFor="order-details"
-                    className="btn btn-link capitalize">
+                    className="btn btn-link capitalize"
+                  >
                     Details
                   </label>
                   <DetailsModal order={order} />

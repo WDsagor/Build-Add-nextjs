@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -37,7 +36,8 @@ const Certifide = () => {
           spaceBetween={30}
           freeMode={true}
           navigation={true}
-          modules={[Pagination, Navigation, FreeMode]}>
+          modules={[Pagination, Navigation, FreeMode]}
+        >
           <SwiperSlide>
             <div className="card card-compact ">
               <figure className="p-8">

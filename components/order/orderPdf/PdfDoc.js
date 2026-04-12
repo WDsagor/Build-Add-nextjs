@@ -1,24 +1,10 @@
-import React from "react";
-import {
-  Document,
-  Image,
-  Page,
-  StyleSheet,
-  Text,
-  View,
-} from "@react-pdf/renderer";
+import { Document, Page, StyleSheet, View } from "@react-pdf/renderer";
 import PdfHeader from "./PdfHeader";
 import PdfFooter from "./PdfFooter";
 import TableItem from "./TableItem";
 
 const PdfDoc = () => {
   const styles = StyleSheet.create({
-    page: {
-      // display: "flex",
-      // flexDirection: "column",
-      // justifyContent: "space-between",
-    },
-
     item: {
       textAlign: "left",
     },
