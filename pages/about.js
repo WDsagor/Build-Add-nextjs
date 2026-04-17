@@ -22,16 +22,16 @@ const About = () => {
               About us
             </h2>
             <p className="p-2 text-justify">
-              <span className=" font-bold text-primary"> BUILD-AD</span> the
+              <span className=" font-bold text-primary"> Super FIXIT</span> the
               finest quality raw materials are used to produce high quality raw
               materials imported from Germany, South Korea, South Africa,
               Malaysia, China, India. As a result, we have been able to draw the
               market attention to our{" "}
-              <span className=" font-bold text-primary"> BUILD-AD</span> branded
-              admixture within a very short period of time. Also, we are
+              <span className=" font-bold text-primary"> Super FIXIT</span>{" "}
+              branded admixture within a very short period of time. Also, we are
               actively involved in various construction projects through the
               country.{" "}
-              <span className=" font-bold text-primary"> BUILD-AD</span>{" "}
+              <span className=" font-bold text-primary"> Super FIXIT</span>{" "}
               Construction Chemical Company Engineering also importing building
               materials to meet the desired level of quality products. It will
               be an obvious to mention that, we have been able to come so far by
@@ -41,7 +41,7 @@ const About = () => {
             </p>
           </div>
           <div className="mt-5 lg:mt-0 lg:pl-24">
-            <Image width="200" height="60" src="/images/Logo.png" alt="Logo" />
+            <Image width="200" height="60" src="/images/logo.png" alt="Logo" />
             <h2 className=" text-3xl font-bold py-5 text-[#31982f]">Address</h2>
             <p className=" flex items-center">
               <FaHome className="mr-2" />
@@ -49,17 +49,17 @@ const About = () => {
             </p>
             <p>
               <a
-                href="mailto:buildadltd@gmail.com"
+                href="mailto:infosuperfixit@gmail.com"
                 className=" flex items-center"
               >
                 <FaEnvelope className="mr-2" />
-                <span>buildadltd@gmail.com</span>
+                <span>infosuperfixit@gmail.com</span>
               </a>
             </p>
             <p>
-              <a href="tel:+8801912085555" className=" flex items-center">
+              <a href="tel:+880 1611117696" className=" flex items-center">
                 <FaPhoneSquareAlt className="mr-2" />
-                <span>+88 01912085555, +88 01912085588</span>
+                <span>+880 1611117696</span>
               </a>
             </p>
           </div>

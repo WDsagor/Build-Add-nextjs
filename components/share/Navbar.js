@@ -127,9 +127,6 @@ const Navbar = () => {
         <div className="navbar-start  xs:py-2">
           <Link href="/" className=" flex items-center">
             {navbarLogo}{" "}
-            <span className="ml-2 font-semibold text-xs sm:text-md md:text-xl xl:text-2xl uppercase">
-              Building Admixture Limited
-            </span>
           </Link>
         </div>
 

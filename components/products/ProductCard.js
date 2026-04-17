@@ -7,7 +7,7 @@ import { Navigation } from "swiper";
 
 const ProductCard = ({ product }) => {
   const urls = product?.product_img.split("=");
-  console.log(urls[2]);
+  // console.log(urls[2]);
   return (
     <div className="group bg-base-100 shadow-xl">
       <div className="mx-auto max-w-sm p-5">

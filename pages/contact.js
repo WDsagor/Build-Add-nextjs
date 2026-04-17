@@ -39,22 +39,22 @@ const Contact = () => {
               </p>
               <p>
                 <a
-                  href="mailto:buildadltd@gmail.com"
+                  href="mailto:infosuperfixit@gmail.com"
                   className=" flex items-center"
                 >
                   <FaEnvelope className="mr-2" />
-                  <span>buildadltd@gmail.com</span>
+                  <span>infosuperfixit@gmail.com</span>
                 </a>
               </p>
               <p>
-                <a href="tel:+8801912085555" className=" flex items-center">
+                <a href="tel:+880 1611117696" className=" flex items-center">
                   <FaPhoneSquareAlt className="mr-2" />
-                  <span>+88 01912085555, +88 01912085588</span>
+                  <span>+880 1611117696</span>
                 </a>
               </p>
               <p className="my-5 flex align-middle">
                 <a
-                  href="https://www.facebook.com/buildingadmixture"
+                  href="https://www.facebook.com/superfixit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mr-5 btn btn-primary text-white btn-sm"

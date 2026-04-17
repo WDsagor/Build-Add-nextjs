@@ -27,15 +27,11 @@ const useNav = () => {
   const changeLogo = () => {
     if (window.scrollY >= 300) {
       setNavbarLogo(
-        <span className="flex items-center self-center  font-bold whitespace-nowrap lg:text-2xl text-primary">
-          <Image width={50} height={50} src="/images/logo-white.svg" alt="" />
-        </span>
+        <Image width={100} height={100} src="/images/Logo.png" alt="" />,
       );
     } else {
       setNavbarLogo(
-        <span className="flex items-center self-center  font-bold whitespace-nowrap ">
-          <Image width={50} height={50} src="/images/logo.svg" alt="" />
-        </span>
+        <Image width={100} height={100} src="/images/Logo.png" alt="" />,
       );
     }
   };
