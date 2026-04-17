@@ -86,7 +86,8 @@ const ById = () => {
               </label>
               <select
                 onChange={(e) => setSize(e.target.value)}
-                className="select select-bordered w-full max-w-xs">
+                className="select select-bordered w-full max-w-xs"
+              >
                 <option value={1}>1 Litter</option>
                 <option value={4}>4 Litter</option>
                 <option value={10}>10 Litter</option>
@@ -96,15 +97,16 @@ const ById = () => {
                 Unit Price: <TbCurrencyTaka size={30} />
                 {`${price}`}.00
               </p>
-              <div className="btn-group items-center">
+              <div className="join">
                 <button
                   onClick={() => decrement()}
-                  className="btn btn-square btn-sm  text-white btn-primary text-lg">
+                  className="btn join-item rounded-r-none  text-white btn-primary text-lg"
+                >
                   -
                 </button>
                 <input
                   onChange={(e) => setQuantity(e.target.value)}
-                  className=" focus:outline-none w-20 input rounded-none border border-primary text-lg h-8 text-center"
+                  className="input text-center rounded-none w-20 input-bordered join-item"
                   type="number"
                   name=""
                   id=""
@@ -112,10 +114,12 @@ const ById = () => {
                 />
                 <button
                   onClick={() => increment()}
-                  className="btn btn-square btn-sm text-white btn-primary text-lg">
+                  className="btn rounded-l-none join-item text-white btn-primary text-lg"
+                >
                   +
                 </button>
               </div>
+
               <button className="btn text-white btn-primary my-5">
                 Add to Cart
               </button>
@@ -126,7 +130,8 @@ const ById = () => {
                 spaceBetween={10}
                 zoom={true}
                 thumbs={{ swiper: thumbsSwiper }}
-                modules={[Zoom, Thumbs]}>
+                modules={[Zoom, Thumbs]}
+              >
                 {productImages.map((image, i) => {
                   return (
                     <SwiperSlide key={i}>
@@ -146,7 +151,8 @@ const ById = () => {
                 slidesPerView={4}
                 freeMode={true}
                 watchSlidesProgress={true}
-                modules={[FreeMode, Thumbs]}>
+                modules={[FreeMode, Thumbs]}
+              >
                 {productImages.map((image, i) => {
                   return (
                     <SwiperSlide key={i}>

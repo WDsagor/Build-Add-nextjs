@@ -7,7 +7,7 @@ const Products = ({ products }) => {
     <Layout title="Products">
       <div className="mt-24">
         <Head>
-          <title>Products - Building Admixture Limited</title>
+          <title>Products - Super FIXIT Limited</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"

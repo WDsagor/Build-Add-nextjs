@@ -35,7 +35,9 @@ const Contact = () => {
               <h1 className="mb-5 text-5xl font-bold pt-10">Contact us</h1>
               <p className=" flex items-center">
                 <FaHome className="mr-2" />
-                <span>73, College Road, Matuail, Jatrabari, Dhaka-1362.</span>
+                <span>
+                  Haque Tower, Samimbagh, Matuail,Jatrabari, Dhaka-1362
+                </span>
               </p>
               <p>
                 <a

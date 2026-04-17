@@ -45,7 +45,9 @@ const About = () => {
             <h2 className=" text-3xl font-bold py-5 text-[#31982f]">Address</h2>
             <p className=" flex items-center">
               <FaHome className="mr-2" />
-              <span>73, College Road, Matuail, Jatrabari, Dhaka-1362.</span>
+              <span>
+                Haque Tower, Samimbagh, Matuail,Jatrabari, Dhaka-1362.
+              </span>
             </p>
             <p>
               <a

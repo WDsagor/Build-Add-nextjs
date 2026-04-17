@@ -8,15 +8,17 @@ body {
   margin: 0;
   font-family: Roboto, sans-serif;
   /* overflow-x: hidden; */
-
 }
-
+* {
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 
 a {
   color: inherit;
@@ -44,11 +46,11 @@ a {
 
 @keyframes delar {
   0% {
-    transform: translatex(100%)
+    transform: translatex(100%);
   }
 
   100% {
-    transform: translatex(-50%)
+    transform: translatex(-50%);
   }
 }
 

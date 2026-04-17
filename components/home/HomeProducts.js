@@ -9,9 +9,17 @@ import { Pagination, Navigation, FreeMode } from "swiper";
 const HomeProducts = () => {
   return (
     <div className="max-w-screen-2xl py-10 mx-auto px-2 ">
-      <h1 className="lg:text-4xl text-2xl text-center pt-14 pb-5 font-bold text-primary">
-        Our Products
-      </h1>
+      <div className="max-w-5xl mx-auto text-center py-10">
+        <h1 className="lg:text-4xl text-2xl text-center pt-14 pb-5 font-bold text-primary">
+          Our Products
+        </h1>
+        <p>
+          Super Fixit is one of the leading construction chemical manufacturing
+          and marketing companies in Bangladesh. This chemical is manufactured
+          under the supervision of a group of domestic and foreign chemical
+          specialists.
+        </p>
+      </div>
       <>
         <Swiper
           slidesPerView={1}
@@ -31,30 +39,6 @@ const HomeProducts = () => {
           navigation={true}
           modules={[Pagination, Navigation, FreeMode]}
         >
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  src="/images/Products-img/4L-2-1676482262862.png"
-                  alt="Adaption"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Adaption Plus</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
           <SwiperSlide>
             <div className="card card-compact bg-base-100 shadow-xl">
               <figure className="p-5">

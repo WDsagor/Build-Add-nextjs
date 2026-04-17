@@ -8,7 +8,7 @@ import { Pagination, Navigation, FreeMode } from "swiper";
 
 const Certifide = () => {
   return (
-    <div className="max-w-screen-2xl px-10 mx-auto">
+    <div className="max-w-screen-2xl px-10 mx-auto py-5">
       <h1 className="lg:text-xl text-md text-center pt-14 text-primary">
         আমাদের পন্য সমূহ BUET, BCSIR দ্বারা পরীক্ষিত এবং ISO 9001:2015 ও
         অন্যান্য অনুমদিত প্রতিষ্ঠান দ্বারা সনদপ্রাপ্ত।
