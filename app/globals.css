@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: oklab(89.113% -0.05839 -0.03259);
 }
 
 @theme inline {
