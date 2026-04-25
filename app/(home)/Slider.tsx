@@ -3,7 +3,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-
+import "swiper/css";
 import "swiper/css/bundle";
 
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
@@ -210,7 +210,7 @@ const Slider = () => {
     },
   );
   return (
-    <div className=" max-w-s mx-auto">
+    <div className="hero mx-auto">
       <Swiper
         ref={activeSlideRef}
         rewind={true}
@@ -232,11 +232,11 @@ const Slider = () => {
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        className="relative w-full"
+        className=" w-full"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh]">
+            <div className=" w-full h-[30vh] md:h-[50vh] lg:h-[70vh]">
               {/* Background Image with Next.js Image */}
               <Image
                 src={slide.bgImage}
@@ -245,7 +245,7 @@ const Slider = () => {
                 className="object-cover"
                 priority={slide.id === 1}
                 sizes="100vw"
-                quality={90}
+                quality={75}
               />
 
               {/* Dark Overlay for better text visibility */}
@@ -275,8 +275,7 @@ const Slider = () => {
                           src={slide.productImage}
                           alt={slide.title}
                           fill
-                          className=" object-contain rounded-lg shadow-2xl"
-                          sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
+                          className=" rounded-lg shadow-2xl"
                         />
                       </div>
                     </div>

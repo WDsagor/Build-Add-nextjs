@@ -29,7 +29,7 @@ const Navbar = () => {
   const isActiveRoute = (path: string): boolean => pathname === path;
 
   const getLinkClassName = (path: string): string => {
-    return isActiveRoute(path) ? "active bg-[#046307]" : "hover:bg-[#046307]";
+    return isActiveRoute(path) ? "active border " : "hover:border]";
   };
 
   const handleMenuItemClick = (): void => {
@@ -120,7 +120,7 @@ const Navbar = () => {
               className={`menu menu-compact dropdown-content gap-2 p-2 shadow rounded-box ${
                 navbar
                   ? "bg-white shadow-lg text-primary"
-                  : "text-white bg-primary"
+                  : "text-white bg-linear-to-r from-green-400 to-blue-300"
               } rounded-box w-52`}
             >
               {menuItems}

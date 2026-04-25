@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AboutFixit = () => {
   return (
-    <div className="max-w-screen-2xl w-full mx-auto px-2 py-5 bg-white">
+    <div className="max-w-screen-2xl w-full mx-auto px-2 py-5 shadow-xl">
       <div className=" px-5 text-primary py-10 text-justify">
         <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold">
           Super FIXIT Limited
