@@ -97,9 +97,9 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label
               onClick={() => setMenuShow(!menuShow)}
-              tabIndex={1}
-              className="btn btn-ghost lg:hidden"
-              aria-label="Toggle menu"
+              tabIndex={0}
+              className="btn btn-ghost"
+              role="button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,16 +116,12 @@ const Navbar = () => {
               </svg>
             </label>
             <ul
-              tabIndex={1}
-              className={
-                menuShow
-                  ? `menu menu-compact dropdown-content gap-2 p-2 shadow rounded-box ${
-                      navbar
-                        ? "bg-white shadow-lg text-primary"
-                        : "text-white bg-primary"
-                    } rounded-box w-52`
-                  : "hidden"
-              }
+              tabIndex={0}
+              className={`menu menu-compact dropdown-content gap-2 p-2 shadow rounded-box ${
+                navbar
+                  ? "bg-white shadow-lg text-primary"
+                  : "text-white bg-primary"
+              } rounded-box w-52`}
             >
               {menuItems}
             </ul>

@@ -28,7 +28,7 @@ const RootLayout = ({
   title: String;
 }>) => {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased ">
       <Head>
         <title>{title ? title + "- Super FIXIT" : "Super FIXIT"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -37,7 +37,7 @@ const RootLayout = ({
       <body className="min-h-full flex flex-col">
         <TopHeader></TopHeader>
         <Navbar></Navbar>
-        <div>{children}</div>
+        <main>{children}</main>
       </body>
     </html>
   );

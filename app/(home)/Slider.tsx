@@ -4,10 +4,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
+import "swiper/css/bundle";
+
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
@@ -212,7 +210,7 @@ const Slider = () => {
     },
   );
   return (
-    <div className="max-w-screen-2xl mx-auto">
+    <div className=" max-w-s mx-auto">
       <Swiper
         ref={activeSlideRef}
         rewind={true}
@@ -258,7 +256,7 @@ const Slider = () => {
                 <div className="container mx-auto px-4 md:px-8 lg:px-16">
                   <div className="flex flex-row gap-3 justify-between">
                     {/* Text Content */}
-                    <div className="text-white max-w-4xl">
+                    <div className="text-white">
                       <h2 className="text1 text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         {slide.title}
                       </h2>

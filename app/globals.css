@@ -15,15 +15,43 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.applyDealer {
+  animation: dealer 20s linear 20s infinite;
+}
+
+/* Pause animation on hover */
+
+@keyframes dealer {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.applyDealer:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.swiper:hover .swiper-button-prev:after {
+  display: block;
+  transition: all;
+}
+
+.swiper:hover .swiper-button-next:after {
+  display: block;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: x-large !important;
+  color: green;
+  display: none;
 }

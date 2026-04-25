@@ -1,10 +1,14 @@
+import AboutFixit from "./AboutFixit";
+import DealerNeed from "./DealerNeed";
 import Slider from "./Slider";
 
 const page = () => {
   return (
-    <main>
+    <div>
+      <DealerNeed></DealerNeed>
       <Slider></Slider>
-    </main>
+      <AboutFixit></AboutFixit>
+    </div>
   );
 };
 
