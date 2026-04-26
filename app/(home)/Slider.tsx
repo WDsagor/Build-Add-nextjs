@@ -20,6 +20,7 @@ interface Slide {
     text1: any;
     text2: any;
     image: any;
+    image1?: any;
   };
 }
 
@@ -29,9 +30,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/helmet.png",
     title: "SUPER 101LW+",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image1.png",
     animations: {
+      image1: {
+        from: { scale: 1, opacity: 1 },
+        to: { opacity: 1, scale: 1.5, duration: 4 },
+      },
       text1: {
         from: { x: -200, scale: 0.5, opacity: 0 },
         to: { x: 0, opacity: 1, scale: 1, duration: 0.5 },
@@ -51,9 +56,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/Building.png",
     title: "Rust RLD",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image.png",
     animations: {
+      image1: {
+        from: { scale: 1.5, opacity: 1 },
+        to: { opacity: 1, scale: 1, duration: 4 },
+      },
       text1: {
         from: { y: -100, rotation: -15, opacity: 0 },
         to: { y: 0, rotation: 0, opacity: 1, duration: 0.6 },
@@ -73,9 +82,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/grouping.png",
     title: "SUPER LW++101",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image1.png",
     animations: {
+      image1: {
+        from: { scale: 1, opacity: 1 },
+        to: { opacity: 1, scale: 1.5, duration: 4 },
+      },
       text1: {
         from: { x: -150, opacity: 0, skewX: 20 },
         to: { x: 0, opacity: 1, skewX: 0, duration: 0.5 },
@@ -95,9 +108,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/Building1.png",
     title: "Rust RLD",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image.png",
     animations: {
+      image1: {
+        from: { scale: 1.5, opacity: 1 },
+        to: { opacity: 1, scale: 1, duration: 4 },
+      },
       text1: {
         from: { scale: 2, opacity: 0 },
         to: { scale: 1, opacity: 1, duration: 0.5 },
@@ -114,9 +131,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/Building.png",
     title: "SUPER 101LW+",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image1.png",
     animations: {
+      image1: {
+        from: { scale: 1, opacity: 1 },
+        to: { opacity: 1, scale: 1.5, duration: 4 },
+      },
       text1: {
         from: { y: -100, rotation: -15, opacity: 0 },
         to: { y: 0, rotation: 0, opacity: 1, duration: 0.6 },
@@ -136,9 +157,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/grouping.png",
     title: "SUPER LW++101",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image.png",
     animations: {
+      image1: {
+        from: { scale: 1.5, opacity: 1, rotation: -15 },
+        to: { opacity: 1, scale: 1, duration: 4, rotation: 0 },
+      },
       text1: {
         from: { y: -100, rotation: -15, opacity: 0 },
         to: { y: 0, rotation: 0, opacity: 1, duration: 0.6 },
@@ -158,9 +183,13 @@ const slides: Slide[] = [
     bgImage: "/images/Carousel-img/Building1.png",
     title: "SUPER 101LW+",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quos repellendus harum qui impedit voluptatem nemo ut dolores at! Ex quaerat quos deserunt dolor, earum eius nesciunt vel minima iste.",
+      "It is a multi-purpose product used for waterproofing of small areas in new construction such as bathroom, kitchen, balcony etc. and for treating internal wall dampness. It bonds strongly to old & new concrete & plaster. Ideal for repair work to prevent leakage and dampness.",
     productImage: "/images/Products-img/image1.png",
     animations: {
+      image1: {
+        from: { scale: 1, opacity: 1 },
+        to: { opacity: 1, scale: 1.5, duration: 4 },
+      },
       text1: {
         from: { x: -150, opacity: 0, skewX: 20 },
         to: { x: 0, opacity: 1, skewX: 0, duration: 0.5 },
@@ -185,11 +214,17 @@ const Slider = () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.easeOut" } });
 
       tl.fromTo(
-        ".text1",
-        slides[activeIndexId]?.animations?.text1?.from,
-        slides[activeIndexId]?.animations?.text1?.to,
+        ".image2",
+        slides[activeIndexId]?.animations?.image1?.from,
+        slides[activeIndexId]?.animations?.image1?.to,
         0,
       )
+        .fromTo(
+          ".text1",
+          slides[activeIndexId]?.animations?.text1?.from,
+          slides[activeIndexId]?.animations?.text1?.to,
+          0,
+        )
         .fromTo(
           ".image1",
           slides[activeIndexId]?.animations?.image?.from,
@@ -242,7 +277,7 @@ const Slider = () => {
                 src={slide.bgImage}
                 alt={slide.title}
                 fill
-                className="object-cover"
+                className="object-cover image2"
                 priority={slide.id === 1}
                 sizes="100vw"
                 quality={75}
@@ -260,10 +295,10 @@ const Slider = () => {
                       <h2 className="text1 text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         {slide.title}
                       </h2>
-                      <p className="text2 text-sm md:text-base lg:text-lg mb-6 line-clamp-3 md:line-clamp-none">
+                      <p className="text2 max-w-3xl text-justify text-sm md:text-base lg:text-lg mb-6 line-clamp-3 md:line-clamp-none">
                         {slide.description}
                       </p>
-                      <button className="btn btn-primary btn-sm md:btn-md lg:btn-lg">
+                      <button className="btn btn-accent text-primary btn-sm md:btn-md lg:btn-lg">
                         BUY NOW
                       </button>
                     </div>

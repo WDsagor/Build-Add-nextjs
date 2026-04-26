@@ -24,7 +24,16 @@ body {
   animation: dealer 20s linear 20s infinite;
 }
 
-/* Pause animation on hover */
+* {
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @keyframes dealer {
   0% {

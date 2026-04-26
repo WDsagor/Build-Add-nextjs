@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
+
+import "./globals.css";
 import Head from "next/head";
 import TopHeader from "@/components/share/TopHeader";
 import Navbar from "@/components/share/Navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Super FIXIT Limited",
@@ -22,15 +12,13 @@ export const metadata: Metadata = {
 
 const RootLayout = ({
   children,
-  title,
 }: Readonly<{
   children: React.ReactNode;
-  title: String;
 }>) => {
   return (
     <html lang="en" className="h-full antialiased ">
       <Head>
-        <title>{title ? title + "- Super FIXIT" : "Super FIXIT"}</title>
+        <title>{"Super FIXIT"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Construction Chemical Company" />
       </Head>

@@ -7,6 +7,9 @@ import Reviews from "./Reviews";
 import Slider from "./Slider";
 import WhyChoose from "./WhyChoose";
 
+export const metadata = {
+  title: "Home | Super FIXIT Ltd",
+};
 const page = () => {
   return (
     <div>
