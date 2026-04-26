@@ -37,7 +37,7 @@ const RootLayout = ({
       <body className="min-h-full flex flex-col">
         <TopHeader></TopHeader>
         <Navbar></Navbar>
-        <main>{children}</main>
+        <main className="text-gray-700">{children}</main>
       </body>
     </html>
   );

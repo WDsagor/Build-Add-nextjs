@@ -13,9 +13,9 @@ const Benifit = () => {
           the problems of water seepage and dampness.
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-center px-5 lg:gap-36 ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-5 lg:gap-36 ">
         <div className="md:p-10">
-          <div className=" items-center flex flex-col-1 shadow-lg rounded-lg p-5 lg:text-xl  hover:scale-105 duration-300 hover:bg-green-200">
+          <div className=" items-center flex flex-col-1 shadow-lg rounded-lg  p-5 lg:text-xl  hover:scale-105 duration-300 hover:bg-green-200">
             <FaSun />
             <p className="px-5">Prevents fungi and algae.</p>
           </div>

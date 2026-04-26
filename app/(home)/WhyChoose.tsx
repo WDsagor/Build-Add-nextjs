@@ -6,15 +6,15 @@ const WhyChoose = () => {
       <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold text-primary">
         WHY CHOOSE US
       </h1>
-      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-14 lg:gap-12 text-white px-5">
-        <div className="shadow-xl rounded-xl  bg-purple-900">
-          <figure className="px-10 pt-10 flex justify-center">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-14 lg:gap-12 text-primary px-5">
+        <div className="shadow-xl rounded-xl  bg-amber-100">
+          <figure className="px-10 pt-10 flex justify-center bg-primary rounded-xl p-2 shadow-xl">
             <Image
               width={150}
               height={200}
               className=" w-2/6 mx-auto"
               src="/images/certified/certified-image.png"
-              alt=""
+              alt="Qualified & Certified"
             />
           </figure>
           <div className="card-body items-center text-center">
@@ -29,14 +29,14 @@ const WhyChoose = () => {
             </p>
           </div>
         </div>
-        <div className="shadow-xl rounded-xl  bg-primary">
-          <figure className="px-10 pt-10 flex justify-center">
+        <div className="shadow-xl rounded-xl  bg-cyan-100">
+          <figure className="px-10 pt-10 flex justify-center bg-secondary rounded-xl p-2 shadow-lg">
             <Image
               width={150}
               height={200}
               className=" w-2/6 mx-auto"
               src="/images/certified/Quality.png"
-              alt=""
+              alt="Quality"
             />
           </figure>
           <div className="card-body items-center text-center">
@@ -52,14 +52,14 @@ const WhyChoose = () => {
             </p>
           </div>
         </div>
-        <div className="shadow-xl rounded-xl  bg-cyan-500">
-          <figure className="px-10 pt-10 flex justify-center ">
+        <div className="shadow-xl rounded-xl bg-pink-100">
+          <figure className="px-10 pt-10 flex justify-center bg-accent rounded-2xl shadow-lg p-2">
             <Image
               width={150}
               height={200}
               className=" w-2/6 mx-auto"
               src="/images/certified/trust.png"
-              alt=""
+              alt="Quality Trust"
             />
           </figure>
           <div className="card-body items-center text-center">

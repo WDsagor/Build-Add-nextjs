@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const HomeProducts = () => {
   return (
-    <div className="max-w-screen-2xl py-10 mx-auto px-2 ">
+    <div className="max-w-screen-2xl py-10 mx-auto px-2 text-gray-700">
       <div className="max-w-5xl mx-auto text-center py-10">
         <h1 className="lg:text-4xl text-2xl text-center pt-14 pb-5 font-bold text-primary">
           Our Products
@@ -49,7 +49,7 @@ const HomeProducts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Buildmix</h2>
+                <h2 className="card-title">Super 101LW+</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-between">
                   <p className=" font-bold text-lg text-primary uppercase font-sans">
@@ -72,7 +72,7 @@ const HomeProducts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Rawmix</h2>
+                <h2 className="card-title">Rust RLD</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-between">
                   <p className=" font-bold text-lg text-primary uppercase font-sans">
@@ -95,7 +95,7 @@ const HomeProducts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Rust RLD</h2>
+                <h2 className="card-title">Super LW++101</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-between">
                   <p className=" font-bold text-lg text-primary uppercase font-sans">
@@ -118,7 +118,7 @@ const HomeProducts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Buildmix</h2>
+                <h2 className="card-title">Super MIX-100</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-between">
                   <p className=" font-bold text-lg text-primary uppercase font-sans">
@@ -141,7 +141,7 @@ const HomeProducts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Rawmix</h2>
+                <h2 className="card-title">Super MIX-50</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-between">
                   <p className=" font-bold text-lg text-primary uppercase font-sans">

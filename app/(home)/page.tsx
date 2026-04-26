@@ -3,6 +3,7 @@ import Benifit from "./Benifit";
 import Certified from "./Certified";
 import DealerNeed from "./DealerNeed";
 import HomeProducts from "./HomeProducts";
+import Reviews from "./Reviews";
 import Slider from "./Slider";
 import WhyChoose from "./WhyChoose";
 
@@ -16,6 +17,7 @@ const page = () => {
       <Certified></Certified>
       <HomeProducts></HomeProducts>
       <Benifit></Benifit>
+      <Reviews></Reviews>
     </div>
   );
 };
