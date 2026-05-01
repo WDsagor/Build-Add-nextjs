@@ -1,13 +1,62 @@
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { useRef } from "react";
 
 const AboutFixit = () => {
+  const title = useRef<HTMLDivElement>(null);
+  const text = useRef<HTMLDivElement>(null);
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+  useGSAP(() => {
+    gsap.fromTo(
+      title.current,
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.in",
+        scrollTrigger: {
+          trigger: title.current,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        },
+      },
+    );
+    gsap.fromTo(
+      text.current,
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.in",
+        scrollTrigger: {
+          trigger: text.current,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        },
+      },
+    );
+  }, []);
   return (
-    <div className="max-w-screen-2xl w-full mx-auto px-2 py-5 shadow-xl">
+    <div className="max-w-screen-2xl w-full mx-auto px-2 py-5 ">
       <div className=" px-5 text-primary py-10 text-justify">
-        <h1 className="lg:text-4xl text-2xl text-center py-10 font-bold">
+        <h1
+          ref={title}
+          className="lg:text-4xl max-w-sm mx-auto text-2xl text-center py-10 font-bold bg-linear-to-r  from-red-500 via-green-400  to-yellow-300 bg-clip-text text-transparent"
+        >
           Super FIXIT Limited
         </h1>
-        <p className=" text-black lg:text-lg sm:text-sm">
+
+        <p ref={text} className=" text-black lg:text-lg sm:text-sm">
           <span>
             <Link href="/" className=" font-bold text-red-600">
               Super FIXIT

@@ -2,9 +2,10 @@
 "use client";
 
 import useNav from "@/hooks/useNav";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { useRef } from "react";
 import { useState, ReactNode } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -24,6 +25,7 @@ const NAV_ITEMS: NavItem[] = [
 const Navbar = () => {
   const { navbar, navbarLogo } = useNav();
   const [menuShow, setMenuShow] = useState<boolean>(false);
+  const navbarRef = useRef<HTMLElement>(null);
 
   const pathname = usePathname();
   const isActiveRoute = (path: string): boolean => pathname === path;
@@ -76,10 +78,11 @@ const Navbar = () => {
 
   return (
     <nav
+      ref={navbarRef}
       className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-50 transition-all ${
         navbar
-          ? "text-white bg-linear-to-r from-blue-400 to-green-500  shadow-lg"
-          : "text-white bg-linear-to-r from-green-400 to-blue-500"
+          ? "text-white bg-linear-to-r from-green-400 via-yellow-400  to-green-400 shadow-lg"
+          : "text-white bg-linear-to-r from-yellow-300 via-green-400  to-yellow-300"
       }`}
     >
       <div className="navbar max-w-screen-2xl w-full mx-auto">

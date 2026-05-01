@@ -279,7 +279,7 @@ const Slider = () => {
                 fill
                 className="object-cover image2"
                 priority={slide.id === 1}
-                sizes="100vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
                 quality={75}
               />
 
