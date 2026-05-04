@@ -44,6 +44,7 @@ const HomeProducts = () => {
                   width={350}
                   height={400}
                   className="rounded-xl"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
                   src="/images/Products-img/image1.png"
                   alt="Buildmix"
                 />

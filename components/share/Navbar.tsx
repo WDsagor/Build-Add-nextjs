@@ -1,11 +1,12 @@
 // components/Navbar.tsx
 "use client";
 
-import useNav from "@/hooks/useNav";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useState, ReactNode } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -23,7 +24,6 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const Navbar = () => {
-  const { navbar, navbarLogo } = useNav();
   const [menuShow, setMenuShow] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement>(null);
 
@@ -31,18 +31,43 @@ const Navbar = () => {
   const isActiveRoute = (path: string): boolean => pathname === path;
 
   const getLinkClassName = (path: string): string => {
-    return isActiveRoute(path) ? "active border " : "hover:border]";
+    return isActiveRoute(path) ? "active-link" : "nav-link ";
   };
-
   const handleMenuItemClick = (): void => {
     setMenuShow(!menuShow);
   };
+
+  useGSAP(() => {
+    if (navbarRef.current) {
+      gsap.fromTo(
+        navbarRef.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+      );
+    }
+    const handleScroll = () => {
+      if (window.scrollY <= 50) {
+        navbarRef.current?.classList.add("navbar-gradient");
+        gsap.fromTo(
+          navbarRef.current,
+          { y: -100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        );
+      } else {
+        navbarRef.current?.classList.remove("navbar-gradient");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuItems: ReactNode = (
     <>
       {NAV_ITEMS.map((item) => (
         <li key={item.href} onClick={handleMenuItemClick} className="mx-1">
-          <Link href={item.href} className={getLinkClassName(item.href)}>
+          <Link href={item.href} className={`${getLinkClassName(item.href)}`}>
             {item.label}
           </Link>
         </li>
@@ -79,21 +104,25 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className={`border-gray-200 px-2 sm:px-8 sticky w-full top-0 z-50 transition-all ${
-        navbar
-          ? "text-white bg-linear-to-r from-green-400 via-yellow-400  to-green-400 shadow-lg"
-          : "text-white bg-linear-to-r from-yellow-300 via-green-400  to-yellow-300"
-      }`}
+      className="sticky top-0 left-0 right-0 z-50 backdrop-blur-md shadow-sm"
     >
-      <div className="navbar max-w-screen-2xl w-full mx-auto">
+      <div className="navbar container-custom max-w-screen-2xl w-full mx-auto">
         <div className="navbar-start xs:py-2">
           <Link href="/" className="flex items-center">
-            {navbarLogo}
+            <Image
+              loading="eager"
+              width={80}
+              height={33}
+              src="/images/Logo.png"
+              alt="Logo"
+              // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
+              className="h-auto w-auto"
+            />
           </Link>
         </div>
 
         <div className="navbar-end hidden lg:text-sm lg:flex w-full ml-auto">
-          <ul className="menu menu-horizontal px-1">{menuItems}</ul>
+          <ul className="menu menu-horizontal space-x-8">{menuItems}</ul>
         </div>
 
         <div className="navbar-end lg:hidden">
@@ -120,7 +149,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className={`menu text-primary menu-compact dropdown-content bg-linear-to-r from-green-400 to-blue-300 gap-2 p-2 shadow  rounded-box w-52`}
+              className={`menu text-black menu-compact dropdown-content bg-linear-to-r from-purple-100 to-red-100 gap-2 p-2 shadow  rounded-box w-52`}
             >
               {menuItems}
             </ul>

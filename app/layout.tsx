@@ -16,7 +16,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" className="h-full antialiased ">
+    <html lang="en" className="h-full antialiased">
       <Head>
         <title>{"Super FIXIT"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

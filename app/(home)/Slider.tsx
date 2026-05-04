@@ -272,27 +272,26 @@ const Slider = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className=" w-full h-[30vh] md:h-[50vh] lg:h-[70vh]">
-              {/* Background Image with Next.js Image */}
               <Image
                 src={slide.bgImage}
                 alt={slide.title}
-                fill
-                className="object-cover image2"
+                width={100}
+                height={100}
+                loading="eager"
+                className="object-cover image2 h-auto w-full"
                 priority={slide.id === 1}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
                 quality={75}
               />
 
-              {/* Dark Overlay for better text visibility */}
               <div className="absolute inset-0 bg-black/50" />
 
-              {/* Content Container */}
               <div className="absolute inset-0 flex items-end pb-12 md:pb-20 lg:pb-32">
                 <div className="container mx-auto px-4 md:px-8 lg:px-16">
                   <div className="flex flex-row gap-3 justify-between">
                     {/* Text Content */}
-                    <div className="text-white">
-                      <h2 className="text1 text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    <div className="text-white mt-5 lg:mt-0 ">
+                      <h2 className="text1 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold md:mb-4">
                         {slide.title}
                       </h2>
                       <p className="text2 max-w-3xl text-justify text-sm md:text-base lg:text-lg mb-6 line-clamp-3 md:line-clamp-none">
