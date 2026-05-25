@@ -6,7 +6,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useState, ReactNode } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
