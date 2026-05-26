@@ -7,6 +7,9 @@ import {
   FaPhoneSquareAlt,
 } from "react-icons/fa";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import gsap from "gsap";
 type Inputs = {
   fname: string;
   lname: string;
@@ -16,6 +19,8 @@ type Inputs = {
   massages: string;
 };
 const page = () => {
+  const fromRef = useRef(null);
+  const addressRef = useRef(null);
   const {
     register,
     handleSubmit,
@@ -23,7 +28,20 @@ const page = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = () => {};
+  useGSAP(() => {
+    // Initial animations
+    gsap.fromTo(
+      fromRef.current,
+      { y: -200, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" },
+    );
 
+    gsap.fromTo(
+      addressRef.current,
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 },
+    );
+  }, []);
   return (
     <div
       style={{
@@ -35,10 +53,13 @@ const page = () => {
       <div className="hero-overlay "></div>
       <div className=" max-w-screen-2xl mx-auto">
         <div className=" lg:flex justify-between text-primary-content gap-10">
-          <div className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20">
+          <div
+            ref={addressRef}
+            className="max-w-md justify-start align-middle px-2 lg:mr-20 lg:mt-20"
+          >
             <h1 className="mb-5 text-5xl font-bold pt-10">Contact us</h1>
             <p className=" flex items-center">
-              <FaHome className="mr-2" />
+              <FaHome size={20} className="mr-2" />
               <span>Haque Tower, Samimbagh, Matuail,Jatrabari, Dhaka-1362</span>
             </p>
             <p>
@@ -77,8 +98,11 @@ const page = () => {
               </a>
             </p>
           </div>
-          <div className="max-w-2xl shadow-lg bg-linear-to-r from-purple-200/70  to-pink-400/50 text-primary rounded-lg mt-14 p-10 mb-5">
-            <h2 className=" text-2xl uppercase text-center text-primary">
+          <div
+            ref={fromRef}
+            className="max-w-2xl shadow-lg bg-linear-to-r from-white  to-pink-200 text-primary rounded-lg mt-14 p-10 mb-5"
+          >
+            <h2 className=" text-2xl uppercase text-center text-accent">
               Provide your Information
             </h2>
             <p className="text-sm pb-10 text-center">
@@ -161,7 +185,7 @@ const page = () => {
                     required: true,
                   })}
                   type="number"
-                  placeholder="+880 1700 000000"
+                  placeholder="01700 000000"
                   className="input w-full input-bordered bg-transparent border-primary/50  "
                 />
                 {errors.phone?.type === "required" && (
@@ -190,8 +214,8 @@ const page = () => {
               <div className="form-control mt-6">
                 <input
                   type="submit"
-                  value="submit"
-                  className="btn btn-primary text-white"
+                  value="Submit"
+                  className="btn btn-accent text-white"
                 />
               </div>
             </form>

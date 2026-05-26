@@ -1,6 +1,8 @@
 "use client";
 
+import { products } from "@/utils/products";
 import Image from "next/image";
+import Link from "next/link";
 import { FreeMode, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -37,122 +39,38 @@ const HomeProducts = () => {
           navigation={true}
           modules={[Pagination, Navigation, FreeMode]}
         >
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
-                  src="/images/Products-img/image1.png"
-                  alt="Buildmix"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Super 101LW+</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
+          {products.map((product, i) => {
+            return (
+              <SwiperSlide className="p-5" key={i}>
+                <div className="card card-compact hover:shadow-2xl group cursor-pointer transition-all">
+                  <figure className="p-5">
+                    <Image
+                      width={350}
+                      height={400}
+                      className="rounded-xl group-hover:scale-105 transition-all"
+                      src={product?.productImage}
+                      alt={product?.title}
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{product?.title}</h2>
+                    <p className="text-justify">{product?.description}</p>
+                    <div className="card-actions justify-between">
+                      <p className=" font-bold text-lg text-secondary">
+                        Start price 200
+                      </p>
+                      <Link
+                        href={`products/${product?.id}`}
+                        className="btn btn-sm btn-accent w-full hover:text-white"
+                      >
+                        Buy Now
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  src="/images/Products-img/image.png"
-                  alt="Rawmix"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Rust RLD</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  src="/images/Products-img/image1.png"
-                  alt="Rust RLD"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Super LW++101</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  src="/images/Products-img/image.png"
-                  alt="Buildmix"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Super MIX-100</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure className="p-5">
-                <Image
-                  width={350}
-                  height={400}
-                  className="rounded-xl"
-                  src="/images/Products-img/image1.png"
-                  alt="Rawmix"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Super MIX-50</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between">
-                  <p className=" font-bold text-lg text-primary uppercase font-sans">
-                    Price 200
-                  </p>
-                  <button className="btn btn-sm btn-secondary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </>
     </div>

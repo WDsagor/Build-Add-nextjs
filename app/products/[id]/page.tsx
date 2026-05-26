@@ -9,12 +9,13 @@ import "swiper/css/thumbs";
 import "swiper/css/zoom";
 import { Zoom, FreeMode, Thumbs } from "swiper/modules";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { products } from "@/utils/products";
+import { useParams } from "next/navigation";
 
 interface ProductImage {
   name: string;
   url: string;
 }
-
 const productImages: ProductImage[] = [
   {
     name: "Adaption",
@@ -34,10 +35,16 @@ const productImages: ProductImage[] = [
   },
 ];
 
-const SingleProduct: React.FC = () => {
+const page: React.FC = () => {
+  const params = useParams();
+  const singleProduct = products?.filter(
+    (product) => product?.id === Number(params?.id),
+  );
+
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [size, setSize] = useState<string | number>(1);
   const [quantity, setQuantity] = useState<number>(1);
+  const productName = singleProduct[0]?.title;
 
   let price: number = 200;
 
@@ -83,7 +90,13 @@ const SingleProduct: React.FC = () => {
 
   const handleAddToCart = (): void => {
     // Add to cart logic here
-    console.log("Added to cart:", { size, quantity, price });
+    console.log("Added to cart:", {
+      productName,
+      size,
+      quantity,
+      price,
+      totalPrice: price * quantity,
+    });
   };
 
   return (
@@ -94,16 +107,14 @@ const SingleProduct: React.FC = () => {
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col-reverse md:flex-row-reverse justify-between px-2">
           <div className="text-left max-w-4xl grid-cols-1 grid">
-            <h1 className="text-xl lg:text-4xl font-bold py-5">Super 101LW+</h1>
+            <h1 className="text-xl lg:text-4xl font-bold py-5">
+              {singleProduct[0]?.title}
+            </h1>
             <h1 className="text-xl lg:text-3xl font-medium flex items-center">
               Price : 200.00 <TbCurrencyTaka size={35} /> - 3000.00{" "}
               <TbCurrencyTaka size={35} />
             </h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <p className="py-6">{singleProduct[0]?.description}</p>
             <fieldset className="fieldset">
               <label className="label">
                 <span className="label-text">Select Size</span>
@@ -210,4 +221,4 @@ const SingleProduct: React.FC = () => {
   );
 };
 
-export default SingleProduct;
+export default page;

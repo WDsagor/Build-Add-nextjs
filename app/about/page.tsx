@@ -68,7 +68,13 @@ const page = () => {
           </div>
 
           <div ref={addressRef} className="mt-5 lg:mt-0 lg:pl-24">
-            <Image width="200" height="60" src="/images/logo.png" alt="Logo" />
+            <Image
+              className="mt-10"
+              width="150"
+              height="60"
+              src="/images/logo.png"
+              alt="Logo"
+            />
             <h2 className="text-3xl font-bold py-5 text-blue-500">Address</h2>
             <p className="flex items-center">
               <FaHome className="mr-2" />
