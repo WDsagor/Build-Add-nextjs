@@ -28,7 +28,9 @@ const Navbar = () => {
   const navbarRef = useRef<HTMLElement>(null);
 
   const pathname = usePathname();
-  const isActiveRoute = (path: string): boolean => pathname === path;
+
+  const isActiveRoute = (path: string): boolean =>
+    pathname === path || pathname?.startsWith(`${path}/`);
 
   const getLinkClassName = (path: string): string => {
     return isActiveRoute(path) ? "active-link" : "nav-link ";
@@ -67,7 +69,11 @@ const Navbar = () => {
     <>
       {NAV_ITEMS.map((item) => (
         <li key={item.href} onClick={handleMenuItemClick} className="mx-1">
-          <Link href={item.href} className={`${getLinkClassName(item.href)}`}>
+          <Link
+            href={item.href}
+            className={`${getLinkClassName(item.href)} `}
+            // ${item.label === "Dashboard" ? "hidden" : ""}
+          >
             {item.label}
           </Link>
         </li>

@@ -76,6 +76,6 @@ body {
     @apply content-[''] absolute bottom-1.5  left-0 w-full h-0.5 bg-linear-to-r from-purple-600 to-pink-600;
   }
   .navbar-gradient {
-    @apply text-white bg-linear-to-r from-purple-600 via-pink-200 to-red-500;
+    @apply bg-linear-to-t  from-white to-accent;
   }
 }
