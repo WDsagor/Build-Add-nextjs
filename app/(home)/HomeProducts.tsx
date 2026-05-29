@@ -34,7 +34,7 @@ const HomeProducts = () => {
               slidesPerView: 4,
             },
           }}
-          spaceBetween={30}
+          spaceBetween={10}
           freeMode={true}
           navigation={true}
           modules={[Pagination, Navigation, FreeMode]}

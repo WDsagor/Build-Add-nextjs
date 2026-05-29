@@ -100,9 +100,9 @@ const page = () => {
           </div>
           <div
             ref={fromRef}
-            className="max-w-2xl shadow-lg bg-linear-to-r from-white  to-pink-200 text-primary rounded-lg mt-14 p-10 mb-5"
+            className="max-w-2xl shadow-lg bg-linear-to-t from-white  to-accent text-primary rounded-lg mt-14 p-10 mb-5"
           >
-            <h2 className=" text-2xl uppercase text-center text-accent">
+            <h2 className=" text-2xl uppercase text-center text-primary">
               Provide your Information
             </h2>
             <p className="text-sm pb-10 text-center">
