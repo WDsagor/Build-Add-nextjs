@@ -12,7 +12,7 @@ export const metadata = {
 };
 const page = () => {
   return (
-    <div>
+    <>
       <DealerNeed></DealerNeed>
       <Slider></Slider>
       <AboutFixit></AboutFixit>
@@ -21,7 +21,7 @@ const page = () => {
       <HomeProducts></HomeProducts>
       <Benifit></Benifit>
       <Reviews></Reviews>
-    </div>
+    </>
   );
 };
 

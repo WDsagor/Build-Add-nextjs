@@ -51,6 +51,7 @@ const page = () => {
       className=" hero min-h-screen"
     >
       <div className="hero-overlay "></div>
+      <title>Contact | Super FIXIT Ltd</title>
       <div className=" max-w-screen-2xl mx-auto">
         <div className=" lg:flex justify-between text-primary-content gap-10">
           <div

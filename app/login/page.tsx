@@ -13,8 +13,12 @@ import {
 // import Loading from "./../components/share/Loading";
 import GoogleBtn from "@/components/share/GoogleBtn";
 import { useRouter } from "next/router";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
 
 const Login = () => {
+  const fromRef = useRef(null);
   const {
     register,
     handleSubmit,
@@ -84,6 +88,14 @@ const Login = () => {
     //   reset();
     // }
   };
+  useGSAP(() => {
+    // Initial animations
+    gsap.fromTo(
+      fromRef.current,
+      { x: 200, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power2.out" },
+    );
+  }, []);
 
   return (
     <div
@@ -93,11 +105,15 @@ const Login = () => {
       }}
       className="hero min-h-screen pb-5"
     >
-      <div className="flex justify-center max-w-md w-full items-center p-2 ">
+      <title>Login | Super FIXIT Ltd</title>
+      <div
+        ref={fromRef}
+        className="flex justify-center max-w-md w-full items-center p-2 "
+      >
         <div className="rounded-xl w-full shadow-xl mt-20 bg-linear-to-t from-white  to-accent p-10 ">
           <div className="">
             <h1 className="text-2xl uppercase text-primary text-center ">
-              Login now !
+              Login here
             </h1>
             <p className="mb-10 text-center">Provide your login credential</p>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -150,12 +166,12 @@ const Login = () => {
               <input
                 type="submit"
                 value="Login"
-                className="btn btn-primary text-white uppercase w-full"
+                className="btn btn-accent uppercase w-full"
               />
               <div className="flex justify-between">
                 <label className="flex flex-1 justify-between pt-5">
                   <small className="label-text-alt">
-                    Are you New?{" "}
+                    Not register?{" "}
                     <Link
                       href="/register"
                       passHref
@@ -168,7 +184,7 @@ const Login = () => {
                 <Link
                   href="/reset-password"
                   passHref
-                  className=" text-sm text-slate-400 link link-hover"
+                  className=" text-sm text-slate-600 link link-hover"
                 >
                   {" "}
                   Forgot password ?

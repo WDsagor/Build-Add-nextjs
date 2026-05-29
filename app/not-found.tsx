@@ -1,5 +1,9 @@
+import { Metadata } from "next";
 import Link from "next/link";
-
+export const metadata: Metadata = {
+  title: "Not Found | Super FIXIT Ltd",
+  description: "Page not found ",
+};
 const Custom404 = () => {
   return (
     <div className="bg-[#e4e6ec]">
@@ -14,7 +18,7 @@ const Custom404 = () => {
               href="/"
               className=" cursor-pointer text-primary hover:underline"
             >
-              Go to Home page
+              ← Back to Home
             </Link>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Certified from "../(home)/Certified";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Head from "next/head";
 
 const page = () => {
   const aboutRef = useRef(null);
@@ -34,6 +35,8 @@ const page = () => {
 
   return (
     <main>
+      <title>About us | Super FIXIT Ltd</title>
+
       <div className="max-w-screen-2xl mx-auto relative">
         <Image
           width={1080}
