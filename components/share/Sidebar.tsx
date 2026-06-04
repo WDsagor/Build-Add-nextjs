@@ -14,6 +14,7 @@ import { HiViewGridAdd, HiUserGroup } from "react-icons/hi";
 import { signOut } from "firebase/auth";
 // import auth from "../config/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { MdDashboard } from "react-icons/md";
 // import Loading from "./share/Loading";
 
 const Sidebar = () => {
@@ -23,21 +24,6 @@ const Sidebar = () => {
   const pathname = usePathname(); // Replaces useRouter().pathname
   const router = useRouter();
 
-  // Load sideMenu state from localStorage on mount
-  useEffect(() => {
-    const data = localStorage.getItem("MY_APP_STATE");
-    if (data !== null) setSideMenu(JSON.parse(data));
-  }, []);
-
-  // Save sideMenu state to localStorage
-  useEffect(() => {
-    if (sideMenu) {
-      localStorage.setItem("MY_APP_STATE", JSON.stringify(sideMenu));
-    } else {
-      localStorage.removeItem("MY_APP_STATE");
-    }
-  }, [sideMenu]);
-
   const logout = async () => {
     // await signOut(auth);
     router.push("/login");
@@ -46,6 +32,16 @@ const Sidebar = () => {
   //   if (loading) {
   //     // return <Loading />;
   //   }
+
+  // Function to check if a route is active
+  const isActiveRoute = (href: string) => {
+    if (href === "/dashboard") {
+      // All Orders page - active ONLY when exactly on /dashboard
+      return pathname === "/dashboard";
+    }
+    // For other routes, exact match
+    return pathname === href;
+  };
 
   // Navigation items for better maintainability
   const sidebarItems = [
@@ -82,38 +78,54 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="flex  md:min-h-lvh">
-      <div className=" w-full md:w-40 bg-linear-to-l from-white to-accent flex flex-row md:flex-col transition-all">
-        <div className="p-4 hidden md:flex">
-          <h2 className="text-xl font-bold text-center">Dashboard</h2>
-        </div>
-
-        <div className="flex-1 p-1">
-          <div className=" flex flex-row md:flex-col">
-            {sidebarItems.map((item, i) => {
-              return (
-                <Link
-                  key={i}
-                  href={item.href}
-                  className="flex items-center gap-3 px-4 py-2  hover:bg-accent transition-colors"
-                >
-                  <item.icon size={20} />
-                  <span className="text-sm hidden md:flex">{item.label}</span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Logout Button */}
-        <div className="">
-          <button className="flex items-center gap-3 px-4 py-2 text-sm w-full hover:bg-accent transition-colors">
-            <FaSignOutAlt size={22} />
-            <span className="hidden md:flex">Logout</span>
+    <>
+      <ul className="menu w-full gap-2 grow">
+        <li>
+          <label
+            htmlFor="my-drawer-4"
+            aria-label="open sidebar"
+            className=" is-drawer-close:tooltip is-drawer-close:tooltip-right text-emerald-700"
+            data-tip="Dashboard"
+          >
+            {/* Sidebar toggle icon */}
+            <MdDashboard size={25} />
+            <span className="is-drawer-close:hidden font-bold uppercase">
+              Dashboard
+            </span>
+          </label>
+        </li>
+        {/* List item */}
+        {sidebarItems.map((item, i) => {
+          const isActive = isActiveRoute(item.href);
+          return (
+            <li key={i}>
+              <Link
+                href={item.href}
+                className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${
+                  isActive
+                    ? "bg-linear-to-r from-purple-600 to-pink-600 text-white"
+                    : "hover:bg-linear-to-r from-purple-600 to-pink-600 hover:text-white"
+                }`}
+                data-tip={item.label}
+              >
+                <item.icon size={20} />
+                <span className="is-drawer-close:hidden">{item.label}</span>
+              </Link>
+            </li>
+          );
+        })}
+        <li className="pt-80 pb-2">
+          <button
+            onClick={logout}
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-linear-to-r from-purple-600 to-pink-600 hover:text-white"
+            data-tip="Logout"
+          >
+            <FaSignOutAlt size={20} />
+            <span className="is-drawer-close:hidden">Logout</span>
           </button>
-        </div>
-      </div>
-    </aside>
+        </li>
+      </ul>
+    </>
   );
 };
 

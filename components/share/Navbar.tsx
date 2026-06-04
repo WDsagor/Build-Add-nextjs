@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { useState, ReactNode } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 
 interface NavItem {
   href: string;
@@ -113,7 +114,15 @@ const Navbar = () => {
       className="sticky top-0 left-0 right-0 z-50 backdrop-blur-md shadow-sm"
     >
       <div className="navbar container-custom max-w-screen-2xl w-full mx-auto">
-        <div className="navbar-start xs:py-2">
+        <label
+          htmlFor="my-drawer-4"
+          aria-label="open sidebar"
+          className=" navbar-start md:hidden"
+        >
+          {/* Sidebar toggle icon */}
+          <MdDashboard size={20} />
+        </label>
+        <div className=" navbar-center md:navbar-start xs:py-2">
           <Link href="/" className="flex items-center">
             <Image
               loading="eager"
