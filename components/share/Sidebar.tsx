@@ -1,84 +1,28 @@
 "use client";
 
+import { useSidebarItems } from "@/utils/route";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import {
-  FaArrowLeft,
-  FaSignOutAlt,
-  FaShoppingCart,
-  FaUserCircle,
-  FaTelegramPlane,
-} from "react-icons/fa";
-import { HiViewGridAdd, HiUserGroup } from "react-icons/hi";
-import { signOut } from "firebase/auth";
-// import auth from "../config/firebase.init";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
+
+import { FaSignOutAlt } from "react-icons/fa";
+
 import { MdDashboard } from "react-icons/md";
+
 // import Loading from "./share/Loading";
 
 const Sidebar = () => {
-  //   const [user, loading] = useAuthState(auth);
-  const [admin, setAdmin] = useState(true);
-  const [sideMenu, setSideMenu] = useState(false);
-  const pathname = usePathname(); // Replaces useRouter().pathname
-  const router = useRouter();
-
-  const logout = async () => {
-    // await signOut(auth);
-    router.push("/login");
-  };
+  const { sidebarItems, isActiveRoute, logout } = useSidebarItems();
 
   //   if (loading) {
   //     // return <Loading />;
   //   }
 
   // Function to check if a route is active
-  const isActiveRoute = (href: string) => {
-    if (href === "/dashboard") {
-      // All Orders page - active ONLY when exactly on /dashboard
-      return pathname === "/dashboard";
-    }
-    // For other routes, exact match
-    return pathname === href;
-  };
 
   // Navigation items for better maintainability
-  const sidebarItems = [
-    {
-      href: "/dashboard/profile",
-      label: "Profile",
-      icon: FaUserCircle,
-      show: true,
-    },
-    {
-      href: "/dashboard",
-      label: admin ? "All Orders" : "My Order",
-      icon: FaShoppingCart,
-      show: true,
-    },
-    {
-      href: "/dashboard/addProduct",
-      label: "Add Products",
-      icon: HiViewGridAdd,
-      show: true,
-    },
-    {
-      href: "/dashboard/addDealer",
-      label: "Apply Dealer",
-      icon: FaTelegramPlane,
-      show: true,
-    },
-    {
-      href: "/dashboard/allDealer",
-      label: "All Dealer",
-      icon: HiUserGroup,
-      show: true,
-    },
-  ];
 
   return (
-    <>
+    <div className="flex flex-col justify-between h-10/12 flex-2">
       <ul className="menu w-full gap-2 grow">
         <li>
           <label
@@ -114,7 +58,9 @@ const Sidebar = () => {
             </li>
           );
         })}
-        <li className="pt-80 pb-2">
+      </ul>
+      <ul className="menu w-full">
+        <li className="pb-2">
           <button
             onClick={logout}
             className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-linear-to-r from-purple-600 to-pink-600 hover:text-white"
@@ -125,7 +71,7 @@ const Sidebar = () => {
           </button>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

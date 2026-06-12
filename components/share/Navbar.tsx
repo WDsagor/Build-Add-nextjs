@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { useState, ReactNode } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
 
 interface NavItem {
   href: string;
@@ -81,14 +80,14 @@ const Navbar = () => {
       ))}
 
       {/* Cart Item */}
-      <li className="mx-1 group relative">
+      <li className="mx-1 group relative hidden lg:flex">
         <label>
           <div className="indicator">
             <FaShoppingCart size={25} className="" />
-            <span className="badge badge-sm indicator-item">8</span>
+            <span className="badge badge-sm indicator-item">0</span>
           </div>
         </label>
-        <div className="p-2 w-52 shadow-lg bg-slate-800 hidden group-hover:block absolute right-44 lg:right-5 top-0 lg:top-12 z-10">
+        <div className="p-2 w-52 shadow-lg text-accent rounded-md bg-accent-content hidden group-hover:block absolute right-44 lg:right-5 lg:top-12 z-10">
           <div className="card-body p-2">
             <span className="font-bold text-lg">8 Items</span>
             <span className="text-info">Subtotal: $999</span>
@@ -114,15 +113,7 @@ const Navbar = () => {
       className="sticky top-0 left-0 right-0 z-50 backdrop-blur-md shadow-sm"
     >
       <div className="navbar container-custom max-w-screen-2xl w-full mx-auto">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="open sidebar"
-          className=" navbar-start md:hidden"
-        >
-          {/* Sidebar toggle icon */}
-          <MdDashboard size={20} />
-        </label>
-        <div className=" navbar-center md:navbar-start xs:py-2">
+        <div className=" navbar-start md:navbar-start xs:py-2">
           <Link href="/" className="flex items-center">
             <Image
               loading="eager"
@@ -134,6 +125,35 @@ const Navbar = () => {
               className="h-auto w-auto"
             />
           </Link>
+        </div>
+        {/* mobile buy ion */}
+        <div className=" flex-1 md:hidden">
+          <div className="dropdown dropdown-end">
+            <label
+              tabIndex={10}
+              role="button"
+              className="btn btn-ghost bg-transparent"
+            >
+              <div className="indicator">
+                <FaShoppingCart size={25} className="" />
+                <span className="badge badge-sm indicator-item">0</span>
+              </div>
+            </label>
+            <div
+              tabIndex={10}
+              className="card card-compact dropdown-content bg-accent-content text-white z-1 mt-3 w-52 p-2 shadow"
+            >
+              <div className="card-body p-2">
+                <span className="font-bold text-lg">8 Items</span>
+                <span className="text-info">Subtotal: $999</span>
+                <div className="card-actions">
+                  <button className="btn btn-accent btn-block">
+                    View cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="navbar-end hidden lg:text-sm lg:flex w-full ml-auto">

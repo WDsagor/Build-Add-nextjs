@@ -15,8 +15,8 @@ const page = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isDirty, isValid },
+  } = useForm({ mode: "onChange" });
   const handlePassSee = () => {
     setPasswordEye(!passwordEye);
   };
@@ -74,7 +74,7 @@ const page = () => {
                 className="input w-full input-bordered bg-transparent border-primary/50  "
               />
               {errors.fname?.type === "required" && (
-                <small className=" text-[#ff780a] mt-1 self-end label-text-alt ">
+                <small className=" text-error mt-1 self-end label-text-alt ">
                   Frist name is required
                 </small>
               )}
@@ -90,7 +90,7 @@ const page = () => {
                 className="input w-full input-bordered bg-transparent border-primary/50  "
               />
               {errors.lname?.type === "required" && (
-                <small className=" text-[#ff780a] mt-1 self-end label-text-alt ">
+                <small className=" text-error mt-1 self-end label-text-alt ">
                   Last name is required
                 </small>
               )}
@@ -110,12 +110,12 @@ const page = () => {
               autoComplete="off"
             />
             {errors.email?.type === "required" && (
-              <small className=" text-[#ff780a] mt-1 self-end label-text-alt">
+              <small className=" text-error mt-1 self-end label-text-alt">
                 Email is required
               </small>
             )}
             {errors.email?.type === "pattern" && (
-              <small className=" text-[#ff780a] mt-1 self-end label-text-alt">
+              <small className=" text-error mt-1 self-end label-text-alt">
                 Your email is invalid
               </small>
             )}
@@ -132,7 +132,7 @@ const page = () => {
               className="input w-full input-bordered bg-transparent border-primary/50  "
             />
             {errors.phone?.type === "required" && (
-              <small className=" text-[#ff780a] mt-1 self-end label-text-alt ">
+              <small className=" text-error mt-1 self-end label-text-alt ">
                 Please enter your phone number
               </small>
             )}
@@ -197,7 +197,7 @@ const page = () => {
             <input
               type="submit"
               value="Confirm"
-              disabled={password !== confirmPassword}
+              disabled={!isDirty || !isValid || password !== confirmPassword}
               className="btn w-full btn-accent uppercase "
             />
           </div>
