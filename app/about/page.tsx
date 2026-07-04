@@ -80,7 +80,7 @@ const page = () => {
             />
             <h2 className="text-3xl font-bold py-5 text-blue-500">Address</h2>
             <p className="flex items-center">
-              <FaHome className="mr-2" />
+              <FaHome size={20} className="mr-2" />
               <span>
                 Haque Tower, Samimbagh, Matuail, Jatrabari, Dhaka-1362.
               </span>

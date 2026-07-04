@@ -110,7 +110,7 @@ const page = () => {
               We are contact as soon as posibale{" "}
             </p>
             <form onSubmit={handleSubmit(onSubmit)} className="text-black">
-              <div className=" lg:grid lg:grid-flow-col lg:gap-3 mb-5">
+              <div className=" grid grid-flow-row lg:grid-flow-col gap-5 mb-5">
                 <label className="floating-label">
                   <span>First name</span>
                   <input
@@ -119,7 +119,7 @@ const page = () => {
                     })}
                     type="text"
                     placeholder="Enter your frist name"
-                    className="input input-bordered bg-transparent border-primary/50  "
+                    className="input w-full input-bordered bg-transparent border-primary/50  "
                   />
                   {errors.fname?.type === "required" && (
                     <small className=" text-[#ff780a] mt-1 self-end label-text-alt ">
@@ -135,7 +135,7 @@ const page = () => {
                     })}
                     type="text"
                     placeholder="Enter your last name"
-                    className="input input-bordered bg-transparent border-primary/50  "
+                    className="input w-full input-bordered bg-transparent border-primary/50  "
                   />
                   {errors.lname?.type === "required" && (
                     <small className=" text-[#ff780a] mt-1 self-end label-text-alt ">

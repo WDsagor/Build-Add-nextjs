@@ -2,7 +2,6 @@
 
 import { useSidebarItems } from "@/utils/route";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import { FaSignOutAlt } from "react-icons/fa";
 
@@ -22,7 +21,7 @@ const Sidebar = () => {
   // Navigation items for better maintainability
 
   return (
-    <div className="flex flex-col justify-between h-10/12 flex-2">
+    <div className="sticky top-20 flex flex-col justify-between flex-2">
       <ul className="menu w-full gap-2 grow">
         <li>
           <label
@@ -59,7 +58,7 @@ const Sidebar = () => {
           );
         })}
       </ul>
-      <ul className="menu w-full">
+      {/* <ul className="menu w-full">
         <li className="pb-2">
           <button
             onClick={logout}
@@ -70,7 +69,7 @@ const Sidebar = () => {
             <span className="is-drawer-close:hidden">Logout</span>
           </button>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

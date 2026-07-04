@@ -32,7 +32,7 @@ const layout = ({
           </div>
         </div>
       </div>
-      <div className="dock dock-lg bg-accent text-white font-bold lg:hidden gap-2">
+      <div className="dock dock-sm bg-accent text-white font-bold lg:hidden gap-2">
         {sidebarItems?.map((item, i) => {
           const isActive = isActiveRoute(item.href);
           return (
