@@ -55,10 +55,10 @@ const page = () => {
       <title>Register | Super FIXIT Ltd</title>
       <div
         ref={fromRef}
-        className="max-w-md mx-auto bg-linear-to-b p-5 sm:p-10 from-accent to-white rounded-xl shadow-xl  "
+        className="max-w-md mx-auto  p-5 sm:p-10 bg-linear-to-b from-accent to-white rounded-xl shadow-xl  "
       >
         <div className="text-center pb-10">
-          <h1 className="text-2xl uppercase  text-primary">Register here</h1>
+          <h1 className="text-3xl font-bold  text-primary">Register here</h1>
           <p>Provide your valid information</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="text-black">

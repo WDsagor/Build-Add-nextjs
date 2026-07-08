@@ -18,7 +18,7 @@ interface FormData {
   contactPersonNo: string;
   businessPresentAdd: string;
   tradeCopy: FileList;
-  addMore: Array<{ value: string }>;
+  addMore: { value: string }[];
   interestedArea: string;
   term: boolean;
 }
@@ -33,8 +33,20 @@ const AddDealerPage: React.FC = () => {
   } = useForm<FormData>({
     mode: "onTouched",
     defaultValues: {
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
       email: "gggg@gmail.com",
-      addMore: [],
+      presentAdd: "",
+      permanentAdd: "",
+      companyName: "",
+      companyEmail: "",
+      proprietorName: "",
+      contactPersonNo: "",
+      businessPresentAdd: "",
+      tradeCopy: undefined,
+      // addMore: [{ value: "" }],
+      interestedArea: "",
       term: false,
     },
   });
@@ -50,17 +62,20 @@ const AddDealerPage: React.FC = () => {
     remove: moreRemove,
   } = useFieldArray<FormData>({
     control,
-    name: "addMore",
+    name: "addMore" as const,
   });
 
   const onSubmit = (data: FormData) => {
     console.log(data);
   };
+  const handleAddMore = () => {
+    moreAppend({ value: "" });
+  };
 
   return (
     <div className="px-2 justify-center my-6 max-w-screen-2xl">
       <h1 className="text-3xl text-center my-5">Apply for new Dealership</h1>
-      <div className="bg-linear-to-t from-white mx-auto max-w-6xl w-full  to-accent/50 rounded-xl p-5 ">
+      <div className="bg-linear-to-t from-white mx-auto max-w-6xl w-full  to-accent/50 rounded-xl p-10 ">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-xl">Personal Information</h1>
 
@@ -71,49 +86,49 @@ const AddDealerPage: React.FC = () => {
               </span>
               <input
                 {...register("firstName", {
-                  required: true,
+                  required: "First name is required",
                 })}
                 type="text"
                 placeholder="First name"
                 className="input bg-transparent input-bordered border-primary w-full"
               />
-              {errors.firstName?.type === "required" && (
+              {errors.firstName && (
                 <small className="text-error mt-2 self-end label-text-alt">
-                  First name is required
+                  {errors.firstName.message}
                 </small>
               )}
             </label>
             <label className="floating-label my-5 w-full">
-              <span className="bg-accent">Last Name</span>
+              <span>Last Name</span>
               <input
                 {...register("lastName", {
-                  required: true,
+                  required: "Last name is required",
                 })}
                 type="text"
                 placeholder="Last name"
                 className="input bg-transparent input-bordered border-primary w-full"
               />
-              {errors.lastName?.type === "required" && (
+              {errors.lastName && (
                 <small className="text-error mt-2 self-end label-text-alt">
-                  First name is required
+                  {errors.lastName.message}
                 </small>
               )}
             </label>
           </div>
           <div className=" flex flex-col md:flex-row gap-10 w-full">
             <label className="floating-label my-3 w-full">
-              <span className="bg-accent">Phone number</span>
+              <span>Phone number</span>
               <input
                 {...register("phoneNumber", {
-                  required: true,
+                  required: "Number is required",
                 })}
-                type="number"
-                placeholder="+880"
+                type="text"
+                placeholder="Your phone number"
                 className="input bg-transparent input-bordered border-primary w-full"
               />
-              {errors.phoneNumber?.type === "required" && (
+              {errors.phoneNumber && (
                 <small className="text-error mt-2 self-end label-text-alt">
-                  Number is required
+                  {errors.phoneNumber.message}
                 </small>
               )}
             </label>
@@ -123,15 +138,19 @@ const AddDealerPage: React.FC = () => {
               </span>
               <input
                 {...register("email", {
-                  required: true,
+                  required: "Email address require",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Invalid email address",
+                  },
                 })}
                 type="email"
                 placeholder="@mail.com"
                 className="input bg-transparent input-bordered border-primary w-full"
               />
-              {errors.lastName?.type === "required" && (
+              {errors.email && (
                 <small className="text-error mt-2 self-end label-text-alt">
-                  Email address is required
+                  {errors.email.message}
                 </small>
               )}
             </label>
@@ -202,7 +221,7 @@ const AddDealerPage: React.FC = () => {
                 {...register("companyEmail", {
                   required: "Company email is required",
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: "Invalid email address",
                   },
                 })}
@@ -238,18 +257,18 @@ const AddDealerPage: React.FC = () => {
             </label>
 
             <label className="floating-label my-3 w-full">
-              <span className="bg-accent">Contact person phone number</span>
+              <span>Contact person phone number</span>
               <input
                 {...register("contactPersonNo", {
-                  required: true,
+                  required: "Contact person phone number is required",
                 })}
                 type="number"
                 placeholder="Contact person phone number"
                 className="input bg-transparent input-bordered border-primary w-full"
               />
-              {errors.contactPersonNo?.type === "required" && (
+              {errors.contactPersonNo && (
                 <small className="text-error mt-2 self-end label-text-alt">
-                  Contact person phone number is required
+                  {errors.contactPersonNo.message}
                 </small>
               )}
             </label>
@@ -272,7 +291,7 @@ const AddDealerPage: React.FC = () => {
                 </small>
               )}
             </label>
-            <label className="floating-label border my-5 w-full">
+            <label className="floating-label border border-dashed rounded-md mt-5 max-h-20 w-full">
               <span className=" after:content-['*'] after:ml-0.5 after:text-red-500">
                 Add your trade license
               </span>
@@ -281,8 +300,7 @@ const AddDealerPage: React.FC = () => {
                   required: "Company or Dealer trade license is required",
                 })}
                 type="file"
-                placeholder="Company or Dealer trade license"
-                className="input file-input file-input-accent file-input-ghost w-full"
+                className="file-input bg-transparent file-input-ghost my-5 w-full"
               />
               {errors.tradeCopy && (
                 <small className="text-red-500 mt-1 self-end label-text-alt">
@@ -305,7 +323,7 @@ const AddDealerPage: React.FC = () => {
                 <div key={item.id} className="flex items-end gap-3 w-full">
                   <div className="form-control w-full max-w-md p-1">
                     <input
-                      {...register(`addMore.${index}` as const)}
+                      {...register(`addMore.${index}.value` as const)}
                       type="text"
                       placeholder="If any more information"
                       className="input input-bordered"
@@ -327,8 +345,8 @@ const AddDealerPage: React.FC = () => {
             <div>
               <button
                 type="button"
-                onClick={() => moreAppend({ value: "" })}
-                className="btn btn-sm btn-primary mt-2"
+                onClick={handleAddMore}
+                className="btn btn-sm btn-accent mt-2"
               >
                 Add more
               </button>
@@ -365,7 +383,7 @@ const AddDealerPage: React.FC = () => {
               />
               <label htmlFor="terms">I agree to terms and conditions</label>
             </div>
-            <button disabled={!term} className="btn btn-primary" type="submit">
+            <button disabled={!term} className="btn btn-accent" type="submit">
               Apply Now
             </button>
           </div>

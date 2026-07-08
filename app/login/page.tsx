@@ -112,7 +112,7 @@ const Login = () => {
       >
         <div className="rounded-xl w-full shadow-xl mt-20 bg-linear-to-t from-white  to-accent p-10 ">
           <div className="">
-            <h1 className="text-2xl uppercase text-primary text-center ">
+            <h1 className="text-3xl font-bold text-primary text-center ">
               Login here
             </h1>
             <p className="mb-10 text-center">Provide your login credential</p>
