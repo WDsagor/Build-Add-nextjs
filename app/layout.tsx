@@ -4,6 +4,7 @@ import "./globals.css";
 import Head from "next/head";
 import TopHeader from "@/components/share/TopHeader";
 import Navbar from "@/components/share/Navbar";
+import Footer from "@/components/share/Footer";
 
 export const metadata: Metadata = {
   title: "Super FIXIT Ltd",
@@ -26,6 +27,7 @@ const RootLayout = ({
         <TopHeader></TopHeader>
         <Navbar></Navbar>
         <main className="text-gray-700">{children}</main>
+        <Footer></Footer>
       </body>
     </html>
   );
