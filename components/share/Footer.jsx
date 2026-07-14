@@ -8,12 +8,13 @@ const Footer = () => {
   return (
     <footer className="bg-linear-to-t from-accent to-white">
       <div className="footer grid grid-cols-1  sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-screen-2xl text-black mx-auto  p-10">
-        <aside>
+        <aside className="max-w-[200]">
           <Image
             src="/images/footer-logo.png"
+            width={100}
             height={50}
-            width={200}
-            alt="Footer Logo"
+            layout="responsive"
+            alt="Footer logo"
           />
           <p className="flex flex-row items-center  gap-5">
             <Link href="/">
@@ -44,11 +45,21 @@ const Footer = () => {
         </aside>
         <nav className="md:pl-10">
           <h2 className="footer-title opacity-100 text-black">Services</h2>
-          <p className="link link-hover">Water Reducer</p>
-          <p className="link link-hover">Damp Proofing</p>
-          <p className="link link-hover">Exterior Design</p>
-          <p className="link link-hover">Weather Coat Sealers</p>
-          <p className="link link-hover">Site Planning</p>
+          <Link href="#" className="link link-hover">
+            Water Reducer
+          </Link>
+          <Link href="#" className="link link-hover">
+            Damp Proofing
+          </Link>
+          <Link href="#" className="link link-hover">
+            Exterior Design
+          </Link>
+          <Link href="#" className="link link-hover">
+            Weather Coat Sealers
+          </Link>
+          <Link href="#" className="link link-hover">
+            Site Planning
+          </Link>
         </nav>
         <nav>
           <h2 className="footer-title opacity-100 text-black">Company</h2>

@@ -312,7 +312,7 @@ const AddDealerPage: React.FC = () => {
 
           <hr className="my-3" />
 
-          <div className="mx-auto lg:mx-0 max-w-md lg:max-w-full">
+          <div className="lg:mx-0 max-w-md lg:max-w-full">
             <label className="label font-bold">
               <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
                 Add more fields
@@ -353,25 +353,25 @@ const AddDealerPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center content-center">
-            <label className="label lg:self-start">
+          <div className=" mt-5">
+            <label className=" floating-label">
               <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
                 Interested area of Dealership
               </span>
+              <textarea
+                {...register("interestedArea", {
+                  required:
+                    "Please provide details your area, zone, where you want to business",
+                })}
+                className="textarea  bg-transparent w-full resize h-28"
+                placeholder="Details provide your area, zone"
+              />
+              {errors.interestedArea && (
+                <small className="text-red-500 mt-1 self-end label-text-alt">
+                  {errors.interestedArea.message}
+                </small>
+              )}
             </label>
-            <textarea
-              {...register("interestedArea", {
-                required:
-                  "Please provide details your area, zone, where you want to business",
-              })}
-              className="textarea max-w-md lg:max-w-full w-full resize h-28"
-              placeholder="Details provide your area, zone"
-            />
-            {errors.interestedArea && (
-              <small className="text-red-500 mt-1 self-end label-text-alt">
-                {errors.interestedArea.message}
-              </small>
-            )}
           </div>
           <div className="flex justify-between items-center w-full mt-3">
             <div className="flex w-full max-w-xs">
