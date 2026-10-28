@@ -193,7 +193,7 @@ const Page = () => {
   return (
     <div
       ref={containerRef}
-      className="max-w-screen-2xl md:mx-auto border rounded-xl relative p-4 sm:p-5 md:p-8 mb-8 sm:mb-12 m-2 bg-linear-to-br from-base-100 via-base-100 to-primary/5 shadow-xl hover:shadow-2xl transition-shadow duration-500"
+      className="max-w-screen-2xl md:mx-auto  rounded-xl relative p-4 sm:p-5 md:p-8 mb-8 sm:mb-12 m-2 bg-linear-to-br from-base-100 via-base-100 to-primary/5 shadow-xl hover:shadow-2xl transition-shadow duration-500"
     >
       <title>Profile | Super FIXIT Ltd</title>
 
@@ -226,8 +226,8 @@ const Page = () => {
           )}
         </button>
       </div>
-
       <div className="flex bg-linear-to-t from-accent flex-row items-center to-white">
+
         <div className="relative">
           <label className="w-full cursor-pointer" htmlFor="profileImg">
             <div className="avatar p-8 sm:p-12  rounded-t-2xl w-full flex justify-start items-center">

@@ -117,8 +117,8 @@ const Navbar = () => {
           <Link href="/" className="flex items-center">
             <Image
               loading="eager"
-              width={80}
-              height={33}
+              width={400}
+              height={100}
               src="/images/Logo.png"
               alt="Logo"
               // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"

@@ -46,8 +46,8 @@ const Sidebar = () => {
                 href={item.href}
                 className={`is-drawer-close:tooltip is-drawer-close:tooltip-right ${
                   isActive
-                    ? "bg-linear-to-r from-purple-600 to-pink-600 text-white"
-                    : "hover:bg-linear-to-r from-purple-600 to-pink-600 hover:text-white"
+                    ? "bg-linear-to-r from-accent to-transparent text-black"
+                    : "hover:bg-linear-to-r from-accent to-transparent hover:text-black"
                 }`}
                 data-tip={item.label}
               >
