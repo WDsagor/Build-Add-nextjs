@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState, useRef } from "react";
 import { useForm, useWatch, SubmitHandler } from "react-hook-form";
 
@@ -9,6 +10,7 @@ import AddImage from "@/components/addProducts/AddImage";
 import ProductDetails from "@/components/addProducts/ProductDetails";
 import Price from "@/components/addProducts/Price";
 import NameForm from "@/components/addProducts/NameForm";
+import { MdAddBox, MdOutlineLayers, MdImage, MdDescription } from "react-icons/md";
 
 // Define types
 export interface ProductFormData {
@@ -70,30 +72,32 @@ const Page: React.FC = () => {
     }
   }, [imgFile]);
 
-  // Simple GSAP Animations
+  // GSAP Animations with clearProps fix
   useEffect(() => {
-    gsap.fromTo(
-      containerRef.current,
-      {
-        opacity: 0,
-        y: 20,
-      },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-    );
+    if (containerRef.current) {
+      gsap.fromTo(
+        containerRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", clearProps: "all" }
+      );
+    }
 
-    // Fade in form sections
-    gsap.fromTo(
-      ".form-section",
-      {
-        opacity: 0,
-        x: -30,
-        duration: 0.5,
-        stagger: 0.08,
-        delay: 0.5,
-        ease: "power2.out",
-      },
-      { opacity: 1, x: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" },
-    );
+    const formSections = document.querySelectorAll(".form-section");
+    if (formSections.length > 0) {
+      gsap.fromTo(
+        formSections,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          delay: 0.3,
+          ease: "power2.out",
+          clearProps: "all",
+        }
+      );
+    }
   }, []);
 
   const imageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -107,7 +111,7 @@ const Page: React.FC = () => {
         icon: "error",
         title: "Too Many Images",
         text: `You can only upload 4 images total. Currently have ${imgFile.length} images.`,
-        confirmButtonColor: "#d33",
+        confirmButtonColor: "#0d9488",
         confirmButtonText: "OK",
       });
       event.target.value = "";
@@ -115,7 +119,7 @@ const Page: React.FC = () => {
     }
 
     const validFiles = selectedFilesArray.filter((file) =>
-      file.type.startsWith("image/"),
+      file.type.startsWith("image/")
     );
 
     if (validFiles.length === 0) {
@@ -123,7 +127,7 @@ const Page: React.FC = () => {
         icon: "warning",
         title: "Invalid File Type",
         text: "Please select valid image files (JPEG, PNG, GIF, etc.)",
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#0d9488",
         confirmButtonText: "OK",
       });
       event.target.value = "";
@@ -135,15 +139,6 @@ const Page: React.FC = () => {
     setImgurl((previousImages) => [...previousImages, ...imagesArray]);
     setImgFile((preFile) => [...preFile, ...validFiles]);
 
-    // Simple animation for new images
-    gsap.from(".image-item", {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.3,
-      stagger: 0.05,
-      ease: "back.out(1.4)",
-    });
-
     event.target.value = "";
   };
 
@@ -152,8 +147,8 @@ const Page: React.FC = () => {
       title: "Remove Image?",
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#e11d48",
+      cancelButtonColor: "#0d9488",
       confirmButtonText: "Yes",
       cancelButtonText: "Cancel",
     }).then((result) => {
@@ -187,13 +182,12 @@ const Page: React.FC = () => {
   const term = useWatch({ control, name: "term" });
 
   const onSubmit: SubmitHandler<ProductFormData> = async (data) => {
-    // console.log(data);
     if (imgFile.length === 0) {
       Swal.fire({
         icon: "error",
         title: "No Images Uploaded",
         text: "Please upload at least one product image.",
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#0d9488",
         confirmButtonText: "OK",
       });
       return;
@@ -202,15 +196,14 @@ const Page: React.FC = () => {
     const result = await Swal.fire({
       title: "Add New Product?",
       html: `
-        <div style="text-align: left;">
-          <p><strong>Name:</strong> ${data.name || data.productName}</p>
-          
+        <div style="text-align: left; padding: 10px;">
+          <p><strong>Product Name:</strong> ${data.name || data.productName}</p>
         </div>
       `,
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#0d9488",
+      cancelButtonColor: "#e11d48",
       confirmButtonText: "Yes, add product!",
       cancelButtonText: "Cancel",
     });
@@ -225,7 +218,7 @@ const Page: React.FC = () => {
     });
 
     Swal.fire({
-      title: "Uploading...",
+      title: "Uploading Images...",
       html: "Please wait while we upload your images",
       allowOutsideClick: false,
       showConfirmButton: false,
@@ -249,8 +242,8 @@ const Page: React.FC = () => {
         };
 
         Swal.fire({
-          title: "Adding Product...",
-          html: "Please wait while we add your product",
+          title: "Saving Product...",
+          html: "Please wait while we add your product to store",
           allowOutsideClick: false,
           showConfirmButton: false,
           didOpen: () => {
@@ -267,7 +260,7 @@ const Page: React.FC = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(product),
-          },
+          }
         );
 
         const productData = await productResponse.json();
@@ -278,8 +271,8 @@ const Page: React.FC = () => {
           await Swal.fire({
             icon: "success",
             title: "🎉 Product Added Successfully!",
-            text: `${data.name || data.productName} has been added to your store.`,
-            confirmButtonColor: "#3085d6",
+            text: `${data.name || data.productName} has been added to your inventory.`,
+            confirmButtonColor: "#0d9488",
             confirmButtonText: "Great!",
             timer: 3000,
             timerProgressBar: true,
@@ -297,7 +290,7 @@ const Page: React.FC = () => {
         icon: "error",
         title: "❌ Failed to Add Product",
         text: "There was an error adding your product. Please try again.",
-        confirmButtonColor: "#d33",
+        confirmButtonColor: "#e11d48",
         confirmButtonText: "Try Again",
       });
       console.error("Error adding product:", error);
@@ -308,91 +301,127 @@ const Page: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex-1 px-2 justify-center my-6 max-w-screen-2xl"
+      className="mx-auto"
     >
-      <title>Add new item</title>
-      <h2 className="text-3xl py-5 text-center">Add new product</h2>
-      <div className="bg-linear-to-t from-white mx-auto max-w-6xl w-full  to-accent/50 rounded-xl p-10 ">
-        <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-section mx-auto max-w-md lg:max-w-full my-5">
-            <label className="label font-bold">
-              <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                Product name
-              </span>
-            </label>
-            <NameForm register={register} errors={errors} />
+      <title>Add New Item | Super FIXIT Ltd</title>
+
+      {/* Page Header */}
+      <div className="mb-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center justify-center sm:justify-start gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-200 text-teal-600 flex items-center justify-center shadow-sm">
+              <MdAddBox size={26} />
+            </div>
+            Add New Product
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            Fill in the details below to publish a new product to your catalog.
+          </p>
+        </div>
+      </div>
+
+      {/* Main Form Card with Professional Teal-Blue Corporate Theme */}
+      <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-200/80 p-6 sm:p-10">
+        <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          
+          {/* Section 1: Product Name */}
+          <div className="form-section space-y-3">
+            <div className="flex items-center gap-2 text-slate-900 font-bold text-base sm:text-lg">
+              <MdOutlineLayers className="text-teal-600" size={20} />
+              <span>Product Name</span>
+              <span className="text-rose-500">*</span>
+            </div>
+            <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
+              <NameForm register={register} errors={errors} />
+            </div>
           </div>
 
-          <div className="form-section mx-auto max-w-md lg:max-w-full my-5">
-            <label className="label font-bold">
-              <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                Add Products Size
-              </span>
-            </label>
-            <AddSize register={register} errors={errors} />
+          {/* Section 2: Product Size */}
+          <div className="form-section space-y-3">
+            <div className="flex items-center gap-2 text-slate-900 font-bold text-base sm:text-lg">
+              <MdOutlineLayers className="text-teal-600" size={20} />
+              <span>Product Sizes</span>
+              <span className="text-rose-500">*</span>
+            </div>
+            <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
+              <AddSize register={register} errors={errors} />
+            </div>
           </div>
 
-          <div className="form-section mx-auto max-w-md lg:max-w-full">
-            <label className="label font-bold">
-              <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                Add Products Images
-                <span className="text-sm font-normal ml-2 text-gray-500">
-                  ({imgFile.length}/4)
-                </span>
+          {/* Section 3: Product Images */}
+          <div className="form-section space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-slate-900 font-bold text-base sm:text-lg">
+                <MdImage className="text-teal-600" size={20} />
+                <span>Product Images</span>
+                <span className="text-rose-500">*</span>
+              </div>
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                {imgFile.length}/4 uploaded
               </span>
-            </label>
-            <AddImage
-              imageChange={imageChange}
-              deleteHandler={deleteHandler}
-              imgUrl={imgUrl}
-              imgFile={imgFile}
-            />
+            </div>
+            <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
+              <AddImage
+                imageChange={imageChange}
+                deleteHandler={deleteHandler}
+                imgUrl={imgUrl}
+                imgFile={imgFile}
+              />
+            </div>
           </div>
 
-          <div className="form-section mx-auto max-w-md lg:max-w-full my-5">
-            <label className="label font-bold">
-              <span className="label-text after:content-['*'] after:ml-0.5 after:text-red-500">
-                Products Details
-              </span>
-            </label>
-            <ProductDetails register={register} errors={errors} />
-            <Price register={register} errors={errors} />
+          {/* Section 4: Details & Pricing */}
+          <div className="form-section space-y-3">
+            <div className="flex items-center gap-2 text-slate-900 font-bold text-base sm:text-lg">
+              <MdDescription className="text-teal-600" size={20} />
+              <span>Details & Pricing</span>
+              <span className="text-rose-500">*</span>
+            </div>
+            <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 space-y-6">
+              <ProductDetails register={register} errors={errors} />
+              <div className="border-t border-slate-200 pt-6">
+                <Price register={register} errors={errors} />
+              </div>
+            </div>
           </div>
 
-          <div className="form-section flex justify-between items-center w-full mt-10 flex-wrap gap-4">
-            <div className="flex items-center">
+          {/* Footer: Terms & Submit Button */}
+          <div className="form-section pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3">
               <input
-                className="mr-3 w-4 h-4 accent-primary cursor-pointer"
+                className="w-4 h-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500 cursor-pointer"
                 type="checkbox"
                 {...register("term")}
                 id="terms"
               />
-              <label htmlFor="terms" className="cursor-pointer">
-                I agree to{" "}
-                <span className="text-primary font-semibold">
+              <label htmlFor="terms" className="text-sm font-medium text-slate-700 cursor-pointer select-none">
+                I agree to the{" "}
+                <span className="text-teal-600 font-semibold hover:underline">
                   terms and conditions
                 </span>
               </label>
             </div>
+
             <button
               disabled={!term || isSubmitting}
-              className={`btn btn-primary transition-all duration-300 ${
-                !term || isSubmitting
-                  ? "opacity-50 cursor-not-allowed"
-                  : "hover:scale-105 hover:shadow-lg"
-              }`}
               type="submit"
+              className={`w-full sm:w-auto px-8 py-3.5 rounded-2xl font-bold text-sm text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                !term || isSubmitting
+                  ? "bg-slate-300 text-slate-500 shadow-none cursor-not-allowed"
+                  : "bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500 shadow-teal-600/25 hover:-translate-y-0.5"
+              }`}
             >
               {isSubmitting ? (
-                <span className="flex items-center gap-2">
-                  <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  Adding...
-                </span>
+                <>
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span>Publishing Product...</span>
+                </>
               ) : (
-                "Apply Now"
+                "Publish Product"
               )}
             </button>
           </div>
+
         </form>
       </div>
     </div>

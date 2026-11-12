@@ -1,4 +1,5 @@
 import AboutFixit from "./AboutFixit";
+import ApplicationAreas from "./ApplicationAreas";
 import Benifit from "./Benifit";
 import Certified from "./Certified";
 import DealerNeed from "./DealerNeed";
@@ -18,6 +19,7 @@ const page = () => {
       <AboutFixit></AboutFixit>
       <WhyChoose></WhyChoose>
       <Certified></Certified>
+      <ApplicationAreas></ApplicationAreas>
       <HomeProducts></HomeProducts>
       <Benifit></Benifit>
       <Reviews></Reviews>

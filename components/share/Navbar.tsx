@@ -6,9 +6,8 @@ import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
-import { useState, ReactNode } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 interface NavItem {
   href: string;
@@ -24,174 +23,184 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const Navbar = () => {
-  const [menuShow, setMenuShow] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const navbarRef = useRef<HTMLElement>(null);
-
   const pathname = usePathname();
 
-  const isActiveRoute = (path: string): boolean =>
-    pathname === path || pathname?.startsWith(`${path}/`);
-
-  const getLinkClassName = (path: string): string => {
-    return isActiveRoute(path) ? "active-link" : "nav-link ";
-  };
-  const handleMenuItemClick = (): void => {
-    setMenuShow(!menuShow);
+  const isActiveRoute = (path: string): boolean => {
+    if (path === "/") return pathname === "/";
+    return pathname === path || pathname?.startsWith(`${path}/`);
   };
 
+  // Initial Entrance Animation (Only runs once on mount)
   useGSAP(() => {
     if (navbarRef.current) {
       gsap.fromTo(
         navbarRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        { y: -80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
       );
     }
+  }, []);
+
+  // Scroll listener for glass/shadow effect
+  useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY <= 50) {
-        navbarRef.current?.classList.add("navbar-gradient");
-        gsap.fromTo(
-          navbarRef.current,
-          { y: -100, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-        );
-      } else {
-        navbarRef.current?.classList.remove("navbar-gradient");
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
-
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const menuItems: ReactNode = (
-    <>
-      {NAV_ITEMS.map((item) => (
-        <li key={item.href} onClick={handleMenuItemClick} className="mx-1">
-          <Link
-            href={item.href}
-            className={`${getLinkClassName(item.href)} `}
-            // ${item.label === "Dashboard" ? "hidden" : ""}
-          >
-            {item.label}
-          </Link>
-        </li>
-      ))}
-
-      {/* Cart Item */}
-      <li className="mx-1 group relative hidden lg:flex">
-        <label>
-          <div className="indicator">
-            <FaShoppingCart size={25} className="" />
-            <span className="badge badge-sm indicator-item">0</span>
-          </div>
-        </label>
-        <div className="p-2 w-52 shadow-lg text-accent rounded-md bg-accent-content hidden group-hover:block absolute right-44 lg:right-5 lg:top-12 z-10">
-          <div className="card-body p-2">
-            <span className="font-bold text-lg">8 Items</span>
-            <span className="text-info">Subtotal: $999</span>
-            <div className="card-actions">
-              <button className="btn btn-primary btn-block">View cart</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      {/* Login Item */}
-      <li onClick={handleMenuItemClick} className="mx-1 p-0">
-        <Link href="/login" className={getLinkClassName("/login")}>
-          Login
-        </Link>
-      </li>
-    </>
-  );
-
   return (
-    <nav
+    <header
       ref={navbarRef}
-      className="sticky top-0 left-0 right-0 z-50 backdrop-blur-md shadow-sm"
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80 py-2"
+          : "bg-white/85 backdrop-blur-sm border-b border-slate-100 py-3"
+      }`}
     >
-      <div className="navbar container-custom max-w-screen-2xl w-full mx-auto">
-        <div className=" navbar-start md:navbar-start xs:py-2">
-          <Link href="/" className="flex items-center">
-            <Image
-              loading="eager"
-              width={400}
-              height={100}
-              src="/images/Logo.png"
-              alt="Logo"
-              // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
-              className="h-auto w-auto"
-            />
-          </Link>
-        </div>
-        {/* mobile buy ion */}
-        <div className=" flex-1 md:hidden">
-          <div className="dropdown dropdown-end">
-            <label
-              tabIndex={10}
-              role="button"
-              className="btn btn-ghost bg-transparent"
-            >
-              <div className="indicator">
-                <FaShoppingCart size={25} className="" />
-                <span className="badge badge-sm indicator-item">0</span>
-              </div>
-            </label>
-            <div
-              tabIndex={10}
-              className="card card-compact dropdown-content bg-accent-content text-white z-1 mt-3 w-52 p-2 shadow"
-            >
-              <div className="card-body p-2">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
-                <div className="card-actions">
-                  <button className="btn btn-accent btn-block">
-                    View cart
-                  </button>
+      <div className="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+        {/* Left: Brand Logo */}
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            loading="eager"
+            width={160}
+            height={45}
+            src="/images/Logo.png"
+            alt="Super FIXIT Logo"
+            className="h-10 sm:h-11 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Center/Right: Desktop Menu */}
+        <nav className="hidden lg:flex items-center gap-8">
+          <ul className="flex items-center gap-7">
+            {NAV_ITEMS.map((item) => {
+              const active = isActiveRoute(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`relative py-2 text-sm font-semibold transition-colors duration-200 ${
+                      active
+                        ? "text-teal-600"
+                        : "text-slate-700 hover:text-teal-600"
+                    }`}
+                  >
+                    {item.label}
+                    {active && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-teal-500 to-blue-600 rounded-full" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Right Actions: Cart & Login */}
+          <div className="flex items-center gap-5 pl-4 border-l border-slate-200">
+            {/* Cart Dropdown */}
+            <div className="relative group py-2">
+              <button
+                aria-label="Shopping Cart"
+                className="relative p-2 rounded-xl text-slate-700 hover:bg-teal-50 hover:text-teal-600 transition-colors cursor-pointer"
+              >
+                <FaShoppingCart size={20} />
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-teal-600 text-white text-[11px] font-bold flex items-center justify-center shadow-sm">
+                  0
+                </span>
+              </button>
+
+              {/* Hover Cart Preview */}
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 top-full mt-1 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-4 z-50">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                  <span className="font-bold text-slate-900 text-sm">
+                    0 Items in Cart
+                  </span>
+                  <span className="text-xs font-semibold text-teal-600">
+                    ৳0
+                  </span>
                 </div>
+                <p className="text-xs text-slate-500 py-3">
+                  Your cart is currently empty.
+                </p>
+                <Link
+                  href="/products"
+                  className="block w-full text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors"
+                >
+                  Browse Products
+                </Link>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="navbar-end hidden lg:text-sm lg:flex w-full ml-auto">
-          <ul className="menu menu-horizontal space-x-8">{menuItems}</ul>
-        </div>
-
-        <div className="navbar-end lg:hidden">
-          <div className="dropdown dropdown-end">
-            <label
-              onClick={() => setMenuShow(!menuShow)}
-              tabIndex={0}
-              className="btn btn-ghost"
-              role="button"
+            {/* Login CTA Button */}
+            <Link
+              href="/login"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500 text-white text-sm font-bold shadow-md shadow-teal-600/20 transition-all duration-300 hover:-translate-y-0.5"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-5 h-5 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className={`menu text-black menu-compact dropdown-content bg-linear-to-r from-purple-100 to-red-100 gap-2 p-2 shadow  rounded-box w-52`}
-            >
-              {menuItems}
-            </ul>
+              Login
+            </Link>
           </div>
+        </nav>
+
+        {/* Mobile Right Controls: Cart + Hamburger */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <Link
+            href="/products"
+            className="relative p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+          >
+            <FaShoppingCart size={20} />
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-teal-600 text-white text-[10px] font-bold flex items-center justify-center">
+              0
+            </span>
+          </Link>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+            className="p-2.5 rounded-xl bg-slate-100 text-slate-800 hover:bg-teal-50 hover:text-teal-600 transition-colors"
+          >
+            {mobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          </button>
         </div>
       </div>
-    </nav>
+
+      {/* Mobile Dropdown Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 shadow-xl space-y-2">
+          {NAV_ITEMS.map((item) => {
+            const active = isActiveRoute(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                  active
+                    ? "bg-teal-50 text-teal-700"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+          <div className="pt-2">
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-center py-3 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white font-bold text-sm shadow-md"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 
