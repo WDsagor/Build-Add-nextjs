@@ -128,7 +128,7 @@ const page: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F0FDF9]/60 py-10 px-4 sm:px-6 lg:px-8 overflow-x-hidden"
+      className="min-h-screen overflow-x-hidden"
     >
       <div className="mx-auto space-y-8">
         
