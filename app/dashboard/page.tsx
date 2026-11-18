@@ -13,7 +13,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
-import OrderDetailsModal from "@/components/allOrders/OrderDetailsModal";
+import OrderDetailsModal, { Order } from "@/components/allOrders/OrderDetailsModal";
 
 
 gsap.registerPlugin(useGSAP);
@@ -144,6 +144,7 @@ const initialOrders: Order[] = [
 ];
 
 // ================= HELPER FUNCTION =================
+
 
 const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat("en-BD", {
