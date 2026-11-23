@@ -1,0 +1,52 @@
+name: Deploy Next.js Build to cPanel
+
+on:
+  push:
+    branches:
+      - super-fixit-ts
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+
+      - name: Prepare deployment archive
+        run: tar -czf next-build.tar.gz .next
+
+      - name: Deploy .next to cPanel server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "next-build.tar.gz"
+          target: "/home/superfix/new-next"
+
+      - name: Extract .next on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/superfix/new-next
+            rm -rf .next
+            tar -xzf next-build.tar.gz
+            rm -f next-build.tar.gz
